@@ -42,7 +42,7 @@ ERC520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的�
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171046502-6da1dbc7-b3c5-46e0-b042-e47637089dde.png" height="50"/>
+      <img src="https://user-images.githubusercontent.com/897401/171046502-6da1dbc7-b3c5-46e0-b042-e47637089dde.png" height="40"/>
 </p>
 
 Marry3 是一个社会实验项目，他最初的思路起源于对 Web3 中 0x 地址作为原住民的底层思考，而他的落地思路，则基于对 Web3 生态一些不健康的现状的思考。
@@ -51,7 +51,7 @@ Marry3 是一个社会实验项目，他最初的思路起源于对 Web3 中 0x 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
       
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171046821-7458b3ea-6ea7-43fb-aa5f-a709b836eb06.png" height="50"/>
+      <img src="https://user-images.githubusercontent.com/897401/171046821-7458b3ea-6ea7-43fb-aa5f-a709b836eb06.png" height="40"/>
 </p>
 
 
@@ -75,7 +75,7 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
       
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171047043-679b8c54-9f99-46e9-864b-a00a9591c8a0.png" height="50"/>
+      <img src="https://user-images.githubusercontent.com/897401/171047043-679b8c54-9f99-46e9-864b-a00a9591c8a0.png" height="40"/>
 </p>
 
 
@@ -99,7 +99,7 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
       
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171047228-78b4a4aa-2000-4cd4-bfaa-034ff9424f42.png" height="50"/>
+      <img src="https://user-images.githubusercontent.com/897401/171047228-78b4a4aa-2000-4cd4-bfaa-034ff9424f42.png" height="40"/>
 </p>
 以上两点就是我们对现状的反思，并最终衍生成为我们的灵感来源和落地方式，这个项目是一个社会实验型作品，希望所有使用产品的用户，都能从产品中体会到 0x 原住民的概念以及对 Web3 现状产生思考。
 
@@ -108,9 +108,16 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171048179-d08cc61f-c430-4881-bead-ca3444b54c51.png" height="50"/>
+      <img src="https://user-images.githubusercontent.com/897401/171048179-d08cc61f-c430-4881-bead-ca3444b54c51.png" height="40"/>
 </p>
       
       
 ![roadmap](https://user-images.githubusercontent.com/897401/171048224-a594b28b-49d6-4f88-9be5-6a5f6e3a892f.png)
 
+![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
+
+<p align="center" style="margin:20px 0;">
+      <img src="https://user-images.githubusercontent.com/897401/171048532-eb0287c2-31e1-432a-89ce-138c45c58d89.png" height="40"/>
+</p>
+      
+![image](https://user-images.githubusercontent.com/897401/171048401-5d94a12b-db0c-4558-8e34-25411985a4e3.png)
