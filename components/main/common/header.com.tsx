@@ -61,7 +61,7 @@ export function WalletBar() {
               title="wallet"
               className={styles.wallet_icon}
             />
-            <Trans id="Wallet Connected" />
+            {/* <Trans id="Wallet Connected" /> */}
             <span className={styles.sub}>
               {walletStore.walletInfo.account
                 ? walletStore.walletInfo.account.substr(0, 6) +
@@ -131,12 +131,12 @@ export const Header = (props: {
             </a>
           </span>
         ) : null}
-
-        <a href="/history" title={t`已婚列表`}>
-          <Trans id="档案室" />
-        </a>
         <a href="" title={t`离婚`}>
           <Trans id="解除（即将上线）" />
+        </a>
+        <a href="/history" title={t`已婚列表`}>
+          <Trans id="档案室" />
+          <span style={{ fontSize: "10px", marginLeft: "5px" }}>↗</span>
         </a>
       </div>
       <div className={styles.right}>
