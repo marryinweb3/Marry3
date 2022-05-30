@@ -1,0 +1,55 @@
+@base-font-size: 100;
+.rem (@property; @values...) {
+  // This is a workaround, inspired by https://github.com/borodean/less-properties
+  @{property}: ~`(
+      function () {var baseFontSize= @{base-font-size}; var sizeList = @{values};
+        if (!Array.isArray(sizeList)) {sizeList = [sizeList];} var rems = []; for
+        (var i = 0; i < sizeList.length; i ++) {rems.push(
+          Math.round(sizeList[i] / baseFontSize * 1000000) / 1000000 + "rem"
+        )
+        ;} return rems.join(" ") ; }()
+    )
+    `;
+}
+
+@mobile: ~"(max-width: 768px)";
+@desktop: ~"(min-width: 769px)";
+// .some-class {
+//   .rem(font-size, 14);
+//   .rem(margin, 10, 0, 10, 20)
+// }
+
+.main_btn() {
+  display: block;
+  cursor: pointer;
+  background-image: url(/heroes/fight-btn-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  .rem(width,240);
+  .rem(height,62);
+  .rem(font-size, 28.5);
+  background-color: transparent;
+  border: none;
+  font-family: "FZCHSJW";
+  color: #e3c583;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-shadow: 0px 0px 8px rgba(103, 45, 19, 1);
+}
+.main_btn_disabled() {
+  background-image: url(/heroes/fight-btn-bg-disable.png);
+  color: #b2b2b2;
+}
+.gold_text() {
+  color: #f9ecae;
+  text-shadow: 0px 0px 3px #444;
+  position: relative;
+  &:before {
+    content: attr(data-text);
+    position: absolute;
+    z-index: 2;
+    color: #ca9a54;
+    mask: linear-gradient(to top, #ca9a54, transparent);
+    -webkit-mask: linear-gradient(to top, #ca9a54, transparent);
+  }
+}

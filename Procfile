@@ -1,0 +1,1 @@
+web: NEXT_PUBLIC_ISONLINE=1  npm run start

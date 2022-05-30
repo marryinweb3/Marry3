@@ -1,0 +1,181 @@
+@import "~antd/dist/antd.less";
+
+body::-webkit-scrollbar {
+  display: none;
+}
+// @font-face {
+//   font-family: "FZCHSJW";
+//   src: url("/FZCHSJW.TTF");
+// }
+a {
+  color: @primary-color;
+}
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
+  border-bottom: 2px solid #59d9cd !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-submenu::after {
+  bottom: 8px;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
+  span {
+    color: #59d9cd !important;
+  }
+}
+
+@font-face {
+  font-family: "OPPOSans";
+  src: url("/OPPOSans-R.ttf");
+}
+@font-face {
+  font-family: "OPPOSans-R";
+  src: url("/OPPOSans-R.ttf");
+}
+@font-face {
+  font-family: "OPPOSans-L";
+  src: url("/OPPOSans-L.ttf");
+}
+body {
+  font-family: OPPOSans;
+}
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+.ant-menu-item-selected {
+  background-color: inherit !important;
+}
+
+.web3modal-modal-lightbox {
+}
+
+.web3modal-modal-lightbox {
+  transition: opacity 0.1s ease-in-out 0s;
+  text-align: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -50vw;
+  top: 0px;
+  left: 50%;
+  z-index: 10000 !important;
+  will-change: opacity;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.web3modal-modal-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.web3modal-modal-card {
+  position: relative;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  margin: 10px;
+  padding: 0px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 800px;
+  min-width: fit-content;
+  max-height: 100%;
+  overflow: auto;
+  max-width: 800px;
+  grid-template-columns: 1fr;
+}
+.web3modal-modal-provider-wrapper {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: 0px;
+  border: 1px solid rgba(195, 195, 195, 0.14);
+}
+.web3modal-provider-container {
+  transition: background-color 0.2s ease-in-out 0s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 24px 16px;
+}
+.web3modal-provider-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  border-radius: 50%;
+  overflow: visible;
+  box-shadow: none;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  img {
+    height: 100%;
+  }
+}
+.web3modal-provider-name {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0.5em;
+  color: rgb(12, 12, 13);
+}
+
+.web3modal-provider-description {
+  width: 100%;
+  font-size: 18px;
+  margin: 0.333em 0px;
+  color: rgb(169, 169, 188);
+}
+
+body {
+  font-family: "OPPOSans";
+}

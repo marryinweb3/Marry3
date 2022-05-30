@@ -1,0 +1,46 @@
+@import "../../../styles/rem.less";
+.banner {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  left: 0;
+  height: 131px;
+
+  background: rgba(244, 24, 112, 0.9);
+  box-shadow: inset 0px 1px 0px #fb0064;
+  z-index: 1000;
+  .banner_inner {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .heart {
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    left: 0px;
+    bottom: 8px;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 130px;
+    padding-left: 300px;
+  }
+  .expand {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    width: 47px;
+    cursor: pointer;
+    height: 47px;
+  }
+}
