@@ -1,18 +1,16 @@
-Dapp:
 
-<a href="https://marry3.love"><img src="https://www.marry3.love/logo-slogon.png" height="80" /></a>
 
-https://Marry3.love
+![two-logo](https://user-images.githubusercontent.com/897401/171043801-72a3894f-1c23-43b2-a7a2-2e3618e10b1d.png)
 
-Base On:
 
-<a href="https://github.com/marryinweb3/ERC520"><img src="https://www.marry3.love/ERC520-noborder.png" height="80" /></a>
 
-[https://github.com/marryinweb3/ERC520](https://github.com/marryinweb3/ERC520)
+Dapp: https://Marry3.love
+
+ERC520: https://ERC520.com
 
 ---
 
-### 什么是 Marry3？
+<a href=""><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height="80"/><a>
 
 <span style="font-weight:300">Marry in Web3 with another 0x address, get the Soulbound NFT Certificate on the chain, a non-financial Dapp</span>
 
@@ -33,6 +31,8 @@ Marry3 is an on-chain Dapp developed based on the ERC520 standard contract. Its 
 In the future, he will also add other capabilities, such as basic multi-signature contracts (compatible with multi-signature wallets) and mutual savings contracts. Interested students are welcome to discuss together.
 
 [https://github.com/marryinweb3/ERC520](https://github.com/marryinweb3/ERC520)
+  
+----
 
 ### Marry3 想表达什么？
 
@@ -118,6 +118,8 @@ So we decided to implement the Marry3 project like this:
 - Do not issue NFTs and tokens for speculation, NFTs are only used as Soulbound NFTs.
 - Users pay for services because they are fun or useful to consume our products, not because they make money.
 
+----
+  
 ### 社会意义
 
 以上两点就是我们对现状的反思，并最终衍生成为我们的灵感来源和落地方式，这个项目是一个社会实验型作品，希望所有使用产品的用户，都能从产品中体会到 0x 原住民的概念以及对 Web3 现状产生思考。
