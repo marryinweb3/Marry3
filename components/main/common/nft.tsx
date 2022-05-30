@@ -353,7 +353,7 @@ export const NFT = (props: { offer?: Offers; width?: number }) => {
                     </g>
                     <g
                       opacity="1"
-                      transform="translate(91 0)  rotate(0 6 14.5)"
+                      transform="translate(138 0)  rotate(0 6 14.5)"
                     >
                       <text>
                         <tspan
@@ -372,7 +372,7 @@ export const NFT = (props: { offer?: Offers; width?: number }) => {
                     </g>
                     <g
                       opacity="1"
-                      transform="translate(118 0)  rotate(0 56.5 16)"
+                      transform="translate(164 0)  rotate(0 56.5 16)"
                     >
                       <text>
                         <tspan
@@ -411,7 +411,7 @@ export const NFT = (props: { offer?: Offers; width?: number }) => {
                     </g>
                     <g
                       opacity="1"
-                      transform="translate(109 0)  rotate(0 6 14.5)"
+                      transform="translate(138 0)  rotate(0 6 14.5)"
                     >
                       <text>
                         <tspan
@@ -430,7 +430,7 @@ export const NFT = (props: { offer?: Offers; width?: number }) => {
                     </g>
                     <g
                       opacity="1"
-                      transform="translate(136 0)  rotate(0 45 16)"
+                      transform="translate(164 0)  rotate(0 45 16)"
                     >
                       <text>
                         <tspan
