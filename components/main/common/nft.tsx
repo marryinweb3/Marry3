@@ -4,7 +4,11 @@ import React, { useRef } from "react";
 import { Offers } from "../../../stores/main/marry.store";
 import styles from "./footer.module.less";
 
-export const NFT = (props: { offer?: Offers; width?: number }) => {
+export const NFT = (props: {
+  offer?: Offers;
+  width?: number;
+  isA?: boolean;
+}) => {
   const svgref = useRef(null);
   {
     /* <image

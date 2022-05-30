@@ -458,11 +458,13 @@ export default function Upgrade(props) {
                     <Trans id="国库收益(ETH)" />
                   </div>
                   <div className={styles.t2}>
-                    {marryStore.ethBalanceFormated}
+                    {marryStore.ethBalanceFormated}Ξ
                   </div>
                   <div className={styles.t3}>
                     <Trans id="协议已见证了" /> {marryStore.marryCount}{" "}
                     <Trans id="对新人" />
+                    <br />
+                    <Trans id="所有收益都将用于发行Token和空投" />
                   </div>
                   <div className={styles.t4}>
                     <Trans id="Marry3 合约地址：" /> {web3Config.address.marry3}
@@ -680,7 +682,7 @@ export default function Upgrade(props) {
                     ) : (
                       <Button
                         onClick={() => {
-                          wallet.showModal = true;
+                          wallet.connect();
                         }}
                         type="primary"
                         loading={submiting}

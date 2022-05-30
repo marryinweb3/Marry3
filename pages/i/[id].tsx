@@ -44,17 +44,13 @@ export default function Offer(props) {
 
   const [aconnectloading, setAconnectloading] = useState(false);
   const [bconnectloading, setBconnectloading] = useState(false);
-  const getProvider = async () => {
-    const p = await wallet.getEthProvider();
-    console.log("provider", p);
-  };
+
   const shareText =
     "Marry in Web3 with another 0x address, get the Soulbound NFT Certificate on the chain, a non-financial Dapp";
   useEffect(() => {
     if (router.query.id) {
       getOffer();
     }
-    getProvider();
   }, [router.query.id]);
 
   return (

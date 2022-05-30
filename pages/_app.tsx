@@ -7,7 +7,6 @@ import { messages as cnMessages } from "../locale/zh_CN";
 i18n.load("en", enMessages);
 i18n.load("cn", cnMessages);
 
-i18n.activate("en");
 import "../styles/var.less";
 import "../styles/app.less";
 
@@ -31,6 +30,19 @@ message.config({
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
+    if (!localStorage.getItem("locale")) {
+      const hasZH = window.navigator.languages.findIndex((f) => {
+        return f.indexOf("zh") != -1;
+      });
+      if (hasZH > 0 && hasZH < 2) {
+        i18n.activate("cn");
+      }
+    } else {
+      localStorage.getItem("locale") == "cn"
+        ? i18n.activate("cn")
+        : i18n.activate("en");
+    }
+
     document.documentElement.style.fontSize = `${
       (window.innerWidth * 100) / 1920
     }px`;
