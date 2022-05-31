@@ -1,4 +1,5 @@
-![two-logo](https://user-images.githubusercontent.com/897401/171043801-72a3894f-1c23-43b2-a7a2-2e3618e10b1d.png)
+![two-logo](https://user-images.githubusercontent.com/897401/171177043-083c392f-f7a1-4155-9a34-4a866604ca69.png)
+
 
 <p align="center">
   <a href="./README_EN.md"><img src="https://img.shields.io/badge/English%20Version%20README-333333?&labelColor=000&style=for-the-badge" />
@@ -9,7 +10,7 @@
 
 <p align="center">
   <a href="https://Marry3.love"><img src="https://img.shields.io/badge/https%3A%2F%2FMarry3.love-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
-  <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://img.shields.io/badge/https%3A%2F%2FERC520.com-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
+  <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://img.shields.io/badge/https%3A%2F%2FERC721-520.com-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
 </p> 
 <p align="center">
   <a href="https://twitter.com/marryinweb3"><img src="https://img.shields.io/badge/%40marryinweb3-F41870?&labelColor=1D1D1D&logo=twitter&style=flat-square" /></a>
@@ -21,11 +22,11 @@
     <a href="https://marry3.love"><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height="120"/><a>
     
 </p>
-      
 
-Marry3 是一个基于 ERC520 标准合约开发的链上 Dapp，他的核心实现了：
 
-- ERC520 Token，这是一种标准的 ERC721 token 的扩展，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
+Marry3 是一个基于 ERC721-520 标准合约开发的链上 Dapp，他的核心实现了：
+
+- ERC721-520 Token，这是一种标准的 ERC721 token 的扩展，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
 - Marry3 合约和 Dapp，实现了付费和多签验证的逻辑（类比现实世界中的协商求婚、协商离婚等）。
 
 未来，他还会增加其他能力，例如基础多签合约（兼容多签钱包）和共同储蓄合约等，感兴趣的同学欢迎共同探讨。
@@ -33,14 +34,14 @@ Marry3 是一个基于 ERC520 标准合约开发的链上 Dapp，他的核心实
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="left" style="margin:50px 0;">
-    <a href="https://github.com/marryinweb3/ERC520"><img src="https://user-images.githubusercontent.com/897401/171047597-5a2eeb15-b6de-4cb8-8ff7-a52bb0996d59.png" height="80"/><a>
+    <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://user-images.githubusercontent.com/897401/171176759-123d5777-0f36-4680-a2ef-25f07ff44618.png" height="80"/><a>
     
 </p>
 
-ERC520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的一种实现
-- ERC520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token
-- ERC520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token
-- ERC520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token
+ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的一种实现
+- ERC721-520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token
+- ERC721-520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token
+- ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token
       
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
