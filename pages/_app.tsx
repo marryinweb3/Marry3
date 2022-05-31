@@ -6,7 +6,7 @@ import { messages as enMessages } from "../locale/en";
 import { messages as cnMessages } from "../locale/zh_CN";
 i18n.load("en", enMessages);
 i18n.load("cn", cnMessages);
-
+i18n.activate("cn");
 import "../styles/var.less";
 import "../styles/app.less";
 
