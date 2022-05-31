@@ -699,14 +699,23 @@ export default function Upgrade(props) {
                     )}
                   </Form>
                 )}
-                {marryStore.pendingOffer?.status == 2 ? (
+                {marryStore.pendingOffer?.status == 2 &&
+                marryStore.pendingOffer.AtokenId ? (
                   <div className={styles.price_desc}>
+                    <Trans id="查看 Marry3 Certificate 详情" />:
                     <a
                       href={`/i/${marryStore.pendingOffer.AtokenId}`}
                       target={"_blank"}
-                      style={{ fontWeight: "500" }}
+                      style={{ fontWeight: "500", marginLeft: "10px" }}
                     >
-                      <Trans id="查看 Marry3 Certificate 详情" />
+                      Token #{marryStore.pendingOffer.AtokenId}
+                    </a>
+                    <a
+                      href={`/i/${marryStore.pendingOffer.BtokenId}`}
+                      target={"_blank"}
+                      style={{ fontWeight: "500", marginLeft: "10px" }}
+                    >
+                      Token #{marryStore.pendingOffer.BtokenId}
                     </a>
                   </div>
                 ) : (
