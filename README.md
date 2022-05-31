@@ -1,4 +1,4 @@
-![two-logo](https://user-images.githubusercontent.com/897401/171177043-083c392f-f7a1-4155-9a34-4a866604ca69.png)
+![two-logo](https://user-images.githubusercontent.com/897401/171213564-aa8c3f32-aba9-4b53-be78-d080075deac1.png)
 
 
 <p align="center">
