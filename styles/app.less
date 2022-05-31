@@ -59,6 +59,10 @@ a {
   font-family: "OPPOSans-L";
   src: url("/OPPOSans-L.ttf");
 }
+@font-face {
+  font-family: "Jura-Bold";
+  src: url("/Jura-Bold.ttf");
+}
 body {
   font-family: OPPOSans;
 }
@@ -120,11 +124,10 @@ body {
   pointer-events: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  max-width: 800px;
+  max-width: 400px;
   min-width: fit-content;
   max-height: 100%;
   overflow: auto;
-  max-width: 800px;
   grid-template-columns: 1fr;
 }
 .web3modal-modal-provider-wrapper {
@@ -136,7 +139,7 @@ body {
   -webkit-box-align: center;
   align-items: center;
   flex-direction: column;
-  cursor: pointer;
+
   border-radius: 0px;
   border: 1px solid rgba(195, 195, 195, 0.14);
 }
@@ -171,10 +174,12 @@ body {
 }
 .web3modal-provider-name {
   width: 100%;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
   margin-top: 0.5em;
   color: rgb(12, 12, 13);
+  opacity: 0.8;
+  font-family: Jura-Bold, OPPOSans;
 }
 
 .web3modal-provider-description {

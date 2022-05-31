@@ -4,13 +4,13 @@ import { i18n } from "@lingui/core";
 // import { en, sv } from "make-plural/plurals";
 import { messages as enMessages } from "../locale/en";
 import { messages as cnMessages } from "../locale/zh_CN";
-i18n.load("en", enMessages);
+
 i18n.load("cn", cnMessages);
-i18n.activate("cn");
+i18n.load("en", enMessages);
 import "../styles/var.less";
 import "../styles/app.less";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import wallet from "../contracts/wallet";
 import router, { Router, useRouter } from "next/router";
 import { message, notification } from "antd";
@@ -24,11 +24,13 @@ function SafeHydrate({ children }) {
     </div>
   );
 }
+
 message.config({
   top: 50,
 });
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const [showLang, setShowLang] = useState(false);
   useEffect(() => {
     if (!localStorage.getItem("locale")) {
       const hasZH = window.navigator.languages.findIndex((f) => {
@@ -37,6 +39,7 @@ export default function App({ Component, pageProps }) {
       if (hasZH > 0 && hasZH < 2) {
         i18n.activate("cn");
       }
+      setShowLang(true);
     } else {
       localStorage.getItem("locale") == "cn"
         ? i18n.activate("cn")
@@ -91,6 +94,47 @@ export default function App({ Component, pageProps }) {
       <SafeHydrate>
         <Web3Head />
         <Component {...pageProps} />
+        {showLang ? (
+          <div className="sc-AxgMl hkzEld web3modal-modal-lightbox">
+            <div className="sc-AxheI fdbjE web3modal-modal-container">
+              <div className="sc-Axmtr hvJMgY web3modal-modal-hitbox"></div>
+              <div className="sc-AxmLO bfIkEQ web3modal-modal-card">
+                <div className="sc-AxhUy kaSVED web3modal-provider-wrapper">
+                  <div className="sc-AxhCb xPSun web3modal-provider-container">
+                    <div
+                      className="sc-AxirZ hBmmHr web3modal-provider-name"
+                      style={{ opacity: 0.4 }}
+                    >
+                      Choose Your language
+                    </div>
+                    <div
+                      className="sc-AxirZ hBmmHr web3modal-provider-name"
+                      onClick={() => {
+                        i18n.activate("en");
+                        localStorage.setItem("locale", i18n.locale);
+                        setShowLang(false);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      English
+                    </div>
+                    <div
+                      className="sc-AxirZ hBmmHr web3modal-provider-name"
+                      onClick={() => {
+                        i18n.activate("cn");
+                        localStorage.setItem("locale", i18n.locale);
+                        setShowLang(false);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      中文
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </SafeHydrate>
     </I18nProvider>
   );

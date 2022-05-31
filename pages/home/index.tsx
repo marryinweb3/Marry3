@@ -140,26 +140,6 @@ export default function Upgrade(props) {
       mousePos.x = e.pageX;
       mousePos.y = e.pageY;
     });
-
-    // document.addEventListener("click", function (e) {
-    //   mousePos.x = e.pageX;
-    //   mousePos.y = e.pageY;
-    //   const x = mousePos.x,
-    //     y = { [mousePos.y]: mousePos.y - 150 };
-
-    //   for (let i = 0; i < swirls.length; i++) {
-    //     swirls[i].tune({ x, y }).generate().replay();
-    //   }
-    // });
-    // setTimeout(() => {
-    //   const script = document.createElement("script");
-    //   script.src = "/particles.min.js";
-    //   document.body.appendChild(script);
-    //   script.onload = () => {
-    //     //@ts-ignore
-    //     window.particlesJS.load("bg-index", "/particles.json");
-    //   };
-    // }, 500);
   };
 
   const [offerId, setOfferId] = useState("");
@@ -182,6 +162,7 @@ export default function Upgrade(props) {
     script.src = "/mo.umd.js";
     document.body.appendChild(script);
     script.onload = () => {
+      console.log("loveBubbles");
       //@ts-ignore
       loveBubbles();
     };
@@ -189,15 +170,6 @@ export default function Upgrade(props) {
 
     // }, 500);
   }, []);
-  const download = function (href, name) {
-    var link = document.createElement("a");
-    link.download = name;
-    link.style.opacity = "0";
-    document.body.appendChild(link);
-    link.href = href;
-    link.click();
-    link.remove();
-  };
 
   const imageLoaded = (dom: HTMLImageElement) => {
     return new Promise((resolve, rejected) => {

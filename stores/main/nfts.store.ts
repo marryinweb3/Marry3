@@ -43,7 +43,7 @@ export class NFTStore implements IStore {
       }
 
       this.nfts = data.nfts.filter((nft: any) => {
-        return nft.detail.metadata;
+        return nft.detail?.metadata;
       });
 
       console.log("nfts", this.nfts);
