@@ -66,6 +66,14 @@ export class MarryStore implements IStore {
       Acomment: this.info.Acomment,
       Acover: this.info.Acover,
     };
+    if (body.Aname.indexOf(".eth") != -1) {
+      const ens = await walletStore.getENS(this.info.Aaddress);
+      if (body.Aname.toLowerCase() != ens.toLowerCase()) {
+        return message.error(
+          ".eth ens name must be yourself, you can input no .eth name"
+        );
+      }
+    }
     const offer = await fetch("/api/offer-a", {
       method: "POST",
       headers: {

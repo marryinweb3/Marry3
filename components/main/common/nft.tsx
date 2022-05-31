@@ -389,7 +389,7 @@ export const NFT = (props: {
                           font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
-                          ERC520
+                          ERC721-520
                         </tspan>
                       </text>
                     </g>

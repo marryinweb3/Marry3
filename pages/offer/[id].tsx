@@ -145,7 +145,14 @@ export default function Offer(props) {
                       placeholder={t`选择一个NFT作为头像`}
                       style={{ width: "150px" }}
                       value={offerStore.form.Bcover}
-                      onChange={(e) => (offerStore.form.Bcover = e)}
+                      onChange={(e) => {
+                        if (e == "-100") {
+                          window.open("https://myfirstnft.info/");
+                          offerStore.form.Bcover = "";
+                        } else {
+                          offerStore.form.Bcover = e;
+                        }
+                      }}
                     >
                       {nftStore.nfts.map((nft, i) => {
                         return (
@@ -170,9 +177,9 @@ export default function Offer(props) {
                           </Select.Option>
                         );
                       })}
-                      <Select.Option key="any" value="-1">
+                      <Select.Option key="any" value="-100">
                         <span style={{ paddingLeft: "10px" }}>
-                          <Trans id="还没有NFT？推荐：MFNFT（免费）" />
+                          <Trans id="还没有NFT？MFNFT（免费）" />
                         </span>
                       </Select.Option>
                     </Select>

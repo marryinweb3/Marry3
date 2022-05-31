@@ -1,13 +1,9 @@
-
 ![编组](https://user-images.githubusercontent.com/897401/171214522-65a32bb9-21e8-4a8e-8089-c1c669325391.png)
-
 
 <p align="center">
   <a href="./README_EN.md"><img src="https://img.shields.io/badge/English%20Version%20README-333333?&labelColor=000&style=for-the-badge" />
     </a>
 </p>
-
- 
 
 <p align="center">
   <a href="https://Marry3.love"><img src="https://img.shields.io/badge/https%3A%2F%2FMarry3.love-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
@@ -18,12 +14,11 @@
 </p>
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
- 
+
 <p align="left" style="margin:50px 0;">
     <a href="https://marry3.love"><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height="120"/><a>
     
 </p>
-
 
 Marry3 是一个基于 ERC721-520 标准合约开发的链上 Dapp，他的核心实现了：
 
@@ -40,10 +35,11 @@ Marry3 是一个基于 ERC721-520 标准合约开发的链上 Dapp，他的核�
 </p>
 
 ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的一种实现
+
 - ERC721-520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token
 - ERC721-520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token
 - ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token
-      
+
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
@@ -56,16 +52,14 @@ ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） �
 </p>
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-      
+
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171209373-8979cbae-f256-4335-9c11-4605737b5add.png" height="40"/>
 </p> 
       <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171209437-e8e9ae0e-0653-4c7b-885a-62b036311e15.png" height="400"/>
-</p> 
+</p>
 
-
-    
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
@@ -74,13 +68,11 @@ ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） �
 
 Marry3 是一个社会实验项目，他最初的思路起源于对 Web3 中 0x 地址作为原住民的底层思考，而他的落地思路，则基于对 Web3 生态一些不健康的现状的思考。
 
-
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-      
+
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171046821-7458b3ea-6ea7-43fb-aa5f-a709b836eb06.png" height="40"/>
 </p>
-
 
 0x 地址是 Web3 中的原住民，链上所有的行为和数据都是依托于它而存在。
 
@@ -100,11 +92,10 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 - 同时 区块链 为这种关系提供了规则保障（Code is Law），关系上链，不可篡改，不可转移，公开透明。
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-      
+
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171047043-679b8c54-9f99-46e9-864b-a00a9591c8a0.png" height="40"/>
 </p>
-
 
 在进入 Web3 世界之后，我时常反思我眼里看到的 Web3 世界，我坚信 Web3 的底层思路，愿意相信他的理想信念，但是现实中我更多看到的是无处不在的泡沫和单调无趣的生态。
 
@@ -124,14 +115,14 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 - 用户付费购买服务，因为有趣或者有用来消费我们的产品，而不是因为能赚钱。
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-      
+
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171047228-78b4a4aa-2000-4cd4-bfaa-034ff9424f42.png" height="40"/>
 </p>
 以上两点就是我们对现状的反思，并最终衍生成为我们的灵感来源和落地方式，这个项目是一个社会实验型作品，希望所有使用产品的用户，都能从产品中体会到 0x 原住民的概念、亲密关系的重要性以及对 Web3 现状产生思考，我们很期望看到有构建于这个亲密的社会关系之上的丰富的应用，我们所有的关系数据都是开放的。
 
 这样，我们开发此项目的意义就已经达成，未来不管它如何发展，这都是它最重要的社会意义。
-      
+
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
@@ -150,4 +141,3 @@ Web3 是一个 0x 原住民组成的新世界，它拥有全新的秩序和规�
 ![image](https://user-images.githubusercontent.com/897401/171048401-5d94a12b-db0c-4558-8e34-25411985a4e3.png)
 
 ![image](https://user-images.githubusercontent.com/897401/171210269-e27f688c-838b-4639-8617-1a35cac59b26.png)
-

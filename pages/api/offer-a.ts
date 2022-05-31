@@ -38,6 +38,9 @@ const handler: NextApiHandler = async (req, res) => {
         Acover: req.body.Acover,
         bgIndex: Math.floor(Math.random() * 8) + 1,
       };
+      if (!data.Acover.startsWith("http")) {
+        data.Acover = "";
+      }
       if (!data.Aname) {
         return res.status(400).json({
           message: "name empty",

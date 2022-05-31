@@ -38,7 +38,9 @@ const handler: NextApiHandler = async (req, res) => {
         Bcomment: req.body.Bcomment,
         Bcover: req.body.Bcover,
       };
-
+      if (!data.Bcover.startsWith("http")) {
+        data.Bcover = "";
+      }
       if (!data.Bname) {
         return res.status(400).json({
           message: "name empty",

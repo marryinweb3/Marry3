@@ -113,5 +113,6 @@ export class WalletStore implements IStore {
     } catch (e) {
       console.log("e", e);
     }
+    return "";
   }
 }

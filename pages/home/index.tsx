@@ -290,61 +290,66 @@ export default function Upgrade(props) {
     // document.body.appendChild(bgImage);
   };
   const mint = async () => {
-    const dataUrl = await createImage();
-    const uuid = uuidv4();
-    const msg = await wallet.signMessage(uuid);
-    const body = {
-      nonce: uuid,
-      signature: msg,
-      id: marryStore.pendingOffer.id,
-      imageData: dataUrl,
-    };
-    setMinting(true);
-    const offer = await fetch(
-      `/api/offer-setImage?nonce=${body.nonce}&signature=${body.signature}&id=${body.id}`,
-      {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    const res = await offer.json();
-    if (res.message) {
-      message.error(res.message);
-    } else {
-      console.log("res", res);
-      if (res.Bsignature) {
-        const Bsignature = res.Bsignature;
-        console.log("Bsignature", res);
-        const loading = message.loading("please wait until success...");
-        const blockNo = await marryStore.mint(
-          res.Aaddress,
-          res.Baddress,
-          res.Asex,
-          res.Bsex,
-          Bsignature
-        );
-        await fetch(`/api/offer-setBlockNo`, {
+    let dataUrl;
+    try {
+      dataUrl = await createImage();
+      const uuid = uuidv4();
+      const msg = await wallet.signMessage(uuid);
+      const body = {
+        nonce: uuid,
+        signature: msg,
+        id: marryStore.pendingOffer.id,
+        imageData: dataUrl,
+      };
+      setMinting(true);
+      const offer = await fetch(
+        `/api/offer-setImage?nonce=${body.nonce}&signature=${body.signature}&id=${body.id}`,
+        {
           method: "POST",
-          body: JSON.stringify({
-            Bsignature,
-            id: body.id,
-            blockNo,
-          }),
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
           },
-        });
+        }
+      );
 
-        loading();
+      const res = await offer.json();
+      if (res.message) {
+        message.error(res.message);
       } else {
-        message.error("get signature error");
+        console.log("res", res);
+        if (res.Bsignature) {
+          const Bsignature = res.Bsignature;
+          console.log("Bsignature", res);
+          const loading = message.loading("please wait until success...");
+          const blockNo = await marryStore.mint(
+            res.Aaddress,
+            res.Baddress,
+            res.Asex,
+            res.Bsex,
+            Bsignature
+          );
+          await fetch(`/api/offer-setBlockNo`, {
+            method: "POST",
+            body: JSON.stringify({
+              Bsignature,
+              id: body.id,
+              blockNo,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          loading();
+        } else {
+          message.error("get signature error");
+        }
       }
+      setMinting(false);
+    } catch (e) {
+      message.error("create nft cover error");
     }
-    setMinting(false);
   };
 
   useEffect(() => {
@@ -397,9 +402,9 @@ export default function Upgrade(props) {
               </h1>
               <h2 className={styles.subInfo}>
                 <p className={styles.subInfoMain}>
-                  <Trans id="基于 ERC520 开发" />
+                  <Trans id="基于 ERC721-520 开发" />
                   <a
-                    href="https://github.com/marryinweb3/erc520"
+                    href="https://github.com/marryinweb3/ERC721-520"
                     style={{ marginLeft: "10px" }}
                   >
                     Github
@@ -412,7 +417,7 @@ export default function Upgrade(props) {
                     title="heart"
                     className={styles.heart}
                   />
-                  <Trans id="ERC520 Token 是 NFT-like Soulbound Token（灵魂绑定凭证） 的一种实现" />
+                  <Trans id="ERC721-520 Token 是 NFT-like Soulbound Token（灵魂绑定凭证） 的一种实现" />
                   <a
                     href="https://vitalik.ca/general/2022/01/26/soulbound.html"
                     target={"_blank"}
@@ -427,7 +432,7 @@ export default function Upgrade(props) {
                     title="heart"
                     className={styles.heart}
                   />
-                  <Trans id="ERC520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token" />
+                  <Trans id="ERC721-520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token" />
                 </p>
                 <p>
                   <img
@@ -435,7 +440,7 @@ export default function Upgrade(props) {
                     title="heart"
                     className={styles.heart}
                   />
-                  <Trans id="ERC520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token" />
+                  <Trans id="ERC721-520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token" />
                 </p>
                 <p>
                   <img
@@ -443,7 +448,7 @@ export default function Upgrade(props) {
                     title="heart"
                     className={styles.heart}
                   />
-                  <Trans id="ERC520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token" />
+                  <Trans id="ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token" />
                 </p>
               </h2>
               <img src="/flower.svg" className={styles.flower} title="flower" />
@@ -619,6 +624,7 @@ export default function Upgrade(props) {
                         onChange={(e) => {
                           if (e == "-100") {
                             window.open("https://myfirstnft.info/");
+                            marryStore.info.Acover = "";
                           } else {
                             marryStore.info.Acover = e;
                           }
@@ -650,7 +656,7 @@ export default function Upgrade(props) {
                         })}
                         <Select.Option key="any" value="-100">
                           <span style={{ paddingLeft: "10px" }}>
-                            <Trans id="还没有NFT？推荐：MFNFT（免费）" />
+                            <Trans id="还没有NFT？MFNFT（免费）" />
                           </span>
                         </Select.Option>
                       </Select>
@@ -823,7 +829,7 @@ export default function Upgrade(props) {
                 </p>
                 <p>
                   <span>
-                    <Trans id="因为它发生在新世界，所以它将充分利用新世界的规则来见证一份亲密关系，它将两个地址的关系和约定写入 ERC520 合约，合约代码既是上帝和法律，自此之后，一人一证，一心一意，直至斗转星移。" />
+                    <Trans id="因为它发生在新世界，所以它将充分利用新世界的规则来见证一份亲密关系，它将两个地址的关系和约定写入 ERC721-520 合约，合约代码既是上帝和法律，自此之后，一人一证，一心一意，直至斗转星移。" />
                   </span>{" "}
                 </p>
               </div>
