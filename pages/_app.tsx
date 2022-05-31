@@ -36,8 +36,10 @@ export default function App({ Component, pageProps }) {
       const hasZH = window.navigator.languages.findIndex((f) => {
         return f.indexOf("zh") != -1;
       });
-      if (hasZH > 0 && hasZH < 2) {
+      if (hasZH > 0 && hasZH < 1) {
         i18n.activate("cn");
+      } else {
+        i18n.activate("en");
       }
       setShowLang(true);
     } else {
