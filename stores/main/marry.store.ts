@@ -68,10 +68,12 @@ export class MarryStore implements IStore {
     };
     if (body.Aname.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(this.info.Aaddress);
-      if (body.Aname.toLowerCase() != ens.toLowerCase()) {
-        return message.error(
+      console.log(ens);
+      if (body.Aname?.toLowerCase() != ens?.toLowerCase()) {
+        message.error(
           ".eth ens name must be yourself, you can input no .eth name"
         );
+        return;
       }
     }
     const offer = await fetch("/api/offer-a", {
@@ -86,6 +88,7 @@ export class MarryStore implements IStore {
       this.pendingOffer = res;
       this.info.status = 1;
       this.info.inviteLink = "/offer/" + res.id;
+      this.getOffer();
     } else {
       message.error(res.message);
     }
@@ -148,20 +151,25 @@ export class MarryStore implements IStore {
 
   async getOffer() {
     const account = (await walletStore.getWalletInfo()).account;
-    const result = await fetch("/api/offer-pending?Aaddress=" + account, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await result.json();
-    if (!json.message) {
-      this.pendingOffer = json;
+    const loading = message.loading("loading...", 0);
+    try {
+      const result = await fetch("/api/offer-pending?Aaddress=" + account, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await result.json();
+      if (!json.message) {
+        this.pendingOffer = json;
+      }
+    } catch (e) {}
+    loading();
+
+    if (this.pendingOffer?.status == 0) {
+      setTimeout(() => {
+        this.getOffer();
+      }, 3000);
     }
-    // if (this.offer.status == 0) {
-    //   setTimeout(() => {
-    //     this.getOffer();
-    //   }, 3000);
-    // }
   }
 }

@@ -293,7 +293,7 @@ export default function Upgrade(props) {
         if (res.Bsignature) {
           const Bsignature = res.Bsignature;
           console.log("Bsignature", res);
-          const loading = message.loading("please wait until success...");
+          const loading = message.loading("please wait until success...", 0);
           const blockNo = await marryStore.mint(
             res.Aaddress,
             res.Baddress,
@@ -312,7 +312,7 @@ export default function Upgrade(props) {
               "Content-Type": "application/json",
             },
           });
-
+          marryStore.getOffer();
           loading();
         } else {
           message.error("get signature error");
