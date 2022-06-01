@@ -16,29 +16,31 @@
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="left" style="margin:50px 0;">
+    <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://user-images.githubusercontent.com/897401/171176759-123d5777-0f36-4680-a2ef-25f07ff44618.png" height="80"/><a>
+    
+</p>
+
+ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的一种实现，是 ERC721 标准的扩展。
+
+- ERC721-520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token
+- ERC721-520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token
+- ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token
+
+detail: https://erc721-520.com
+
+![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
+
+<p align="left" style="margin:50px 0;">
     <a href="https://marry3.love"><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height="120"/><a>
     
 </p>
 
 Marry3 是一个基于 ERC721-520 标准合约开发的链上 Dapp，他的核心实现了：
 
-- ERC721-520 Token，这是一种标准的 ERC721 token 的扩展，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
+- Marry3 Certificat，基于 ERC721-520 标准实现，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
 - Marry3 合约和 Dapp，实现了付费和多签验证的逻辑（类比现实世界中的协商求婚、协商离婚等）。
 
-未来，他还会增加其他能力，例如基础多签合约（兼容多签钱包）和共同储蓄合约等，感兴趣的同学欢迎共同探讨。
-
-![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-
-<p align="left" style="margin:50px 0;">
-    <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://user-images.githubusercontent.com/897401/171176759-123d5777-0f36-4680-a2ef-25f07ff44618.png" height="80"/><a>
-    
-</p>
-
-ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） 的一种实现
-
-- ERC721-520 Token 不可转让，不可售卖，一个人同时只能有一个有效 Token
-- ERC721-520 Token 由二者通过多签协商后，一次性 Mint 出 2 个 Token
-- ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token
+未来，他还会增加其他能力，包括 MarryDAO/LovesDAO/Marry3verse 等，详见：Roadmap
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
@@ -67,6 +69,8 @@ ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） �
 </p>
 
 Marry3 是一个社会实验项目，他最初的思路起源于对 Web3 中 0x 地址作为原住民的底层思考，而他的落地思路，则基于对 Web3 生态一些不健康的现状的思考。
+
+并且在前一阵，我们在听了 V 神的演讲&论文之后，更确定关于灵魂绑定 no-finance nft 的发展思路，我们认为下一次 Web3 应用热潮将会因为这个观点而崛起，当一个地址绑定越来越多 no-finance 身份型 nft 之后，no-finance nft 以及它背后代表的身份数据和社会关系数据，将会成为一个 0x 地址非常生动的表达，使其具有人格、信誉，而伪造这样一个身份人格的成本也将会更高，特别是在没有利益驱动（no-finance）的前提下，未来 no-finance nft 可能会成为使 0x 原住民具备人格的关键。
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
