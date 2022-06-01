@@ -1175,29 +1175,47 @@ export default function Upgrade(props) {
                   </div>
                 </div>
               </div>
-              {/* <div className={styles.about_title}>
-                <Trans id="赞助" />
-              </div>
-              <div className={styles.team_content}>
-                <div className={styles.teams}>
-                  <div className={styles.team_item}>
-                    <div className={styles.team_item_info}>
-                      <div className={styles.team_item_info_title}>
-                        yootou.eth
-                      </div>
-                      <div className={styles.team_item_info_desc}>1.00 Ξ</div>
-                    </div>
+              <div className={[styles.Page_partner, "shake-trigger"].join(" ")}>
+                <div className={styles.Page_inner} id="team">
+                  <div className={styles.partner_title}>
+                    <Trans id="合作伙伴" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                      width="49.050103593287986"
+                      height="51.35383401297577"
+                      viewBox="0 0 49.050103593287986 51.35383401297577"
+                      fill="none"
+                      className={styles.about_title_icon}
+                    >
+                      <path
+                        id="path18"
+                        fillRule="evenodd"
+                        style={{ fill: "#F41870" }}
+                        transform="translate(7.3400517966441114 5.721917006487765)  rotate(27.9 17.185 19.955)"
+                        opacity="1"
+                        d="M22.78 38.65C23.95 37.93 25.02 36.91 24.82 36.76C24.8 36.75 24.78 36.73 24.75 36.71C29.29 31.81 32.43 25.79 33.71 19.3C34.39 15.89 34.54 12.4 34.18 8.95C33.92 6.44 33.62 0.64 30.36 0.03C29.1 -0.21 26.98 1.16 26.28 2.12C23.62 5.78 21.51 9.75 20.02 13.94C18.29 10.58 15.83 7.44 12.52 6.17C8.03 4.46 2.51 8.2 0.79 12.13C-1.44 17.24 1.4 23.08 4.93 26.91C9.21 31.54 14.88 35.11 19.98 38.87L19.77 39.08C19.07 39.75 19.44 39.99 20.25 39.88C21.08 39.77 22.04 39.22 22.78 38.65ZM4.72 16.16C5.33 13.57 5.94 10.98 6.54 8.39C6.38 8.38 6.22 8.39 6.08 8.42C6.16472 8.51319 5.71116 9.15183 5.58271 9.3327C5.55954 9.36533 5.54694 9.38306 5.55 9.38C4.4 11.33 4.26 13.77 4.67 15.93C4.68 16.01 4.71 16.09 4.72 16.16ZM10.15 9.75C10.19 9.78 10.24 9.81 10.28 9.85C10.21 9.9 10.14 9.95 10.09 10C10.11 9.92 10.13 9.83 10.15 9.75ZM24.54 11.57C23.56 14.25 22.84 17.03 22.38 19.87C22.36 20.05 22.14 20.29 21.83 20.56C21.79 21.27 21.75 21.99 21.69 22.71C22.04 22.5 22.41 22.29 22.75 22.12C23.42 18.62 24 15.1 24.54 11.57ZM14.08 16.52C14.33 16.3 14.76 16 15.24 15.71C14.96 15.21 14.66 14.72 14.34 14.25C14.28 15.01 14.19 15.76 14.08 16.52ZM7.44 21.29C7.38 21.45 7.28 21.6 7.16 21.74C7.63 22.44 8.15 23.11 8.7 23.76C8.95 22.18 9.19 20.6 9.44 19.02C9.6 17.97 9.76 16.94 9.87 15.9C8.99 17.66 8.18 19.45 7.44 21.29ZM13.53 23.37C13.39 24.86 13.19 26.34 12.92 27.82C12.69 27.62 12.45 27.42 12.21 27.22C11.92 26.97 11.63 26.72 11.34 26.46C11.85 26.12 12.3 25.72 12.56 25.22C12.88 24.6 13.21 23.99 13.53 23.37ZM16.58 30.71C15.62 29.99 14.68 29.25 13.76 28.51C14.21 28.38 14.69 28.17 14.79 28.12C15.46 27.82 16.67 27.25 17.11 26.52C16.96 27.91 16.78 29.31 16.58 30.71ZM20.24 31.6C20.21 32.18 20.17 32.75 20.11 33.32C19.72 33.04 19.33 32.76 18.95 32.47C19.46 32.19 19.93 31.88 20.24 31.6ZM23 35.43C22.97 35.4 22.94 35.38 22.91 35.36L23.15 35.24C23.1 35.3 23.05 35.36 23 35.43Z"
+                      />
+                    </svg>
                   </div>
-                  <div className={styles.team_item}>
-                    <div className={styles.team_item_info}>
-                      <div className={styles.team_item_info_title}>
-                        daodao.eth
+                  <div className={styles.partner_content}>
+                    <div className={styles.partners}>
+                      <div
+                        className={styles.partner_item}
+                        style={{ background: "#3055D4", padding: "10px 10px" }}
+                      >
+                        <a
+                          className={styles.partner_item_link}
+                          href="https://kencloud.com/"
+                          target={"_blank"}
+                        >
+                          <img src="https://kencloud.com/images/jiaozidb/kenlabs-english-2.png" />
+                        </a>
                       </div>
-                      <div className={styles.team_item_info_desc}>0.02 Ξ</div>
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
