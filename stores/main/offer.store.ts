@@ -65,7 +65,7 @@ export class OfferStore implements IStore {
     };
     console.log("body", body);
     if (body.Bname.indexOf(".eth") != -1) {
-      const ens = await walletStore.getENS(data.address);
+      const ens = await walletStore.getENS(body.address);
       console.log(ens);
       if (body.Bname?.toLowerCase() != ens?.toLowerCase()) {
         message.error(
