@@ -64,6 +64,16 @@ export class OfferStore implements IStore {
       Bcover: this.form.Bcover,
     };
     console.log("body", body);
+    if (body.Bname.indexOf(".eth") != -1) {
+      const ens = await walletStore.getENS(data.address);
+      console.log(ens);
+      if (body.Bname?.toLowerCase() != ens?.toLowerCase()) {
+        message.error(
+          ".eth ens name must be yourself, you can input no .eth name"
+        );
+        return;
+      }
+    }
     const offer = await fetch("/api/offer-b", {
       method: "POST",
       headers: {

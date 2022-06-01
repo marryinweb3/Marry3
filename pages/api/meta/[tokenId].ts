@@ -87,15 +87,21 @@ const handler: NextApiHandler = async (req, res) => {
           return;
         }
       }
-      res.status(404);
+      res.status(404).send({
+        message: "not exist tokenId",
+      });
       return;
     } catch (e) {
       console.log(e);
-      res.status(404);
+      res.status(404).send({
+        message: "not exist tokenId",
+      });
       return;
     }
   } else {
-    res.status(404);
+    res.status(404).send({
+      message: "not exist tokenId",
+    });
     return;
   }
 };

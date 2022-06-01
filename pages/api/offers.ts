@@ -77,7 +77,9 @@ const handler: NextApiHandler = async (req, res) => {
       res.send(offers);
     }
   } else {
-    res.status(404);
+    res.status(404).send({
+      message: "error",
+    });
     return;
   }
 };

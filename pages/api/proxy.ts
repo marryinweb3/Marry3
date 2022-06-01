@@ -22,7 +22,9 @@ const handler: NextApiHandler = async (req, res) => {
     await streamPipeline(response.body, res);
     return;
   } else {
-    res.status(404);
+    res.status(404).send({
+      message: "error",
+    });
     return;
   }
 };
