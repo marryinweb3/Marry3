@@ -43,7 +43,7 @@ ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） �
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171090175-95158e2e-9ed4-48d6-a4c2-35fdd75a01ec.png" height="40"/>
+      <img src="https://user-images.githubusercontent.com/897401/171090175-95158e2e-9ed4-48d6-a4c2-35fdd75a01ec.png" width="520"/>
 </p>
       
       
@@ -57,7 +57,7 @@ ERC721-520 Token 是 NFT-like Soulbound Token Standard（灵魂绑定凭证） �
       <img src="https://user-images.githubusercontent.com/897401/171209373-8979cbae-f256-4335-9c11-4605737b5add.png" height="40"/>
 </p> 
       <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171209437-e8e9ae0e-0653-4c7b-885a-62b036311e15.png" height="400"/>
+      <img src="https://user-images.githubusercontent.com/897401/171209437-e8e9ae0e-0653-4c7b-885a-62b036311e15.png" width="800"/>
 </p>
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
