@@ -1199,19 +1199,25 @@ export default function Upgrade(props) {
                     </svg>
                   </div>
                   <div className={styles.partner_content}>
-                    <div className={styles.partners}>
-                      <div
-                        className={styles.partner_item}
-                        style={{ background: "#3055D4", padding: "10px 10px" }}
+                    <div className={styles.partner_item} style={{}}>
+                      <a
+                        className={styles.partner_item_link}
+                        href="https://kencloud.com/"
+                        target={"_blank"}
                       >
-                        <a
-                          className={styles.partner_item_link}
-                          href="https://kencloud.com/"
-                          target={"_blank"}
-                        >
-                          <img src="https://kencloud.com/images/jiaozidb/kenlabs-english-2.png" />
-                        </a>
-                      </div>
+                        <img src="https://kencloud.com/images/jiaozidb/favicon.ico" />
+                        KEN Labs
+                      </a>
+                    </div>
+                    <div className={styles.partner_item} style={{}}>
+                      <a
+                        className={styles.partner_item_link}
+                        href="https://twitter.com/marryinweb3"
+                        target={"_blank"}
+                        style={{ color: "#f41870" }}
+                      >
+                        联系我们
+                      </a>
                     </div>
                   </div>
                 </div>

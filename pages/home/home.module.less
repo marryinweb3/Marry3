@@ -178,6 +178,7 @@
   .left {
     flex: 1;
     position: relative;
+    transform: translateX(-80px);
     .left_inner {
       width: 100%;
       height: 100%;
@@ -329,11 +330,12 @@
           color: rgba(54, 16, 65, 1);
           letter-spacing: 0.6px;
           font-size: 18px;
-          font-family: OrelegaOne;
+          font-family: OPPOSans;
           background: rgba(254, 249, 247, 1);
           padding: 10px 20px;
           border-radius: 20px;
           margin-bottom: 20px;
+
           p {
             font-weight: 300;
           }
@@ -493,13 +495,29 @@
     }
     display: flex;
     flex-direction: row;
-
+    align-items: center;
+    justify-content: center;
     .partner_item {
       width: 15%;
+      height: 70px;
       border-radius: 20px;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background-color: #fff;
+
+      margin: 0 10px;
+      font-family: OPPOSans-M;
+      a {
+        color: #444;
+        font-size: 14px;
+      }
       img {
-        width: 80%;
+        height: 20px;
+        margin-right: 10px;
+        vertical-align: -5px;
       }
     }
   }
