@@ -91,7 +91,9 @@ const handler: NextApiHandler = async (req, res) => {
       return;
     }
   } else {
-    res.status(404);
+    res.status(404).send({
+      message: "error",
+    });
     return;
   }
 };
