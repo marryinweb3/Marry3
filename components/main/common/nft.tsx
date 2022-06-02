@@ -409,7 +409,7 @@ export const NFT = (props: {
                           font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
-                          NO
+                          DATETIME
                         </tspan>
                       </text>
                     </g>
@@ -447,7 +447,7 @@ export const NFT = (props: {
                           font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
-                          #{props.offer?.AtokenId}
+                          #{props.offer?.mintedAt}
                         </tspan>
                       </text>
                     </g>

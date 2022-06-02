@@ -33,11 +33,19 @@ export default function Offer(props) {
       render: (_, record) => {
         return (
           <span>
-            <a href={`${web3Config.scan}${record.Aaddress}`} target="_blank">
+            <a
+              href={`${web3Config.scan}${record.Aaddress}`}
+              target="_blank"
+              style={{ color: "#171C26" }}
+            >
               {record.Aaddress}
             </a>
             <br />
-            <a href={`${web3Config.scan}${record.Baddress}`} target="_blank">
+            <a
+              href={`${web3Config.scan}${record.Baddress}`}
+              target="_blank"
+              style={{ color: "#687182" }}
+            >
               {record.Baddress}
             </a>
           </span>
@@ -53,15 +61,7 @@ export default function Offer(props) {
       },
     },
     {
-      title: t`时间`,
-      dataIndex: "updateAt",
-      key: "updateAt",
-      render: (_, record) => {
-        return moment(record.updateAt).fromNow();
-      },
-    },
-    {
-      title: t`查看`,
+      title: t`编号`,
       dataIndex: "look",
       key: "look",
       render: (_, record) => {
@@ -75,6 +75,22 @@ export default function Offer(props) {
               Token #{record.BtokenId}
             </a>
           </span>
+        );
+      },
+    },
+    {
+      title: t`时间`,
+      dataIndex: "updateAt",
+      key: "updateAt",
+      render: (_, record) => {
+        return (
+          <div>
+            {moment(record.updateAt).fromNow()}
+            <br />
+            <span style={{ color: "#687182" }}>
+              {moment(record.updateAt).toLocaleString()}
+            </span>
+          </div>
         );
       },
     },

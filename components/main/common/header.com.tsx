@@ -91,14 +91,17 @@ export const Header = (props: {
             <a href="#team" title={t`团队`}>
               <Trans id="团队" />
             </a>
+            <a href="" title={t`离婚`}>
+              <Trans id="解除（即将上线）" />
+            </a>
           </span>
         ) : null}
-        <a href="" title={t`离婚`}>
-          <Trans id="解除（即将上线）" />
-        </a>
-        <a href="/history" title={t`已婚列表`}>
+
+        <a href="/history" title={t`已婚列表`} target={"_blank"}>
           <Trans id="档案室" />
-          <span style={{ fontSize: "10px", marginLeft: "5px" }}>↗</span>
+          {!props.hideIndex ? (
+            <span style={{ fontSize: "10px", marginLeft: "5px" }}>↗</span>
+          ) : null}
         </a>
       </div>
       <div className={styles.right}>
@@ -111,7 +114,7 @@ export const Header = (props: {
             localStorage.setItem("locale", i18n.locale);
           }}
         />
-        <WalletBar />
+        {!props.hideIndex ? <WalletBar /> : null}
       </div>
     </div>
   ));

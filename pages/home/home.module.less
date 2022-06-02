@@ -131,6 +131,14 @@
       line-height: 2;
       font-weight: normal;
       font-family: OPPOsans-B;
+      a {
+        color: rgba(54, 16, 65, 1);
+        letter-spacing: -0.54px;
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: normal;
+        font-family: OPPOsans-B;
+      }
     }
     .heart {
       width: 17px;
@@ -207,15 +215,16 @@
       }
       .t2 {
         font-size: 90px;
-        font-family: OPPOSans;
+        font-family: Jura;
         line-height: 100px;
         text-align: center;
       }
       .t3 {
-        color: rgba(255, 142, 187, 1);
+        color: #ff8ebb;
         font-size: 15px;
         text-align: center;
         line-height: 20px;
+        margin-top: 20px;
       }
       .t4 {
         color: #c4c4c4;
@@ -269,11 +278,6 @@
 
 .Page_3,
 .Page_4 {
-  background: linear-gradient(
-    135.23deg,
-    rgba(255, 230, 0, 0.05) 0%,
-    rgba(239, 60, 210, 0.08) 100%
-  );
   .Page_inner {
     @media @mobile {
       & {
@@ -370,39 +374,6 @@
       transform: scale(1) translateX(0px) translateY(-10px);
     }
   }
-  .socials {
-    display: flex;
-    justify-content: center;
-    margin: 30px auto;
-    margin-top: 70px;
-    padding-bottom: 70px;
-    .social {
-      width: 96px;
-      height: 96px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 20px;
-      color: rgba(9, 36, 75, 1);
-      transition: all 0.3s ease-in-out;
-      &:hover {
-        background: rgba(0, 122, 255, 1);
-        color: #fff;
-      }
-      color: rgba(132, 145, 165, 1);
-      font-size: 12px;
-      line-height: 18px;
-      text-align: center;
-      background: #fff;
-      margin: 0 20px;
-      line-height: 25px;
-      svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
-  }
   .teams {
     display: flex;
     justify-content: center;
@@ -438,23 +409,33 @@
       .team_item_info_title {
         font-size: 18px;
         line-height: 40px;
+        width: 100%;
         padding: 0 15px;
         text-align: center;
+        font-family: "OPPOSans-B";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 40px;
+        /* identical to box height */
+
+        letter-spacing: -0.03em;
+        margin-top: 45px;
+
+        color: #361041;
         a {
           color: rgba(132, 145, 165, 1);
           margin-left: 10px;
-
-          svg {
-            height: 12px;
-          }
         }
       }
       .team_item_info_desc {
-        padding: 0 15px;
+        padding: 20px 20px;
         text-align: center;
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 300;
         line-height: 1.5;
+        color: #361041;
+        height: 90px;
       }
       .team_item_img {
         width: 200px;
@@ -462,6 +443,64 @@
         img {
           width: 100%;
         }
+      }
+      .links {
+        svg {
+          height: 14px;
+          margin: 0 20px;
+          color: #1b1b1b;
+        }
+      }
+    }
+  }
+}
+.Page_roadmap {
+  img {
+    width: 100%;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    margin-top: 90px;
+    padding-bottom: 50px;
+    .social {
+      width: 96px;
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      color: rgba(9, 36, 75, 1);
+      transition: all 0.3s ease-in-out;
+      svg {
+        color: #09244b;
+      }
+      line-height: 30px;
+      &:hover {
+        background: rgba(0, 122, 255, 1);
+        color: #fff;
+        svg {
+          color: #fff;
+        }
+      }
+      &.github:hover {
+        background: #1b1b1b;
+        color: #fff;
+      }
+      &.discord:hover {
+        background: #5662f6;
+        color: #fff;
+      }
+      color: rgba(132, 145, 165, 1);
+      font-size: 12px;
+      text-align: center;
+      background: #fff;
+      margin: 0 20px;
+      svg {
+        width: 24px;
+        height: 24px;
       }
     }
   }
@@ -506,7 +545,7 @@
       align-items: center;
       justify-content: center;
       padding: 10px;
-      background-color: #fff;
+      background-color: #f3f3f3;
 
       margin: 0 10px;
       font-family: OPPOSans-M;
