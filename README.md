@@ -37,7 +37,7 @@ detail: https://erc721-520.com
 
 Marry3 是一个基于 ERC721-520 标准合约开发的链上 Dapp，他的核心实现了：
 
-- Marry3 Certificat，基于 ERC721-520 标准实现，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
+- Marry3 Certificate，基于 ERC721-520 标准实现，它具备一些特殊的特性，不可转让、不可售卖、并且一个地址同时只会有一个 Token。
 - Marry3 合约和 Dapp，实现了付费和多签验证的逻辑（类比现实世界中的协商求婚、协商离婚等）。
 
 未来，他还会增加其他能力，包括 MarryDAO/LovesDAO/Marry3verse 等，详见：Roadmap
