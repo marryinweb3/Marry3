@@ -152,7 +152,7 @@ export class MarryStore implements IStore {
 
   async getOffer() {
     const account = (await walletStore.getWalletInfo()).account;
-    const loading = message.loading("loading...", 0);
+
     try {
       const result = await fetch("/api/offer-pending?Aaddress=" + account, {
         method: "GET",
@@ -165,7 +165,6 @@ export class MarryStore implements IStore {
         this.pendingOffer = json;
       }
     } catch (e) {}
-    loading();
 
     if (this.pendingOffer?.status == 0) {
       setTimeout(() => {

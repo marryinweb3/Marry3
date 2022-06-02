@@ -57,8 +57,11 @@ export default function Upgrade(props) {
   useEffect(() => {
     nftStore.getNFTS();
     marryStore.getMintInfo();
-    marryStore.getOffer();
+
     (async () => {
+      const loading = message.loading("loading...", 0);
+      await marryStore.getOffer();
+      loading();
       const walletInfo = await wallet.getWalletInfo();
       marryStore.info.Aaddress = walletInfo.account;
       marryStore.info.Aname = walletInfo.ens;
