@@ -17,6 +17,7 @@ const handler: NextApiHandler = async (req, res) => {
         },
         data: {
           blockNo: req.body.blockNo,
+          mintedAt: new Date(),
         },
       });
     } catch (e) {

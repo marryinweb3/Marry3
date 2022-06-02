@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import { useObserver } from "mobx-react";
+import moment from "moment";
 import React, { useRef } from "react";
 import { Offers } from "../../../stores/main/marry.store";
 import styles from "./footer.module.less";
@@ -447,7 +448,9 @@ export const NFT = (props: {
                           font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
-                          #{props.offer?.mintedAt}
+                          {props.offer?.mintedAt
+                            ? moment(props.offer?.mintedAt).format("YYYY-MM-DD")
+                            : ""}
                         </tspan>
                       </text>
                     </g>

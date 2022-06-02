@@ -31,6 +31,7 @@ export type Offers = {
   Bcover?: string | null;
   inviteLink?: string | null;
   bgIndex?: number | null;
+  mintedAt?: Date | null;
 };
 export class MarryStore implements IStore {
   static type = StoreType.marry;
