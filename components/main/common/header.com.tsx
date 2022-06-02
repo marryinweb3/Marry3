@@ -97,7 +97,7 @@ export const Header = (props: {
           </span>
         ) : null}
 
-        <a href="/history" title={t`已婚列表`} target={"_blank"}>
+        <a href="/explore" title={t`已婚列表`} target={"_blank"}>
           <Trans id="档案室" />
           {!props.hideIndex ? (
             <span style={{ fontSize: "10px", marginLeft: "5px" }}>↗</span>

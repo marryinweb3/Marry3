@@ -428,49 +428,21 @@ export default function Upgrade(props) {
                     layout={"vertical"}
                     className={styles.mainForm}
                   >
-                    <Form.Item label={t`your address`}>
-                      <Input
-                        value={marryStore.info.Aaddress}
-                        placeholder="your address"
-                        disabled={true}
-                      />
-                    </Form.Item>
-                    <Form.Item label={t`your name`}>
-                      <Input.Group
-                        compact
-                        style={{
-                          width: "calc(100% - 200px)",
-                          display: "inline-block",
-                          verticalAlign: "8px",
-                        }}
-                      >
-                        <Input
-                          value={marryStore.info.Aname}
-                          placeholder="ENS OR NAME"
-                          onChange={async (e) => {
-                            marryStore.info.Aname = e.target.value;
-                          }}
-                          style={{ width: "calc(100% - 80px)" }}
-                        />
-                        <Select
-                          value={marryStore.info.Asex}
-                          onChange={(e) => (marryStore.info.Asex = e)}
-                          style={{ width: "80px" }}
-                        >
-                          <Select.Option value={0}>
-                            <Trans id="Man" />
-                          </Select.Option>
-                          <Select.Option value={1}>
-                            <Trans id="Woman" />
-                          </Select.Option>
-                          <Select.Option value={2}>
-                            <Trans id="X" />
-                          </Select.Option>
-                        </Select>
-                      </Input.Group>
+                    <Form.Item
+                      label={
+                        <span>
+                          {t`NFT PMP`}
+                          <Tooltip
+                            title={t`选择的 NFT 头像将被印到 Marry3 Certificate NFT 中`}
+                          >
+                            <QuestionCircleOutlined />
+                          </Tooltip>
+                        </span>
+                      }
+                    >
                       <Select
                         placeholder={t`请选择您的一个NFT作为头像`}
-                        style={{ width: "200px" }}
+                        style={{ width: "100%" }}
                         value={marryStore.info.Acover}
                         onChange={(e) => {
                           if (e == "-100") {
@@ -511,6 +483,38 @@ export default function Upgrade(props) {
                           </span>
                         </Select.Option>
                       </Select>
+                    </Form.Item>
+                    <Form.Item label={t`your name`}>
+                      <Input.Group
+                        compact
+                        style={{
+                          width: "100%",
+                        }}
+                      >
+                        <Input
+                          value={marryStore.info.Aname}
+                          placeholder="ENS OR NAME"
+                          onChange={async (e) => {
+                            marryStore.info.Aname = e.target.value;
+                          }}
+                          style={{ width: "calc(100% - 80px)" }}
+                        />
+                        <Select
+                          value={marryStore.info.Asex}
+                          onChange={(e) => (marryStore.info.Asex = e)}
+                          style={{ width: "80px" }}
+                        >
+                          <Select.Option value={0}>
+                            <Trans id="Man" />
+                          </Select.Option>
+                          <Select.Option value={1}>
+                            <Trans id="Woman" />
+                          </Select.Option>
+                          <Select.Option value={2}>
+                            <Trans id="X" />
+                          </Select.Option>
+                        </Select>
+                      </Input.Group>
                     </Form.Item>
 
                     <Form.Item label={t`爱情宣言`}>
@@ -1017,6 +1021,16 @@ export default function Upgrade(props) {
                     <Trans id="合作伙伴" />
                   </div>
                   <div className={styles.partner_content}>
+                    <div className={styles.partner_item} style={{}}>
+                      <a
+                        className={styles.partner_item_link}
+                        href="https://twitter.com/theNextDAO"
+                        target={"_blank"}
+                      >
+                        <img src="/NextDAO.png" />
+                        NextDAO
+                      </a>
+                    </div>
                     <div className={styles.partner_item} style={{}}>
                       <a
                         className={styles.partner_item_link}

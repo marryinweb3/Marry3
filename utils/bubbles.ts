@@ -39,8 +39,8 @@ export const loveBubbles = (dom: HTMLElement) => {
     fillOpacity: 0.3,
     radius: 175,
     shape: "circle",
-    x: { "rand(-30, 30)": "rand(-30, 30)" },
-    y: { "rand(-30, 30)": "rand(-30, 30)" },
+    x: { "rand(-20, 20)": "rand(-20, 20)" },
+    y: { "rand(-20, 20)": "rand(-20, 20)" },
     origin: "50% 50%",
     left: "50%",
     top: "50%",
@@ -51,7 +51,7 @@ export const loveBubbles = (dom: HTMLElement) => {
     // isShowEnd: false,
     isShowStart: true,
   };
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 10; i++) {
     const circle = new mojs.Shape(CIRCLE_OPTS);
     circle.generate().play();
   }
