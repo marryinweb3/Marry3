@@ -192,3 +192,36 @@ body {
 body {
   font-family: "OPPOSans";
 }
+
+.blur-bg {
+  position: relative;
+  position: absolute;
+  left: 2.5%;
+  top: 2.5%;
+  height: 84%;
+  width: 95%;
+  z-index: 0;
+  overflow: hidden;
+  &::before,
+  &::after {
+    top: 0px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 0;
+  }
+  &::before {
+    z-index: 10;
+    opacity: 0.5;
+  }
+
+  &::after {
+    background-size: 100% 114%;
+    background-position: left top;
+    filter: blur(15px);
+    background-image: var(--bg);
+  }
+}

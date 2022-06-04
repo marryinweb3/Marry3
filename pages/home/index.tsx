@@ -1044,6 +1044,26 @@ export default function Upgrade(props) {
                     <div className={styles.partner_item} style={{}}>
                       <a
                         className={styles.partner_item_link}
+                        href="https://cyberconnect.me/"
+                        target={"_blank"}
+                      >
+                        <img src="https://cyberconnect.me/_next/image?url=%2Fassets%2Fgrains.svg&w=32&q=75" />
+                        CyberConnect
+                      </a>
+                    </div>
+                    <div className={styles.partner_item} style={{}}>
+                      <a
+                        className={styles.partner_item_link}
+                        href="https://metamail.ink/"
+                        target={"_blank"}
+                      >
+                        <img src="https://metamail.ink/favicon/64x.ico" />
+                        MetaMail.ink
+                      </a>
+                    </div>
+                    <div className={styles.partner_item} style={{}}>
+                      <a
+                        className={styles.partner_item_link}
                         href="https://twitter.com/marryinweb3"
                         target={"_blank"}
                         style={{ color: "#f41870" }}

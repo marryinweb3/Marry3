@@ -1,7 +1,7 @@
 import html2canvas from "html2canvas";
 import { useObserver } from "mobx-react";
 import moment from "moment";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Offers } from "../../../stores/main/marry.store";
 import styles from "./footer.module.less";
 
@@ -11,30 +11,31 @@ export const NFT = (props: {
   isA?: boolean;
 }) => {
   const svgref = useRef(null);
-  {
-    /* <image
-          id="image0"
-          width="1600"
-          height="1600"
-          xlinkHref={
-            props.offer?.bgIndex
-              ? `${window.location.origin}/bg/${props.offer.bgIndex}.png`
-              : `${window.location.origin}/bg/1.png`
-          }
-        /> */
-  }
+
+  const bgImage = props.offer?.bgIndex
+    ? `url(${window.location.origin}/bg/0${props.offer.bgIndex}.png)`
+    : `url(${window.location.origin}/bg/1.png)`;
+  useEffect(() => {
+    const css = document.createElement("style");
+    css.innerHTML = `
+    :root{
+      --bg: ${bgImage}
+    }
+  `;
+    document.body.appendChild(css);
+  }, []);
+
   return useObserver(() => (
     <div
       style={{
-        backgroundImage: props.offer?.bgIndex
-          ? `url(${window.location.origin}/bg/0${props.offer.bgIndex}.png)`
-          : `url(${window.location.origin}/bg/1.png)`,
+        backgroundImage: bgImage,
         backgroundSize: "100% 100%",
         position: "relative",
         width: props.width + "px",
         height: props.width + "px",
       }}
     >
+      <div className="blur-bg"></div>
       <img
         className="cover_1"
         style={{
@@ -46,6 +47,7 @@ export const NFT = (props: {
           position: "absolute",
           borderTopLeftRadius: "50%",
           borderTopRightRadius: "50%",
+          zIndex: 20,
         }}
         src={
           props.offer?.Acover
@@ -64,6 +66,7 @@ export const NFT = (props: {
           position: "absolute",
           borderBottomLeftRadius: "50%",
           borderBottomRightRadius: "50%",
+          zIndex: 20,
         }}
         src={
           props.offer?.Bcover
@@ -92,6 +95,8 @@ export const NFT = (props: {
         style={{
           width: props.width ? `${props.width}px` : "",
           height: props.width ? `${props.width}px` : "",
+          position: "relative",
+          zIndex: "10",
         }}
       >
         <defs>
@@ -116,8 +121,8 @@ export const NFT = (props: {
             y2="1000%"
             gradientUnits="objectBoundingBox"
           >
-            <stop offset="0" stop-color="#FFD2D2" stop-opacity="0.66" />
-            <stop offset="1" stop-color="#FFD4D4" stop-opacity="0.32" />
+            <stop offset="0" stop-color="#ffd2d2" stop-opacity="0.66" />
+            <stop offset="1" stop-color="#ffd2d2" stop-opacity="0.32" />
           </linearGradient>
           <filter
             id="filter_13"
@@ -410,7 +415,7 @@ export const NFT = (props: {
                           font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
-                          DATETIME
+                          Datetime
                         </tspan>
                       </text>
                     </g>
@@ -450,7 +455,7 @@ export const NFT = (props: {
                         >
                           {props.offer?.mintedAt
                             ? moment(props.offer?.mintedAt).format("YYYY-MM-DD")
-                            : ""}
+                            : moment().format("YYYY-MM-DD")}
                         </tspan>
                       </text>
                     </g>
