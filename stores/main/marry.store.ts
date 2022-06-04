@@ -67,7 +67,11 @@ export class MarryStore implements IStore {
       Acomment: this.info.Acomment,
       Acover: this.info.Acover,
     };
-    if (body.Aname.indexOf(".eth") != -1) {
+    if (!body.Acomment) {
+      message.error("commet empty");
+      return;
+    }
+    if (body.Aname?.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(this.info.Aaddress);
       console.log(ens);
       if (body.Aname?.toLowerCase() != ens?.toLowerCase()) {

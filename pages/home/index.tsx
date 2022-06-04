@@ -235,9 +235,7 @@ export default function Upgrade(props) {
   const begin = async (e) => {
     e.preventDefault();
     setSubmiting(true);
-    try {
-      await marryStore.signA();
-    } catch (e) {}
+    await marryStore.signA();
 
     setSubmiting(false);
   };
@@ -435,19 +433,21 @@ export default function Upgrade(props) {
                           <Tooltip
                             title={t`选择的 NFT 头像将被印到 Marry3 Certificate NFT 中`}
                           >
-                            <QuestionCircleOutlined />
+                            <QuestionCircleOutlined
+                              style={{ marginLeft: "5px" }}
+                            />
                           </Tooltip>
                         </span>
                       }
                     >
                       <Select
-                        placeholder={t`请选择您的一个NFT作为头像`}
+                        placeholder={t`请选择您的一个NFT作为头像，也可不选择`}
                         style={{ width: "100%" }}
                         value={marryStore.info.Acover}
                         onChange={(e) => {
                           if (e == "-100") {
                             window.open("https://myfirstnft.info/");
-                            marryStore.info.Acover = "";
+                            marryStore.info.Acover = null;
                           } else {
                             marryStore.info.Acover = e;
                           }
@@ -493,7 +493,7 @@ export default function Upgrade(props) {
                       >
                         <Input
                           value={marryStore.info.Aname}
-                          placeholder="ENS OR NAME"
+                          placeholder="will get your ens name auto"
                           onChange={async (e) => {
                             marryStore.info.Aname = e.target.value;
                           }}
