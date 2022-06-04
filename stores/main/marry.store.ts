@@ -53,7 +53,21 @@ export class MarryStore implements IStore {
   constructor() {
     makeAutoObservable(this);
   }
+  shareClicked = false;
 
+  @action
+  stepStatus() {
+    if (this.pendingOffer.status === 0) {
+      if (this.shareClicked) return 2;
+      else return 1;
+    } else if (this.pendingOffer.status === 1) {
+      return 3;
+    } else if (this.pendingOffer.status === 2) {
+      return 4;
+    } else {
+      return 0;
+    }
+  }
   async signA() {
     const uuid = uuidv4();
 

@@ -205,25 +205,11 @@ export default function Offer(props) {
                       </Input.Group>
                     </Form.Item>
 
-                    <Form.Item label={t`爱情宣言`}>
-                      <Input.TextArea
-                        placeholder={t`Yes, i will`}
-                        rows={2}
-                        value={offerStore.form.Bcomment}
-                        onChange={(e) => {
-                          offerStore.form.Bcomment = e.target.value;
-                        }}
-                        disabled={offerStore.offer.status !== 0}
-                      />
-                    </Form.Item>
-
                     {wallet.walletInfo.account ? (
                       <Button
                         onClick={async () => {
                           setAccepting(true);
-                          try {
-                            await offerStore.accept();
-                          } catch (e) {}
+                          await offerStore.accept();
                           setAccepting(false);
                         }}
                         disabled={offerStore.offer.status !== 0}

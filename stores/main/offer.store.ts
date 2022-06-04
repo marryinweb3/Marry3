@@ -63,7 +63,6 @@ export class OfferStore implements IStore {
       Bcomment: this.form.Bcomment,
       Bcover: this.form.Bcover,
     };
-    console.log("body", body);
     if (body.Bname.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(body.address);
       console.log(ens);
@@ -82,7 +81,6 @@ export class OfferStore implements IStore {
       body: JSON.stringify(body),
     });
     const json = await offer.json();
-    console.log(json);
     if (json.message) {
       message.error(json.message);
     } else {
