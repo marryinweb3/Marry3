@@ -13,7 +13,7 @@ export const NFT = (props: {
   const svgref = useRef(null);
 
   const bgImage = props.offer?.bgIndex
-    ? `url(${window.location.origin}/bg/0${props.offer.bgIndex}.png)`
+    ? `url(${window.location.origin}/bg/${props.offer.bgIndex}.png)`
     : `url(${window.location.origin}/bg/1.png)`;
   useEffect(() => {
     const css = document.createElement("style");
@@ -30,6 +30,7 @@ export const NFT = (props: {
       style={{
         backgroundImage: bgImage,
         backgroundSize: "100% 100%",
+        backgroundColor: "#ffffff",
         position: "relative",
         width: props.width + "px",
         height: props.width + "px",

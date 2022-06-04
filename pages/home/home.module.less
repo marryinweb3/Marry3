@@ -41,7 +41,7 @@
 
   font-weight: 300;
   margin-top: 20px;
-  color: #c4c4c4;
+  color: #676767;
 }
 .Page1 {
   background: #fff0f3;
@@ -81,7 +81,7 @@
     background-image: url(/line.png);
     background-repeat: no-repeat;
     background-size: 253px;
-    background-position: 200px 135px;
+    background-position: 160px 195px;
     @media @mobile {
       & {
         padding: 0 20px;
@@ -161,11 +161,13 @@
 }
 .Page2 {
   // height: 699px;
-  background: linear-gradient(
-    135.23deg,
-    rgba(255, 230, 0, 0.05) 0%,
-    rgba(239, 60, 210, 0.08) 100%
-  );
+  // background: linear-gradient(
+  //   135.23deg,
+  //   rgba(255, 230, 0, 0.05) 0%,
+  //   rgba(239, 60, 210, 0.08) 100%
+  // );
+  background: url(/waves.png) no-repeat center center;
+  background-attachment: fixed;
   .Page_inner {
     display: flex;
     height: 100%;
@@ -243,12 +245,39 @@
     }
   }
   .right {
-    width: 400px;
+    width: 484px;
     padding-bottom: 50px;
-    .mainForm {
+    position: relative;
+    padding-top: 50px;
+    .mainFormWrapper {
       width: 100%;
-      margin-top: 150px;
+      margin: 0 auto;
+      padding: 80px 42px 40px 42px;
+      position: relative;
+      .mainFormBG {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          142.97deg,
+          rgba(255, 230, 0, 0.06) 27.43%,
+          rgba(239, 60, 210, 0.06) 73.23%
+        );
+        z-index: -1;
+        border-radius: 23px;
+      }
+    }
+    .mainForm {
+      width: 400px;
+      margin: 0 auto;
 
+      position: relative;
+
+      /* Note: backdrop-filter has minimal browser support */
+
+      border-radius: 23px;
       :global(input) {
         height: 40px;
       }

@@ -329,313 +329,347 @@ export default function Upgrade(props) {
                 </div>
               </div>
               <div className={styles.right}>
-                {marryStore.pendingOffer.status == 0 ||
-                marryStore.pendingOffer.status == 1 ||
-                marryStore.pendingOffer.status == 2 ? (
-                  <Form
-                    {...formItemLayout}
-                    layout={"vertical"}
-                    className={styles.mainForm}
-                  >
-                    <div
-                      style={{
-                        marginBottom: "20px",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                      ref={svgref}
+                <div className={styles.mainFormWrapper}>
+                  <div className={styles.mainFormBG}></div>
+                  {marryStore.pendingOffer.status == 0 ||
+                  marryStore.pendingOffer.status == 1 ||
+                  marryStore.pendingOffer.status == 2 ? (
+                    <Form
+                      {...formItemLayout}
+                      layout={"vertical"}
+                      className={styles.mainForm}
                     >
-                      <NFT offer={marryStore.pendingOffer} width={400} />
-                    </div>
-                    {marryStore.pendingOffer.status == 0 ? (
-                      <Button
-                        disabled={marryStore.pendingOffer.status == 0}
-                        type="primary"
-                        loading={marryStore.pendingOffer.status == 0}
-                        style={{ width: "100%" }}
-                      >
-                        <Trans id=" 等待接受" />
-                      </Button>
-                    ) : marryStore.pendingOffer.status == 2 ? (
-                      <Button
-                        type="primary"
-                        style={{ width: "100%" }}
-                        disabled={true}
-                      >
-                        <Trans id="Minted " />
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={async () => {
-                          setMinting(true);
-                          try {
-                            await mint();
-                          } catch (e) {
-                            console.error(e);
-                          }
-
-                          setMinting(false);
-                        }}
-                        type="primary"
-                        style={{ width: "100%" }}
-                        className="shake-little"
-                        loading={minting}
-                      >
-                        <Trans id="Mint " />({marryStore.marryPriceFormated} Ξ)
-                      </Button>
-                    )}
-
-                    {marryStore.pendingOffer.status == 0 ? (
-                      <Input.Group
-                        compact
+                      <div
                         style={{
-                          display: "inline-block",
-                          verticalAlign: "8px",
-                          marginTop: "20px",
+                          marginBottom: "20px",
+                          display: "flex",
+                          justifyContent: "center",
                         }}
+                        ref={svgref}
                       >
-                        <input
-                          value={
-                            window.location.origin +
-                            `/offer/${marryStore.pendingOffer.id}`
-                          }
-                          style={{
-                            width: "calc(100% - 110px)",
-                            color: "#999CA0",
-                            fontWeight: "300",
-                            border: "2px solid #EBEBEB ",
-                            paddingLeft: "10px",
-                          }}
-                          id="copy-input"
-                          ref={inputRef}
-                        />
+                        <NFT offer={marryStore.pendingOffer} width={400} />
+                      </div>
+                      {marryStore.pendingOffer.status == 0 ? (
                         <Button
-                          style={{ width: "110px" }}
-                          id="copy"
-                          data-clipboard-target="#copy-input"
-                          ref={copyRef}
+                          disabled={marryStore.pendingOffer.status == 0}
+                          type="primary"
+                          loading={marryStore.pendingOffer.status == 0}
+                          style={{ width: "100%" }}
                         >
-                          {t`复制并分享`}
+                          <Trans id=" 等待接受" />
                         </Button>
-                      </Input.Group>
-                    ) : null}
-                  </Form>
-                ) : (
-                  <Form
-                    {...formItemLayout}
-                    layout={"vertical"}
-                    className={styles.mainForm}
-                  >
-                    <Form.Item
-                      label={
-                        <span>
-                          {t`NFT PMP`}
-                          <Tooltip
-                            title={t`选择的 NFT 头像将被印到 Marry3 Certificate NFT 中`}
+                      ) : marryStore.pendingOffer.status == 2 ? (
+                        <Button
+                          type="primary"
+                          style={{ width: "100%" }}
+                          disabled={true}
+                        >
+                          <Trans id="Minted " />
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={async () => {
+                            setMinting(true);
+                            try {
+                              await mint();
+                            } catch (e) {
+                              console.error(e);
+                            }
+
+                            setMinting(false);
+                          }}
+                          type="primary"
+                          style={{ width: "100%" }}
+                          className="shake-little"
+                          loading={minting}
+                        >
+                          <Trans id="Mint " />({marryStore.marryPriceFormated}{" "}
+                          Ξ)
+                        </Button>
+                      )}
+
+                      {marryStore.pendingOffer.status == 0 ? (
+                        <Input.Group
+                          compact
+                          style={{
+                            display: "inline-block",
+                            verticalAlign: "8px",
+                            marginTop: "20px",
+                          }}
+                        >
+                          <input
+                            value={
+                              window.location.origin +
+                              `/offer/${marryStore.pendingOffer.id}`
+                            }
+                            style={{
+                              width: "calc(100% - 110px)",
+                              color: "#999CA0",
+                              fontWeight: "300",
+                              border: "2px solid #EBEBEB ",
+                              paddingLeft: "10px",
+                            }}
+                            id="copy-input"
+                            ref={inputRef}
+                          />
+                          <Button
+                            style={{ width: "110px" }}
+                            id="copy"
+                            data-clipboard-target="#copy-input"
+                            ref={copyRef}
                           >
-                            <QuestionCircleOutlined
-                              style={{ marginLeft: "5px" }}
-                            />
-                          </Tooltip>
-                        </span>
-                      }
+                            {t`复制并分享`}
+                          </Button>
+                        </Input.Group>
+                      ) : null}
+                    </Form>
+                  ) : (
+                    <Form
+                      {...formItemLayout}
+                      layout={"vertical"}
+                      className={styles.mainForm}
                     >
-                      <Select
-                        placeholder={t`请选择您的一个NFT作为头像，也可不选择`}
-                        style={{ width: "100%" }}
-                        value={marryStore.info.Acover}
-                        onChange={(e) => {
-                          if (e == "-100") {
-                            window.open("https://myfirstnft.info/");
-                            marryStore.info.Acover = null;
-                          } else {
-                            marryStore.info.Acover = e;
-                          }
-                          console.log(e);
-                        }}
-                      >
-                        {nftStore.nfts.map((nft) => {
-                          return (
-                            <Select.Option
-                              key={nft.token_id}
-                              value={
-                                nft.detail.cached_file_url ||
-                                nft.detail?.metadata?.image
-                              }
+                      <Form.Item
+                        label={
+                          <span>
+                            {t`NFT PMP`}
+                            <Tooltip
+                              title={t`选择的 NFT 头像将被印到 Marry3 Certificate NFT 中`}
                             >
-                              <img
-                                src={
+                              <QuestionCircleOutlined
+                                style={{ marginLeft: "5px" }}
+                              />
+                            </Tooltip>
+                          </span>
+                        }
+                      >
+                        <Select
+                          placeholder={t`请选择您的一个NFT作为头像，也可不选择`}
+                          style={{ width: "100%" }}
+                          value={marryStore.info.Acover}
+                          onChange={(e) => {
+                            if (e == "-100") {
+                              window.open("https://myfirstnft.info/");
+                              marryStore.info.Acover = null;
+                            } else {
+                              marryStore.info.Acover = e;
+                            }
+                            console.log(e);
+                          }}
+                        >
+                          {nftStore.nfts.map((nft) => {
+                            return (
+                              <Select.Option
+                                key={nft.token_id}
+                                value={
                                   nft.detail.cached_file_url ||
                                   nft.detail?.metadata?.image
                                 }
-                                title="nft"
-                                style={{ width: "25px", height: "25px" }}
-                              />
-                              <span style={{ paddingLeft: "10px" }}>
-                                {nft.detail?.metadata?.name}
-                              </span>
-                            </Select.Option>
-                          );
-                        })}
-                        <Select.Option key="any" value="-100">
-                          <span style={{ paddingLeft: "10px" }}>
-                            <Trans id="还没有NFT？MFNFT（免费）" />
-                          </span>
-                        </Select.Option>
-                      </Select>
-                    </Form.Item>
-                    <Form.Item label={t`your name`}>
-                      <Input.Group
-                        compact
-                        style={{
-                          width: "100%",
-                        }}
-                      >
-                        <Input
-                          value={marryStore.info.Aname}
-                          placeholder="will get your ens name auto"
-                          onChange={async (e) => {
-                            marryStore.info.Aname = e.target.value;
-                          }}
-                          style={{ width: "calc(100% - 80px)" }}
-                        />
-                        <Select
-                          value={marryStore.info.Asex}
-                          onChange={(e) => (marryStore.info.Asex = e)}
-                          style={{ width: "80px" }}
-                        >
-                          <Select.Option value={0}>
-                            <Trans id="Man" />
-                          </Select.Option>
-                          <Select.Option value={1}>
-                            <Trans id="Woman" />
-                          </Select.Option>
-                          <Select.Option value={2}>
-                            <Trans id="X" />
+                              >
+                                <img
+                                  src={
+                                    nft.detail.cached_file_url ||
+                                    nft.detail?.metadata?.image
+                                  }
+                                  title="nft"
+                                  style={{ width: "25px", height: "25px" }}
+                                />
+                                <span style={{ paddingLeft: "10px" }}>
+                                  {nft.detail?.metadata?.name}
+                                </span>
+                              </Select.Option>
+                            );
+                          })}
+                          <Select.Option key="any" value="-100">
+                            <span style={{ paddingLeft: "10px" }}>
+                              <Trans id="还没有NFT？MFNFT（免费）" />
+                            </span>
                           </Select.Option>
                         </Select>
-                      </Input.Group>
-                    </Form.Item>
+                      </Form.Item>
+                      <Form.Item label={t`your name`}>
+                        <Input.Group
+                          compact
+                          style={{
+                            width: "100%",
+                          }}
+                        >
+                          <Input
+                            value={marryStore.info.Aname}
+                            placeholder="will get your ens name auto"
+                            onChange={async (e) => {
+                              marryStore.info.Aname = e.target.value;
+                            }}
+                            style={{ width: "calc(100% - 80px)" }}
+                          />
+                          <Select
+                            value={marryStore.info.Asex}
+                            onChange={(e) => (marryStore.info.Asex = e)}
+                            style={{ width: "80px" }}
+                          >
+                            <Select.Option value={0}>
+                              <Trans id="Man" />
+                            </Select.Option>
+                            <Select.Option value={1}>
+                              <Trans id="Woman" />
+                            </Select.Option>
+                            <Select.Option value={2}>
+                              <Trans id="X" />
+                            </Select.Option>
+                          </Select>
+                        </Input.Group>
+                      </Form.Item>
 
-                    <Form.Item label={t`爱情宣言`}>
-                      <Input.TextArea
-                        placeholder={t`亲爱的...`}
-                        rows={5}
-                        value={marryStore.info.Acomment}
-                        onChange={(e) => {
-                          marryStore.info.Acomment = e.target.value;
-                        }}
-                      />
-                    </Form.Item>
+                      <Form.Item label={t`爱情宣言`}>
+                        <Input.TextArea
+                          placeholder={t`亲爱的...`}
+                          rows={5}
+                          value={marryStore.info.Acomment}
+                          onChange={(e) => {
+                            marryStore.info.Acomment = e.target.value;
+                          }}
+                        />
+                      </Form.Item>
 
-                    {marryStore.info.Aaddress ? (
-                      <Button
-                        onClick={begin}
-                        disabled={!marryStore.info.Aaddress}
-                        type="primary"
-                        loading={submiting}
-                        style={{ width: "100%" }}
-                        className="shake-little"
+                      {marryStore.info.Aaddress ? (
+                        <Button
+                          onClick={begin}
+                          disabled={!marryStore.info.Aaddress}
+                          type="primary"
+                          loading={submiting}
+                          style={{ width: "100%" }}
+                          className="shake-little"
+                        >
+                          <LockOutlined style={{ marginRight: "10px" }} />
+                          <Trans id="签名后获得求婚地址" />
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            wallet.connect();
+                          }}
+                          type="primary"
+                          loading={submiting}
+                          style={{ width: "100%" }}
+                        >
+                          <Trans id="Connect Wallet" />
+                        </Button>
+                      )}
+                    </Form>
+                  )}
+                  {marryStore.pendingOffer?.status == 2 &&
+                  marryStore.pendingOffer.AtokenId ? (
+                    <div className={styles.price_desc}>
+                      <Trans id="查看 Marry3 Certificate 详情" />:
+                      <a
+                        href={`/i/${marryStore.pendingOffer.AtokenId}`}
+                        target={"_blank"}
+                        style={{ fontWeight: "500", marginLeft: "30px" }}
                       >
-                        <LockOutlined style={{ marginRight: "10px" }} />
-                        <Trans id="签名后获得求婚地址" />
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={() => {
-                          wallet.connect();
-                        }}
-                        type="primary"
-                        loading={submiting}
-                        style={{ width: "100%" }}
+                        Token #{marryStore.pendingOffer.AtokenId}
+                      </a>
+                      <a
+                        href={`https://opensea.io/assets/ethereum/${web3Config.address.marry3token}/${marryStore.pendingOffer.AtokenId}`}
+                        target={"_blank"}
+                        style={{ fontWeight: "500", marginLeft: "10px" }}
                       >
-                        <Trans id="Connect Wallet" />
-                      </Button>
-                    )}
-                  </Form>
-                )}
-                {marryStore.pendingOffer?.status == 2 &&
-                marryStore.pendingOffer.AtokenId ? (
-                  <div className={styles.price_desc}>
-                    <Trans id="查看 Marry3 Certificate 详情" />:
-                    <a
-                      href={`/i/${marryStore.pendingOffer.AtokenId}`}
-                      target={"_blank"}
-                      style={{ fontWeight: "500", marginLeft: "10px" }}
-                    >
-                      Token #{marryStore.pendingOffer.AtokenId}
-                    </a>
-                    <a
-                      href={`/i/${marryStore.pendingOffer.BtokenId}`}
-                      target={"_blank"}
-                      style={{ fontWeight: "500", marginLeft: "10px" }}
-                    >
-                      Token #{marryStore.pendingOffer.BtokenId}
-                    </a>
-                  </div>
-                ) : (
-                  <div className={styles.price_desc}>
-                    <Tooltip
-                      title={
-                        <table>
-                          <tr>
-                            <th style={{ width: "100px" }}>
-                              <Trans id="总数" />
-                            </th>
-                            <th>
-                              <Trans id="价格(ETH)" />
-                            </th>
-                          </tr>
-                          <tr>
-                            <td>0~99</td>
-                            <td>0.01</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>100~299</td>
-                            <td>0.02</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>300~599</td>
-                            <td>0.03</td>{" "}
-                          </tr>{" "}
-                          <tr>
-                            <td>600~999</td>
-                            <td>0.04</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>1000~1499</td>
-                            <td>0.05</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>1500~2009</td>
-                            <td>0.06</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>2100~1799</td>
-                            <td>0.07</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>2800~3599</td>
-                            <td>0.08</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>3600~4499</td>
-                            <td>0.09</td>
-                          </tr>{" "}
-                          <tr>
-                            <td>4500+</td>
-                            <td>0.10</td>
-                          </tr>
-                        </table>
-                      }
-                    >
-                      <span>
-                        <Trans id="初始Mint价格仅0.01Ξ，但价格还是会随着参与人数的增加有所上涨，最终会恒定在0.1Ξ，具体的算法规则" />{" "}
-                        <QuestionCircleOutlined style={{ display: "inline" }} />
-                      </span>
-                    </Tooltip>
-                  </div>
-                )}
+                        <img
+                          src="/opensea-logo.png"
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            verticalAlign: "-3px",
+                          }}
+                        />
+                      </a>
+                      <a
+                        href={`/i/${marryStore.pendingOffer.BtokenId}`}
+                        target={"_blank"}
+                        style={{ fontWeight: "500", marginLeft: "30px" }}
+                      >
+                        Token #{marryStore.pendingOffer.BtokenId}
+                      </a>
+                      <a
+                        href={`https://opensea.io/assets/ethereum/${web3Config.address.marry3token}/${marryStore.pendingOffer.BtokenId}`}
+                        target={"_blank"}
+                        style={{ fontWeight: "500", marginLeft: "10px" }}
+                      >
+                        <img
+                          src="/opensea-logo.png"
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            verticalAlign: "-3px",
+                          }}
+                        />
+                      </a>
+                    </div>
+                  ) : (
+                    <div className={styles.price_desc}>
+                      <Tooltip
+                        title={
+                          <table>
+                            <tr>
+                              <th style={{ width: "100px" }}>
+                                <Trans id="总数" />
+                              </th>
+                              <th>
+                                <Trans id="价格(ETH)" />
+                              </th>
+                            </tr>
+                            <tr>
+                              <td>0~99</td>
+                              <td>0.01</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>100~299</td>
+                              <td>0.02</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>300~599</td>
+                              <td>0.03</td>{" "}
+                            </tr>{" "}
+                            <tr>
+                              <td>600~999</td>
+                              <td>0.04</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>1000~1499</td>
+                              <td>0.05</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>1500~2009</td>
+                              <td>0.06</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>2100~1799</td>
+                              <td>0.07</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>2800~3599</td>
+                              <td>0.08</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>3600~4499</td>
+                              <td>0.09</td>
+                            </tr>{" "}
+                            <tr>
+                              <td>4500+</td>
+                              <td>0.10</td>
+                            </tr>
+                          </table>
+                        }
+                      >
+                        <span>
+                          <Trans id="初始Mint价格仅0.01Ξ，但价格还是会随着参与人数的增加有所上涨，最终会恒定在0.1Ξ，具体的算法规则" />{" "}
+                          <QuestionCircleOutlined
+                            style={{ display: "inline" }}
+                          />
+                        </span>
+                      </Tooltip>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
