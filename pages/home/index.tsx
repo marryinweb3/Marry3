@@ -7,7 +7,6 @@ import { useObserver } from "mobx-react";
 import { web3Config } from "../../stores/config";
 import ClipboardJS from "clipboard";
 import { v4 as uuidv4 } from "uuid";
-import { Web3Head } from "../../components/main/common/head.com";
 import {
   Button,
   Collapse,
@@ -53,6 +52,21 @@ export default function Upgrade(props) {
       setOfferId(router.query.id as string);
     }
   }, [router.query.id]);
+  let hasLoadedBubbles = false;
+  const loadBubbles = async () => {
+    //@ts-ignore
+    if (window.mojs) {
+      loveBubbles(circleDom.current);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "/mo.umd.js";
+    document.body.appendChild(script);
+    script.onload = () => {
+      loveBubbles(circleDom.current);
+    };
+    hasLoadedBubbles = true;
+  };
 
   useEffect(() => {
     nftStore.getNFTS();
@@ -66,15 +80,7 @@ export default function Upgrade(props) {
       marryStore.info.Aaddress = walletInfo.account;
       marryStore.info.Aname = walletInfo.ens;
     })();
-    const script = document.createElement("script");
-    script.src = "/mo.umd.js";
-    document.body.appendChild(script);
-    script.onload = () => {
-      loveBubbles(circleDom.current);
-    };
-    // setTimeout(() => {
-
-    // }, 500);
+    loadBubbles();
   }, []);
 
   const createImage = async () => {
@@ -259,7 +265,10 @@ export default function Upgrade(props) {
               <Header hasBack={true} />
             </div>
             <div className={styles.Page_inner}>
-              <div className={styles.circle_bg}></div>
+              <div
+                className={styles.circle_bg}
+                style={{ left: 0, top: "-100px" }}
+              ></div>
               <h1 className={styles.title}>
                 <Trans id="在Web3见证你们的“爱情宣言”，并获得在链上永恒的NFT凭证" />
                 <img src="/fly.png" className={styles.fly} title="fly" />
@@ -305,6 +314,7 @@ export default function Upgrade(props) {
           </div>
           <div className={styles.Page2}>
             <div className={styles.Page_inner}>
+              <div className={styles.circle_bg}></div>
               <div className={styles.left}>
                 <div className={styles.left_inner} ref={circleDom}></div>
                 <div className={styles.circle_text}>
@@ -675,6 +685,10 @@ export default function Upgrade(props) {
           </div>
           <div className={[styles.Page_3, "shake-trigger"].join(" ")}>
             <div className={styles.Page_inner}>
+              <div
+                className={styles.circle_bg}
+                style={{ left: "300px", top: "-100px" }}
+              ></div>
               <div className={styles.about_title} id="about">
                 <Trans id="关于项目" />
               </div>
@@ -801,6 +815,10 @@ export default function Upgrade(props) {
           </div>
           <div className={[styles.Page_4, "shake-trigger"].join(" ")}>
             <div className={styles.Page_inner} id="qa">
+              <div
+                className={styles.circle_bg}
+                style={{ left: "30%", top: "0px" }}
+              ></div>
               <div className={styles.about_title}>
                 <Trans id="问与答" />
               </div>
@@ -949,6 +967,10 @@ export default function Upgrade(props) {
           </div>
           <div className={[styles.Page_3, "shake-trigger"].join(" ")}>
             <div className={styles.Page_inner} id="team">
+              <div
+                className={styles.circle_bg}
+                style={{ left: "30%", top: "0px" }}
+              ></div>
               <div className={styles.about_title}>
                 <Trans id="团队" />
               </div>
