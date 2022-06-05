@@ -44,15 +44,14 @@ export const NFT = (props: {
         height: props.width + "px",
       }}
     >
-      <div className="blur-bg"></div>
       <img
         className="cover_1"
         style={{
           background: "#fff",
-          width: (250 * props.width) / 1080 + "px",
-          height: (250 * props.width) / 1080 + "px",
-          left: (90 * props.width) / 1080 + "px",
-          top: (90 * props.width) / 1080 + "px",
+          width: (250 * 100) / 1080 + "%",
+          height: (250 * 100) / 1080 + "%",
+          left: (90 * 100) / 1080 + "%",
+          top: (90 * 100) / 1080 + "%",
           position: "absolute",
           borderTopLeftRadius: "50%",
           borderTopRightRadius: "50%",
@@ -64,10 +63,10 @@ export const NFT = (props: {
         className="cover_2"
         style={{
           background: "#fff",
-          width: (250 * props.width) / 1080 + "px",
-          height: (250 * props.width) / 1080 + "px",
-          left: (90 * props.width) / 1080 + "px",
-          top: (340 * props.width) / 1080 + "px",
+          width: (250 * 100) / 1080 + "%",
+          height: (250 * 100) / 1080 + "%",
+          left: (90 * 100) / 1080 + "%",
+          top: (340 * 100) / 1080 + "%",
           position: "absolute",
           borderBottomLeftRadius: "50%",
           borderBottomRightRadius: "50%",
@@ -75,17 +74,7 @@ export const NFT = (props: {
         }}
         src={props.isA ? coverB : coverA}
       />
-      <img
-        className="logo"
-        style={{
-          width: (160 * 1.5 * props.width) / 1080 + "px",
-          height: (47 * 1.5 * props.width) / 1080 + "px",
-          right: (70 * props.width) / 1080 + "px",
-          bottom: (90 * props.width) / 1080 + "px",
-          position: "absolute",
-        }}
-        src={"/logo.png"}
-      />
+
       {props.offer?.status == 0 ? (
         <img
           className="gift"
@@ -294,7 +283,7 @@ export const NFT = (props: {
             />
 
             <g opacity="1" transform="translate(0 0)  rotate(0 540 480)">
-              <g
+              {/* <g
                 id="Bg shape"
                 filter="url(#filter_13)"
                 // style={{ opacity: 0.5 }}
@@ -307,7 +296,7 @@ export const NFT = (props: {
                   opacity="1"
                   d="M0,900L675,900C865.54,900 1020,745.54 1020,555L1020,0L0,0L0,900Z "
                 />
-              </g>
+              </g> */}
               <g opacity="1" transform="translate(100 755)  rotate(0 138.5 56)">
                 <g opacity="1" transform="translate(0 0)  rotate(0 138.5 16)">
                   <g opacity="1" transform="translate(0 0)  rotate(0 61.5 16)">

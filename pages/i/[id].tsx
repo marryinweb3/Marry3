@@ -18,6 +18,7 @@ import { TwitterOutlined } from "@ant-design/icons";
 
 import CyberConnect, { Env, Blockchain } from "@cyberlab/cyberconnect";
 import wallet from "../../contracts/wallet";
+import Head from "next/head";
 export default function Offer(props) {
   const walletStore = useStore(WalletStore);
 
@@ -46,7 +47,7 @@ export default function Offer(props) {
   const [bconnectloading, setBconnectloading] = useState(false);
 
   const shareText =
-    "Marry in Web3 with another 0x address, get the Soulbound NFT Certificate on the chain, a non-financial Dapp";
+    "Marry in Web3 with another 0x address, mint the Paired Soulbound NFT Certificate on the chain, a non-financial Dapp";
   useEffect(() => {
     if (router.query.id) {
       getOffer();
@@ -55,6 +56,26 @@ export default function Offer(props) {
 
   return (
     <div className={styles.upgrade}>
+      <Head>
+        <meta name="twitter:site" content="@marryinweb3" />
+        <meta
+          name="twitter:title"
+          content="Marry in Web3 with another 0x address"
+        />
+        <meta
+          name="twitter:description"
+          content="Marry in Web3 with another 0x address, mint the Paired Soulbound NFT Certificate on the chain, a non-financial Dapp"
+        />
+        <meta name="twitter:creator" content="@creator_username" />
+        <meta
+          name="twitter:image"
+          content={
+            "https://ipfs.infura.io/ipfs/" +
+            (offer.AtokenId == id ? offer.imageData : offer.imageData2)
+          }
+        />
+        <meta name="twitter:domain" content="YourDomain.com" />
+      </Head>
       <div className={styles.content}>
         <div style={{ padding: "0 60px" }}>
           <Header hasBack={true} />
@@ -68,7 +89,7 @@ export default function Offer(props) {
                 width: "400px",
               }}
             >
-              <NFT offer={offer} width={400} />
+              <NFT offer={offer} width={400} isA={offer.AtokenId == id} />
             </div>
           </div>
           <div className={styles.right}>

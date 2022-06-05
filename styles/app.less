@@ -203,8 +203,15 @@ body {
   z-index: 0;
   overflow: hidden;
   border-bottom-right-radius: 39%;
-  &::before,
-  &::after {
+  background: linear-gradient(
+    232.77deg,
+    rgba(255, 210, 210, 0.86) 6.95%,
+    rgba(255, 212, 212, 0.52) 100%
+  );
+  // backdrop-filter: blur(20px);
+
+  .blur-bg-inner,
+  .blur-bg-inner2 {
     top: 0px;
     left: 0px;
     content: "";
@@ -214,15 +221,41 @@ body {
     position: absolute;
     z-index: 0;
   }
-  &::before {
+  .blur-bg-inner {
     z-index: 10;
-    opacity: 0.5;
+    opacity: 0.6;
+    background: linear-gradient(
+      232.77deg,
+      rgba(255, 210, 210, 0.66) 6.95%,
+      rgba(255, 212, 212, 0.32) 100%
+    );
+    // backdrop-filter: blur(120px);
   }
 
-  &::after {
+  .blur-bg-inner2 {
     background-size: 100% 114%;
     background-position: left top;
-    filter: blur(15px);
-    background-image: var(--bg);
+
+    filter: blur(10px);
+    z-index: 9;
+  }
+}
+
+.mobile-tip {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    font-size: 12px;
+    color: #666;
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    z-index: 10000;
+    text-align: center;
+    box-shadow: -1px -1px 3px #eee;
   }
 }

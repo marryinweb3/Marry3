@@ -14,6 +14,9 @@ import { NFT } from "../../common/nft";
 import { imageLoaded } from "../../../../utils/imageloaded";
 import { WalletStore } from "../../../../stores/main/wallet.store";
 import { v4 as uuidv4 } from "uuid";
+import { utils } from "ethers";
+import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 
 export const StatusPending = (props: {}) => {
   const formItemLayout = {
@@ -29,15 +32,10 @@ export const StatusPending = (props: {}) => {
   const inputRef = useRef(null);
 
   const createImage = async (svgRef: any) => {
-    const svg = svgRef.current.getElementsByTagName("svg")[0];
-    if (!svg) return;
-    const size = 1080;
-    const html = svg.outerHTML;
-
+    console.log(svgRef.current.getElementsByTagName("div")[0]);
     const image1 = svgRef.current.getElementsByClassName("cover_1")[0];
     const image2 = svgRef.current.getElementsByClassName("cover_2")[0];
     const logo = svgRef.current.getElementsByClassName("logo")[0];
-    let canvas = document.createElement("canvas");
 
     const imageCompUp = new Image();
     imageCompUp.src = "/up.png";
@@ -69,21 +67,30 @@ export const StatusPending = (props: {}) => {
     downcanvas.getContext("2d").globalCompositeOperation = "destination-in";
     downcanvas.getContext("2d").drawImage(imageCompDown_r, 0, 0, 250, 250);
 
+    const svg = svgRef.current.getElementsByTagName("svg")[0];
+    if (!svg) return;
+    const size = 1080;
+    const html = svg.outerHTML;
+
+    let canvas = document.createElement("canvas");
+
     canvas.width = size;
 
     canvas.height = size;
     let context = canvas.getContext("2d");
-
-    const bgImage = new Image();
-    bgImage.width = size;
-    bgImage.height = size;
-    bgImage.src = marryStore.pendingOffer?.bgIndex
-      ? `/bg/${marryStore.pendingOffer.bgIndex}.png`
-      : `/bg/1.png`;
-    const bgImage_r: any = await imageLoaded(bgImage);
     context.fillStyle = "white";
     context.fillRect(0, 0, size, size);
-    context.drawImage(bgImage_r, 0, 0, size, size);
+
+    const image = new Image();
+    image.width = 1080;
+    image.height = 1080;
+    image.src = marryStore.pendingOffer?.bgIndex
+      ? `/bg/${marryStore.pendingOffer.bgIndex}.png`
+      : `/bg/1.png`;
+
+    const image_r: any = await imageLoaded(image);
+
+    context.drawImage(image_r, 0, 0, size, size);
     const svgImage = new Image();
     svgImage.src = `data:image/svg+xml;base64,${btoa(
       unescape(encodeURIComponent(html))
@@ -91,17 +98,18 @@ export const StatusPending = (props: {}) => {
     const svgImage_r: any = await imageLoaded(svgImage);
     // draw image in canvas starting left-0 , top - 0
     context.drawImage(svgImage_r, 0, 0, size, size);
-
     context.drawImage(upcanvas, 90, 90, 250, 250);
     context.drawImage(downcanvas, 90, 340, 250, 250);
-    const logo_r: any = await imageLoaded(logo);
-    context.drawImage(
-      logo_r,
-      size - 70 - 160 * 1.5,
-      size - 90 - 40 * 1.5,
-      160 * 1.5,
-      47 * 1.5
-    );
+    // context.drawImage(upcanvas, 90, 90, 250, 250);
+    // context.drawImage(downcanvas, 90, 340, 250, 250);
+    // // const logo_r: any = await imageLoaded(logo);
+    // context.drawImage(
+    //   logo_r,
+    //   size - 70 - 160 * 1.5,
+    //   size - 90 - 40 * 1.5,
+    //   160 * 1.5,
+    //   47 * 1.5
+    // );
 
     const png = canvas.toDataURL(); // default png
     // var a = document.createElement("a");
@@ -279,7 +287,8 @@ export const StatusPending = (props: {}) => {
           loading={minting}
         >
           <Trans id="Mint " />(
-          {marryStore.marryPrice.toNumber() == 0
+          {marryStore.marryPrice &&
+          Number(utils.formatEther(marryStore.marryPrice)) == 0
             ? "Free"
             : marryStore.marryPriceFormated + " Ξ"}
           )

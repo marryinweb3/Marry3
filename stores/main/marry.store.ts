@@ -32,6 +32,8 @@ export type Offers = {
   inviteLink?: string | null;
   bgIndex?: number | null;
   mintedAt?: Date | null;
+  imageData?: string;
+  imageData2?: string;
 };
 export class MarryStore implements IStore {
   static type = StoreType.marry;
@@ -154,7 +156,7 @@ export class MarryStore implements IStore {
         throw new Error('"proof" is empty');
       }
     } catch (e) {
-      message.error(e.data?.message || e.message);
+      throw new Error(e.error?.message || e.message);
     }
   }
 

@@ -5,7 +5,7 @@ import ABI_MARRY3 from "../abi/Marry3.json";
 
 import wallet from "./wallet";
 import { Marry3 } from "../typechain-types";
-ethers.utils.Logger.setLogLevel(ethers.utils.Logger.levels.INFO);
+
 function factory(abi: any, address: string) {
   let contract;
   // let contract = Contract.connect(web3Provider.getSigner());
