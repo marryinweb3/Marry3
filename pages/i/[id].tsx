@@ -71,7 +71,10 @@ export default function Offer(props) {
           name="twitter:image"
           content={
             "https://ipfs.infura.io/ipfs/" +
-            (offer.AtokenId == id ? offer.imageData : offer.imageData2)
+            (offer.AtokenId == id ? offer.imageData : offer.imageData2).replace(
+              "ipfs://",
+              ""
+            )
           }
         />
         <meta name="twitter:domain" content="YourDomain.com" />
