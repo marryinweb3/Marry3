@@ -92,6 +92,7 @@ export default function Offer(props) {
                 background: "#fff",
                 width: "400px",
               }}
+              className={styles.nft_box}
             >
               <NFT offer={offer} width={400} isA={offer.AtokenId == id} />
             </div>

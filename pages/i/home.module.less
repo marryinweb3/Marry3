@@ -5,12 +5,23 @@
   align-items: center;
   justify-content: center;
   padding: 90px 0;
+  flex-wrap: wrap;
 }
 .left {
   width: 500px;
+  @media @mobile {
+    width: 100%;
+    .nft_box {
+      margin: 0 auto;
+    }
+  }
 }
 .right {
   width: 700px;
+  @media @mobile {
+    width: 100%;
+    padding-top: 50px;
+  }
 }
 .shares {
   a {
@@ -28,6 +39,11 @@
   padding: 20px;
   color: #361041;
   font-size: 16px;
+  @media @mobile {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   p {
     margin: 0;
   }
