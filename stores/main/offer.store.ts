@@ -49,7 +49,18 @@ export class OfferStore implements IStore {
   constructor() {
     makeAutoObservable(this);
   }
-
+  @action
+  stepStatus() {
+    if (this.offer.status === 0) {
+      return 1;
+    } else if (this.offer.status === 1) {
+      return 2;
+    } else if (this.offer.status === 2) {
+      return 3;
+    } else {
+      return 0;
+    }
+  }
   async accept() {
     const nonce = "i will";
     const msg = await walletStore.signMessage(nonce);

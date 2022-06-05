@@ -9,7 +9,7 @@ import { Trans } from "@lingui/react";
 import { OfferStore } from "../../stores/main/offer.store";
 import useStore from "../../stores/useStore";
 import { t } from "@lingui/macro";
-import { Button, Form, Input, message, Select, Tooltip } from "antd";
+import { Button, Form, Input, message, Select, Steps, Tooltip } from "antd";
 import { NFTStore } from "../../stores/main/nfts.store";
 
 import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";
@@ -18,7 +18,7 @@ export default function Offer(props) {
   const offerStore = useStore(OfferStore);
   const nftStore = useStore(NFTStore);
 
-  const wallet = useStore(WalletStore);
+  const walletStore = useStore(WalletStore);
   const router = useRouter();
   const { id } = router.query;
   const [accepting, setAccepting] = useState(false);
@@ -32,7 +32,7 @@ export default function Offer(props) {
       nftStore.getNFTS();
     }
     (async () => {
-      const walletInfo = await wallet.getWalletInfo();
+      const walletInfo = await walletStore.getWalletInfo();
       offerStore.form.Baddress = walletInfo.account;
       offerStore.form.Bname = walletInfo.ens;
     })();
@@ -205,7 +205,7 @@ export default function Offer(props) {
                       </Input.Group>
                     </Form.Item>
 
-                    {wallet.walletInfo.account ? (
+                    {walletStore.walletInfo.account ? (
                       <Button
                         onClick={async () => {
                           setAccepting(true);
@@ -227,7 +227,7 @@ export default function Offer(props) {
                     ) : (
                       <Button
                         onClick={async () => {
-                          wallet.showModal = true;
+                          walletStore.connect();
                         }}
                         type="primary"
                         style={{ width: "100%" }}
@@ -235,6 +235,28 @@ export default function Offer(props) {
                         <Trans id="Connect Wallet" />
                       </Button>
                     )}
+                    <Steps
+                      current={offerStore.stepStatus()}
+                      progressDot={customDot}
+                      className={styles.steps}
+                    >
+                      <Steps.Step title={t`对方向你发起配对请求`} />
+                      <Steps.Step title={t`等待你签名配对`} />
+                      <Steps.Step title={t`等待对方 Mint SBTs`} />
+                    </Steps>
+                    {!offerStore.form.Baddress ? (
+                      <div className={styles.noconnectWrapper}>
+                        <div
+                          className={styles.noconnect}
+                          onClick={() => {
+                            walletStore.connect();
+                          }}
+                        >
+                          <LockOutlined style={{ fontSize: "25px" }} /> <br />
+                          <Trans id="连接钱包启动 DAPP" />
+                        </div>
+                      </div>
+                    ) : null}
                   </Form>
                 </div>
               </div>
@@ -289,3 +311,21 @@ export default function Offer(props) {
     );
   });
 }
+const customDot: StepsProps["progressDot"] = (dot, { status, index }) => {
+  return status == "wait" ? (
+    <img
+      src="/form/0.png"
+      className={[styles.dotimg, styles.dotimg0].join(" ")}
+    />
+  ) : status == "process" ? (
+    <img
+      src="/form/1.png"
+      className={[styles.dotimg, styles.dotimg1].join(" ")}
+    />
+  ) : status == "finish" ? (
+    <img
+      src="/form/2.png"
+      className={[styles.dotimg, styles.dotimg2].join(" ")}
+    />
+  ) : null;
+};

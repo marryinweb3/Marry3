@@ -86,6 +86,21 @@ export const NFT = (props: {
         }}
         src={"/logo.png"}
       />
+      {props.offer?.status == 0 ? (
+        <img
+          className="gift"
+          style={{
+            width: "100%",
+            height: "100%",
+            right: 0,
+            bottom: 0,
+            position: "absolute",
+            zIndex: 100,
+          }}
+          src={"/form/gift.png"}
+        />
+      ) : null}
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

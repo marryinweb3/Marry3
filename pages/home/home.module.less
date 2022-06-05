@@ -277,7 +277,47 @@
       margin: 0 auto;
 
       position: relative;
+      .nfts {
+        margin-bottom: 20px;
+        width: 400px;
+        height: 360px;
+        position: relative;
+        .nft {
+          position: absolute;
 
+          top: 0px;
+          left: 0px;
+          width: 340px;
+          height: 340px;
+          box-shadow: -1px -1px 5px #eee;
+          transition: all 0.3s ease-in-out;
+          z-index: 9;
+          &.nft_active {
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+          }
+        }
+        .control {
+          position: absolute;
+          right: 10px;
+          bottom: 0;
+
+          .control_item {
+            transition: all 0.3s ease-in-out;
+            width: 16px;
+            height: 16px;
+            margin-top: 10px;
+            background: url(/form/unactive.png) no-repeat center center;
+            background-size: 100%;
+            cursor: pointer;
+            &.control_item_active {
+              background: url(/form/active.png) no-repeat center center;
+              background-size: 100%;
+            }
+          }
+        }
+      }
       /* Note: backdrop-filter has minimal browser support */
 
       border-radius: 23px;

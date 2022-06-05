@@ -24,6 +24,7 @@ export const StatusPending = (props: {}) => {
   const [minting, setMinting] = useState(false);
 
   const svgref = useRef(null);
+  const svgref2 = useRef(null);
   const copyRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -182,18 +183,54 @@ export const StatusPending = (props: {}) => {
       });
     }
   }, [copyRef.current]);
+  const [nftActiveIndex, setNftActiveIndex] = useState(0);
   return useObserver(() => (
     <Form {...formItemLayout} layout={"vertical"} className={styles.mainForm}>
-      <div
-        style={{
-          marginBottom: "20px",
-          display: "flex",
-          justifyContent: "center",
-        }}
-        ref={svgref}
-      >
-        <NFT offer={marryStore.pendingOffer} width={400} />
+      <div className={styles.nfts}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+          ref={svgref}
+          className={[
+            styles.nft,
+            nftActiveIndex == 0 ? styles.nft_active : "",
+          ].join(" ")}
+        >
+          <NFT offer={marryStore.pendingOffer} width={340} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+          className={[
+            styles.nft,
+            nftActiveIndex == 1 ? styles.nft_active : "",
+          ].join(" ")}
+          ref={svgref2}
+        >
+          <NFT offer={marryStore.pendingOffer} width={340} />
+        </div>
+        <div className={styles.control}>
+          <div
+            className={[
+              styles.control_item,
+              nftActiveIndex == 0 ? styles.control_item_active : "",
+            ].join(" ")}
+            onClick={() => setNftActiveIndex(0)}
+          ></div>
+          <div
+            className={[
+              styles.control_item,
+              nftActiveIndex == 1 ? styles.control_item_active : "",
+            ].join(" ")}
+            onClick={() => setNftActiveIndex(1)}
+          ></div>
+        </div>
       </div>
+
       {marryStore.pendingOffer.status == 0 ? (
         <Button
           disabled={marryStore.pendingOffer.status == 0}
