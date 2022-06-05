@@ -32,7 +32,6 @@ export default function Upgrade(props) {
   useEffect(() => {
     nftStore.getNFTS();
     marryStore.getMintInfo();
-
     (async () => {
       const loading = message.loading("loading...", 0);
       await marryStore.getOffer();

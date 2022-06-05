@@ -50,11 +50,26 @@ export class MarryStore implements IStore {
 
   pendingOffer: Offers = {};
 
+  proof: string[] = [];
+
   constructor() {
     makeAutoObservable(this);
   }
   shareClicked = false;
 
+  async getMerkle() {
+    const walletInfo = await walletStore.getWalletInfo();
+    const r = await fetch("/api/merkle?address=" + walletInfo.account, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await r.json();
+    if (json.proof) {
+      this.proof = json.proof;
+    }
+  }
   @action
   stepStatus() {
     if (this.pendingOffer.status === 0) {
@@ -122,17 +137,10 @@ export class MarryStore implements IStore {
   ) {
     const walletInfo = await walletStore.getWalletInfo();
     try {
-      const res = await fetch("/api/merkle", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const json = await res.json();
-      if (json.proof) {
+      if (this.proof) {
         const result = await Marry3Contract()[
           "mint(address,address,uint8,uint8,bytes,bytes32[])"
-        ](_addressA, _addressB, _sexA, _sexB, _signatureB, json.proof, {
+        ](_addressA, _addressB, _sexA, _sexB, _signatureB, this.proof, {
           value: this.marryPrice,
         });
         await result.wait();
@@ -152,8 +160,8 @@ export class MarryStore implements IStore {
 
   async getMintInfo() {
     const walletInfo = await walletStore.getWalletInfo();
-
-    const mintPrice = await Marry3Contract().getPrice();
+    await this.getMerkle();
+    const mintPrice = await Marry3Contract().getPriceByProof(this.proof);
     this.marryPrice = mintPrice;
     this.marryPriceFormated = utils.formatEther(mintPrice);
     console.log("mintPrice", this.marryPriceFormated);

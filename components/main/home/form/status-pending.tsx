@@ -156,18 +156,19 @@ export const StatusPending = (props: {}) => {
               res.Bsex,
               Bsignature
             );
-            await fetch(`/api/offer-setBlockNo`, {
-              method: "POST",
-              body: JSON.stringify({
-                Bsignature,
-                id: body.id,
-                blockNo,
-              }),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
-            marryStore.getOffer();
+
+            // await fetch(`/api/offer-setBlockNo`, {
+            //   method: "POST",
+            //   body: JSON.stringify({
+            //     Bsignature,
+            //     id: body.id,
+            //     blockNo,
+            //   }),
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            // });
+            await marryStore.getOffer();
           } catch (e) {
             message.error("mint error");
           }
@@ -277,7 +278,11 @@ export const StatusPending = (props: {}) => {
           className="shake-little"
           loading={minting}
         >
-          <Trans id="Mint " />({marryStore.marryPriceFormated} Ξ)
+          <Trans id="Mint " />(
+          {marryStore.marryPrice.toNumber() == 0
+            ? "Free"
+            : marryStore.marryPriceFormated + " Ξ"}
+          )
         </Button>
       )}
 

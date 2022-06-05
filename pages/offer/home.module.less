@@ -4,6 +4,7 @@
   height: 47px;
   position: absolute;
   right: 38px;
+  z-index: 100;
   top: 38px;
   cursor: pointer;
   .close_x {
@@ -62,6 +63,10 @@
     background-size: 152px;
     background-position: 0px 0px;
     padding-top: 45px;
+    @media @mobile {
+      width: 100%;
+      top: 40px;
+    }
   }
   .flower {
     right: -100px;
@@ -77,6 +82,7 @@
     font-size: 14px;
     line-height: 20px;
     margin-top: 100px;
+
     p {
       margin-bottom: 10px;
       font-weight: 300;
@@ -114,6 +120,11 @@
     line-height: 20px;
     position: absolute;
     bottom: 50px;
+    @media @mobile {
+      position: relative;
+      bottom: auto;
+      margin-top: 40px;
+    }
     p {
       margin-bottom: 10px;
       font-weight: 300;
@@ -135,7 +146,12 @@
     right: 0px;
     padding-bottom: 40px;
     top: 190px;
-
+    @media @mobile {
+      position: relative;
+      width: 100%;
+      padding-bottom: 150px;
+      top: 30px;
+    }
     background: linear-gradient(
       142.97deg,
       rgba(255, 230, 0, 0.06) 17.43%,
@@ -189,6 +205,11 @@
   width: 1200px;
   margin: 0px auto;
   position: relative;
+  @media @mobile {
+    width: 100%;
+    padding: 0 10px;
+    overflow-y: auto;
+  }
 }
 .noconnectWrapper {
   width: 100%;

@@ -14,6 +14,10 @@
     position: relative;
     margin: 0 auto;
     height: 100%;
+    @media @mobile {
+      width: 100%;
+      display: flex;
+    }
   }
 
   .heart {
@@ -22,6 +26,12 @@
     height: 256px;
     left: 0px;
     bottom: 8px;
+    @media @mobile {
+      width: 20%;
+      height: auto;
+      left: 30px;
+      top: -30%;
+    }
   }
   .text {
     display: flex;
@@ -34,6 +44,13 @@
     font-size: 20px;
     line-height: 130px;
     padding-left: 300px;
+    @media @mobile {
+      padding-left: 10%;
+      font-size: 12px;
+      word-break: break-all;
+      line-height: 20px;
+      width: 80%;
+    }
   }
   .expand {
     position: absolute;
