@@ -191,7 +191,12 @@
   .left {
     flex: 1;
     position: relative;
-    transform: translateX(-80px);
+
+    @media @mobile {
+      & {
+        transform: translateX(0px);
+      }
+    }
     .left_inner {
       width: 100%;
       height: 100%;
@@ -256,6 +261,9 @@
       width: 100%;
       margin: 0 auto;
       padding: 80px 42px 40px 42px;
+      @media @mobile {
+        padding: 80px 0px 40px 0px;
+      }
       position: relative;
       .mainFormBG {
         position: absolute;
@@ -277,6 +285,9 @@
       margin: 0 auto;
 
       position: relative;
+      @media @mobile {
+        width: 100%;
+      }
       .nfts {
         margin-bottom: 20px;
         width: 400px;
@@ -404,6 +415,9 @@
     }
     .tech_content {
       padding: 50px 20px;
+      @media @mobile {
+        padding: 50px 0;
+      }
       img {
         display: block;
         width: 90%;
@@ -633,18 +647,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     .partner_item {
       width: 15%;
       height: 70px;
+      @media @mobile {
+        width: 40%;
+      }
       border-radius: 20px;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
+
       padding: 10px;
       background-color: #f3f3f3;
 
-      margin: 0 10px;
+      margin: 10px 10px;
       font-family: OPPOSans-M;
       a {
         color: #444;

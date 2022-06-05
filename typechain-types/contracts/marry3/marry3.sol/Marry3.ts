@@ -57,8 +57,8 @@ export interface Marry3Interface extends utils.Interface {
     "getMarryCount()": FunctionFragment;
     "getPairInfo(address)": FunctionFragment;
     "getPrice()": FunctionFragment;
+    "getPriceByProof(bytes32[])": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "isWhiteList(address,bytes32[])": FunctionFragment;
     "mint(address,address,uint8,uint8,bytes,bytes32[])": FunctionFragment;
     "mint(address,address,uint8,uint8)": FunctionFragment;
     "mintByOwner(address,address,uint8,uint8)": FunctionFragment;
@@ -97,8 +97,8 @@ export interface Marry3Interface extends utils.Interface {
       | "getMarryCount"
       | "getPairInfo"
       | "getPrice"
+      | "getPriceByProof"
       | "isApprovedForAll"
-      | "isWhiteList"
       | "mint(address,address,uint8,uint8,bytes,bytes32[])"
       | "mint(address,address,uint8,uint8)"
       | "mintByOwner"
@@ -163,12 +163,12 @@ export interface Marry3Interface extends utils.Interface {
   encodeFunctionData(functionFragment: "getPairInfo", values: [string]): string;
   encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "isApprovedForAll",
-    values: [string, string]
+    functionFragment: "getPriceByProof",
+    values: [BytesLike[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "isWhiteList",
-    values: [string, BytesLike[]]
+    functionFragment: "isApprovedForAll",
+    values: [string, string]
   ): string;
   encodeFunctionData(
     functionFragment: "mint(address,address,uint8,uint8,bytes,bytes32[])",
@@ -278,11 +278,11 @@ export interface Marry3Interface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "isApprovedForAll",
+    functionFragment: "getPriceByProof",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "isWhiteList",
+    functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -519,15 +519,14 @@ export interface Marry3 extends BaseContract {
 
     getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    getPriceByProof(
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     isApprovedForAll(
       _owner: string,
       _operator: string,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    isWhiteList(
-      _address: string,
-      _merkleProof: BytesLike[],
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
@@ -698,15 +697,14 @@ export interface Marry3 extends BaseContract {
 
   getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
+  getPriceByProof(
+    _merkleProof: BytesLike[],
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   isApprovedForAll(
     _owner: string,
     _operator: string,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  isWhiteList(
-    _address: string,
-    _merkleProof: BytesLike[],
     overrides?: CallOverrides
   ): Promise<boolean>;
 
@@ -871,15 +869,14 @@ export interface Marry3 extends BaseContract {
 
     getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
+    getPriceByProof(
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     isApprovedForAll(
       _owner: string,
       _operator: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    isWhiteList(
-      _address: string,
-      _merkleProof: BytesLike[],
       overrides?: CallOverrides
     ): Promise<boolean>;
 
@@ -1088,15 +1085,14 @@ export interface Marry3 extends BaseContract {
 
     getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
+    getPriceByProof(
+      _merkleProof: BytesLike[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    isWhiteList(
-      _address: string,
-      _merkleProof: BytesLike[],
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1275,15 +1271,14 @@ export interface Marry3 extends BaseContract {
 
     getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
+    getPriceByProof(
+      _merkleProof: BytesLike[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    isWhiteList(
-      _address: string,
-      _merkleProof: BytesLike[],
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 

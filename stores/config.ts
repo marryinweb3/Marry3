@@ -8,7 +8,7 @@ const config = {
     name: "Rinkeby Testnet",
   },
   address: {
-    marry3: "0xBf755aef4483b59bf85ecFB1c6895f11EC7fe1B6",
+    marry3: "0x8C1ECD3C7286ECA0a88B72aDD71093cEF0dc2966",
   },
   tokenName: "token",
   siteName:
@@ -31,7 +31,7 @@ const config_local = {
     name: "Rinkeby",
   },
   address: {
-    marry3: "0xBf755aef4483b59bf85ecFB1c6895f11EC7fe1B6",
+    marry3: "0x8C1ECD3C7286ECA0a88B72aDD71093cEF0dc2966",
   },
   tokenName: "token",
   siteName: "site",

@@ -248,6 +248,7 @@ export default function Offer(props) {
                       current={offerStore.stepStatus()}
                       progressDot={customDot}
                       className={styles.steps}
+                      responsive={false}
                     >
                       <Steps.Step title={t`对方向你发起配对请求`} />
                       <Steps.Step title={t`等待你签名配对`} />

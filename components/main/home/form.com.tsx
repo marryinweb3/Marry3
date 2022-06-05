@@ -88,6 +88,7 @@ export const FormPage = (props: {}) => {
               current={marryStore.stepStatus()}
               progressDot={customDot}
               className={styles.steps}
+              responsive={false}
             >
               <Steps.Step title={t`签名`} />
               <Steps.Step title={t`分享结婚地址`} />
