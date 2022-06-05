@@ -58,6 +58,7 @@ export default function Offer(props) {
   return (
     <div className={styles.upgrade}>
       <Head>
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@marryinweb3" />
         <meta
           name="twitter:title"
@@ -67,7 +68,6 @@ export default function Offer(props) {
           name="twitter:description"
           content="Marry in Web3 with another 0x address, mint the Paired Soulbound NFT Certificate on the chain, a non-financial Dapp"
         />
-        <meta name="twitter:creator" content="@creator_username" />
         <meta
           name="twitter:image"
           content={
@@ -78,7 +78,7 @@ export default function Offer(props) {
             )?.replace("ipfs://", "")
           }
         />
-        <meta name="twitter:domain" content="YourDomain.com" />
+        <meta name="twitter:domain" content="marry3.love" />
       </Head>
       <div className={styles.content}>
         <div style={{ padding: "0 60px" }}>
