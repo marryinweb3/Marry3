@@ -195,5 +195,13 @@ export class MarryStore implements IStore {
         this.getOffer();
       }, 3000);
     }
+
+    if (account) {
+      const pairedInfo = await Marry3Contract().getPairInfo(account);
+      if (pairedInfo[0] && pairedInfo[1]) {
+        this.pendingOffer.AtokenId = pairedInfo[0].tokenId.toString();
+        this.pendingOffer.BtokenId = pairedInfo[1].tokenId.toString();
+      }
+    }
   }
 }

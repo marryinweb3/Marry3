@@ -24,7 +24,7 @@ export const FormDesc = (props: {}) => {
             Token #{marryStore.pendingOffer.AtokenId}
           </a>
           <a
-            href={`https://opensea.io/assets/ethereum/${web3Config.address.marry3}/${marryStore.pendingOffer.AtokenId}`}
+            href={`${web3Config.opensea}/${web3Config.address.marry3}/${marryStore.pendingOffer.AtokenId}`}
             target={"_blank"}
             style={{ fontWeight: "500", marginLeft: "10px" }}
           >
@@ -45,7 +45,7 @@ export const FormDesc = (props: {}) => {
             Token #{marryStore.pendingOffer.BtokenId}
           </a>
           <a
-            href={`https://opensea.io/assets/ethereum/${web3Config.address.marry3}/${marryStore.pendingOffer.BtokenId}`}
+            href={`${web3Config.opensea}/${web3Config.address.marry3}/${marryStore.pendingOffer.BtokenId}`}
             target={"_blank"}
             style={{ fontWeight: "500", marginLeft: "10px" }}
           >
