@@ -19,6 +19,7 @@ import { TwitterOutlined } from "@ant-design/icons";
 import CyberConnect, { Env, Blockchain } from "@cyberlab/cyberconnect";
 import wallet from "../../contracts/wallet";
 import Head from "next/head";
+import { web3Config } from "../../stores/config";
 export default function Offer(props) {
   const walletStore = useStore(WalletStore);
 
@@ -71,10 +72,10 @@ export default function Offer(props) {
           name="twitter:image"
           content={
             "https://ipfs.infura.io/ipfs/" +
-            (offer.AtokenId == id ? offer.imageData : offer.imageData2).replace(
-              "ipfs://",
-              ""
-            )
+            (offer.AtokenId == id
+              ? offer.imageData
+              : offer.imageData2
+            )?.replace("ipfs://", "")
           }
         />
         <meta name="twitter:domain" content="YourDomain.com" />
@@ -162,7 +163,6 @@ export default function Offer(props) {
             </div>
             <div className={styles.info}>
               <p className={styles.shares}>
-                Share:{" "}
                 <a
                   href={
                     "https://twitter.com/intent/tweet?text=" +
@@ -172,7 +172,21 @@ export default function Offer(props) {
                   }
                   target={"_blank"}
                 >
-                  <TwitterOutlined />
+                  <TwitterOutlined size={20} style={{ fontSize: "25px" }} />
+                </a>
+                <a
+                  href={`${web3Config.opensea}/${web3Config.address.marry3}/${id}`}
+                  target={"_blank"}
+                  style={{ marginLeft: "10px" }}
+                >
+                  <img
+                    src="/opensea-logo.png"
+                    style={{
+                      width: "21px",
+                      height: "21px",
+                      verticalAlign: "-1px",
+                    }}
+                  />
                 </a>
               </p>
             </div>
