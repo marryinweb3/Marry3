@@ -7,6 +7,8 @@ import { verifyMarried } from "../../lib/verify";
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "GET") {
     const address = req.query.address as string;
+    const pageIndex = Number(req.query.pageIndex as string) || 1;
+    const pageSize = 10;
     if (address) {
       const offers = await prisma.offers.findMany({
         where: {
@@ -41,8 +43,21 @@ const handler: NextApiHandler = async (req, res) => {
         orderBy: {
           updatedAt: "desc",
         },
+        skip: (pageIndex - 1) * pageSize,
+        take: pageSize,
       });
-      res.send(offers);
+      res.send({
+        offers,
+        total: await prisma.offers.count({
+          where: {
+            OR: [
+              { Aaddress: address.toLowerCase() },
+              { Baddress: address.toLowerCase() },
+            ],
+            status: 2,
+          },
+        }),
+      });
     } else {
       const offers = await prisma.offers.findMany({
         where: {
@@ -73,8 +88,17 @@ const handler: NextApiHandler = async (req, res) => {
           imageData: true,
           bgIndex: true,
         },
+        skip: (pageIndex - 1) * pageSize,
+        take: pageSize,
       });
-      res.send(offers);
+      res.send({
+        offers,
+        total: await prisma.offers.count({
+          where: {
+            status: 2,
+          },
+        }),
+      });
     }
   } else {
     res.status(404).send({

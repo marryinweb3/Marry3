@@ -9,7 +9,16 @@ import { Trans } from "@lingui/react";
 import { OfferStore } from "../../stores/main/offer.store";
 import useStore from "../../stores/useStore";
 import { t } from "@lingui/macro";
-import { Button, Form, Input, message, Select, Table, Tag } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  message,
+  Pagination,
+  Select,
+  Table,
+  Tag,
+} from "antd";
 import { NFTStore } from "../../stores/main/nfts.store";
 import { NFT } from "../../components/main/common/nft";
 import { Offers } from "../../stores/main/marry.store";
@@ -24,6 +33,8 @@ export default function Offer(props) {
   const { id } = router.query;
   const [offers, setOffers] = useState<Offers[]>([]);
   const [address, setAddress] = useState("");
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
 
   const columns: any = [
     {
@@ -85,10 +96,10 @@ export default function Offer(props) {
       render: (_, record) => {
         return (
           <div>
-            {moment(record.updateAt).fromNow()}
+            {moment(record.mintedAt).fromNow()}
             <br />
             <span style={{ color: "#687182" }}>
-              {moment(record.updateAt).toLocaleString()}
+              {moment(record.mintedAt).toLocaleString()}
             </span>
           </div>
         );
@@ -97,17 +108,21 @@ export default function Offer(props) {
   ];
   async function getOffers(address?: string) {
     const loading = message.loading("loading...", 0);
-    const result = await fetch("/api/offers?address=" + (address || ""), {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const result = await fetch(
+      "/api/offers?address=" + (address || "") + `&pageIndex=${page}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = await result.json();
     if (json.message) {
       message.error(json.message);
     } else {
-      setOffers(json);
+      setOffers(json.offers);
+      setTotal(json.total);
     }
     loading();
   }
@@ -145,7 +160,29 @@ export default function Offer(props) {
             dataSource={offers}
             bordered={false}
             className={styles.table}
+            pagination={false}
           />
+          <div
+            style={{
+              marginTop: "20px",
+              textAlign: "right",
+              display: "flex",
+              justifyContent: "flex-end",
+              width: "100%",
+            }}
+          >
+            <Pagination
+              style={{ marginTop: "20px" }}
+              defaultCurrent={page}
+              current={page}
+              showTotal={(total) => `Total ${total} Pair`}
+              total={total}
+              onChange={(e) => {
+                setPage(e);
+                getOffers();
+              }}
+            />
+          </div>
         </div>
         <Footer />
       </div>

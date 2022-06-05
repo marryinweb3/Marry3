@@ -13,6 +13,7 @@ datasource db {
 
 model Offers {
     id         String    @id @default(uuid())
+    type       Int       @default(0) // 0 = 结婚, 1 = 离婚
     Aaddress   String
     Baddress   String?
     Asignature String

@@ -51,6 +51,7 @@ const handler: NextApiHandler = async (req, res) => {
                 status: 2,
                 AtokenId: offer.AtokenId,
                 BtokenId: offer.BtokenId,
+                mintedAt: new Date(),
               },
               where: {
                 id: offer.id,
