@@ -27,17 +27,55 @@ import type {
   OnEvent,
 } from "../../../common";
 
+export declare namespace ERC721_520 {
+  export type AddressInfoStruct = {
+    partner: string;
+    sex: BigNumberish;
+    time: BigNumberish;
+    tokenId: BigNumberish;
+  };
+
+  export type AddressInfoStructOutput = [
+    string,
+    number,
+    BigNumber,
+    BigNumber
+  ] & { partner: string; sex: number; time: BigNumber; tokenId: BigNumber };
+}
+
 export interface Marry3Interface extends utils.Interface {
   functions: {
     "CANNOT_TRANSFER_TO_ZERO_ADDRESS()": FunctionFragment;
     "NOT_CURRENT_OWNER()": FunctionFragment;
-    "burn(address,address,bytes)": FunctionFragment;
+    "approve(address,uint256)": FunctionFragment;
+    "balanceOf(address)": FunctionFragment;
+    "burn(address,bytes,bytes32[])": FunctionFragment;
+    "burn(address,address)": FunctionFragment;
     "burnByOwner(address,address)": FunctionFragment;
+    "check(address,address)": FunctionFragment;
+    "getApproved(uint256)": FunctionFragment;
     "getMarryCount()": FunctionFragment;
+    "getPairInfo(address)": FunctionFragment;
     "getPrice()": FunctionFragment;
-    "mint(address,address,uint8,uint8,bytes)": FunctionFragment;
+    "isApprovedForAll(address,address)": FunctionFragment;
+    "isWhiteList(address,bytes32[])": FunctionFragment;
+    "mint(address,address,uint8,uint8,bytes,bytes32[])": FunctionFragment;
+    "mint(address,address,uint8,uint8)": FunctionFragment;
     "mintByOwner(address,address,uint8,uint8)": FunctionFragment;
+    "name()": FunctionFragment;
     "owner()": FunctionFragment;
+    "ownerOf(uint256)": FunctionFragment;
+    "safeTransferFrom(address,address,uint256)": FunctionFragment;
+    "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
+    "setApprovalForAll(address,bool)": FunctionFragment;
+    "setBaseURI(string)": FunctionFragment;
+    "setMarryCount(uint256)": FunctionFragment;
+    "setMercleRoot(bytes32)": FunctionFragment;
+    "supportsInterface(bytes4)": FunctionFragment;
+    "symbol()": FunctionFragment;
+    "tokenURI(uint256)": FunctionFragment;
+    "totalSupply()": FunctionFragment;
+    "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "updateBurnNonce(string)": FunctionFragment;
     "updateNonce(string)": FunctionFragment;
@@ -49,13 +87,35 @@ export interface Marry3Interface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "CANNOT_TRANSFER_TO_ZERO_ADDRESS"
       | "NOT_CURRENT_OWNER"
-      | "burn"
+      | "approve"
+      | "balanceOf"
+      | "burn(address,bytes,bytes32[])"
+      | "burn(address,address)"
       | "burnByOwner"
+      | "check"
+      | "getApproved"
       | "getMarryCount"
+      | "getPairInfo"
       | "getPrice"
-      | "mint"
+      | "isApprovedForAll"
+      | "isWhiteList"
+      | "mint(address,address,uint8,uint8,bytes,bytes32[])"
+      | "mint(address,address,uint8,uint8)"
       | "mintByOwner"
+      | "name"
       | "owner"
+      | "ownerOf"
+      | "safeTransferFrom(address,address,uint256)"
+      | "safeTransferFrom(address,address,uint256,bytes)"
+      | "setApprovalForAll"
+      | "setBaseURI"
+      | "setMarryCount"
+      | "setMercleRoot"
+      | "supportsInterface"
+      | "symbol"
+      | "tokenURI"
+      | "totalSupply"
+      | "transferFrom"
       | "transferOwnership"
       | "updateBurnNonce"
       | "updateNonce"
@@ -72,27 +132,100 @@ export interface Marry3Interface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "burn",
-    values: [string, string, BytesLike]
+    functionFragment: "approve",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "burn(address,bytes,bytes32[])",
+    values: [string, BytesLike, BytesLike[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "burn(address,address)",
+    values: [string, string]
   ): string;
   encodeFunctionData(
     functionFragment: "burnByOwner",
     values: [string, string]
   ): string;
   encodeFunctionData(
+    functionFragment: "check",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getApproved",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "getMarryCount",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "getPairInfo", values: [string]): string;
   encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "mint",
-    values: [string, string, BigNumberish, BigNumberish, BytesLike]
+    functionFragment: "isApprovedForAll",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isWhiteList",
+    values: [string, BytesLike[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "mint(address,address,uint8,uint8,bytes,bytes32[])",
+    values: [string, string, BigNumberish, BigNumberish, BytesLike, BytesLike[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "mint(address,address,uint8,uint8)",
+    values: [string, string, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "mintByOwner",
     values: [string, string, BigNumberish, BigNumberish]
   ): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "ownerOf",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "safeTransferFrom(address,address,uint256)",
+    values: [string, string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "safeTransferFrom(address,address,uint256,bytes)",
+    values: [string, string, BigNumberish, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setApprovalForAll",
+    values: [string, boolean]
+  ): string;
+  encodeFunctionData(functionFragment: "setBaseURI", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "setMarryCount",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setMercleRoot",
+    values: [BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "supportsInterface",
+    values: [BytesLike]
+  ): string;
+  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "tokenURI",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "totalSupply",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferFrom",
+    values: [string, string, BigNumberish]
+  ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [string]
@@ -116,22 +249,92 @@ export interface Marry3Interface extends utils.Interface {
     functionFragment: "NOT_CURRENT_OWNER",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "burn", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "burn(address,bytes,bytes32[])",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "burn(address,address)",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "burnByOwner",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "check", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getApproved",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "getMarryCount",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "getPairInfo",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "isApprovedForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "isWhiteList",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "mint(address,address,uint8,uint8,bytes,bytes32[])",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "mint(address,address,uint8,uint8)",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "mintByOwner",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "safeTransferFrom(address,address,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "safeTransferFrom(address,address,uint256,bytes)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "setBaseURI", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "setMarryCount",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setMercleRoot",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "supportsInterface",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "totalSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferFrom",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
@@ -151,11 +354,64 @@ export interface Marry3Interface extends utils.Interface {
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 
   events: {
+    "Approval(address,address,uint256)": EventFragment;
+    "ApprovalForAll(address,address,bool)": EventFragment;
+    "Burned(address)": EventFragment;
+    "Minted(address,uint256,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
+    "Transfer(address,address,uint256)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Burned"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Minted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
+
+export interface ApprovalEventObject {
+  _owner: string;
+  _approved: string;
+  _tokenId: BigNumber;
+}
+export type ApprovalEvent = TypedEvent<
+  [string, string, BigNumber],
+  ApprovalEventObject
+>;
+
+export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
+
+export interface ApprovalForAllEventObject {
+  _owner: string;
+  _operator: string;
+  _approved: boolean;
+}
+export type ApprovalForAllEvent = TypedEvent<
+  [string, string, boolean],
+  ApprovalForAllEventObject
+>;
+
+export type ApprovalForAllEventFilter = TypedEventFilter<ApprovalForAllEvent>;
+
+export interface BurnedEventObject {
+  minter: string;
+}
+export type BurnedEvent = TypedEvent<[string], BurnedEventObject>;
+
+export type BurnedEventFilter = TypedEventFilter<BurnedEvent>;
+
+export interface MintedEventObject {
+  minter: string;
+  tokenIdA: BigNumber;
+  tokenIdB: BigNumber;
+}
+export type MintedEvent = TypedEvent<
+  [string, BigNumber, BigNumber],
+  MintedEventObject
+>;
+
+export type MintedEventFilter = TypedEventFilter<MintedEvent>;
 
 export interface OwnershipTransferredEventObject {
   previousOwner: string;
@@ -168,6 +424,18 @@ export type OwnershipTransferredEvent = TypedEvent<
 
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface TransferEventObject {
+  _from: string;
+  _to: string;
+  _tokenId: BigNumber;
+}
+export type TransferEvent = TypedEvent<
+  [string, string, BigNumber],
+  TransferEventObject
+>;
+
+export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
 export interface Marry3 extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -202,11 +470,25 @@ export interface Marry3 extends BaseContract {
 
     NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<[string]>;
 
-    burn(
-      _addressA: string,
+    approve(
+      _approved: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "burn(address,bytes,bytes32[])"(
       _addressB: string,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "burn(address,address)"(
+      _addressA: string,
+      _addressB: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     burnByOwner(
@@ -215,17 +497,56 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    check(
+      _a: string,
+      _b: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    getApproved(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     getMarryCount(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    getPairInfo(
+      _a: string,
+      overrides?: CallOverrides
+    ): Promise<
+      [ERC721_520.AddressInfoStructOutput, ERC721_520.AddressInfoStructOutput]
+    >;
 
     getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    mint(
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    isWhiteList(
+      _address: string,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    "mint(address,address,uint8,uint8,bytes,bytes32[])"(
       _addressA: string,
       _addressB: string,
       _sexA: BigNumberish,
       _sexB: BigNumberish,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "mint(address,address,uint8,uint8)"(
+      _addressA: string,
+      _addressB: string,
+      _sexA: BigNumberish,
+      _sexB: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     mintByOwner(
@@ -236,7 +557,71 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    name(overrides?: CallOverrides): Promise<[string] & { _name: string }>;
+
     owner(overrides?: CallOverrides): Promise<[string]>;
+
+    ownerOf(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string] & { _owner: string }>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setApprovalForAll(
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setBaseURI(
+      _baseURI: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setMarryCount(
+      count: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setMercleRoot(
+      _merkleRoot: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    supportsInterface(
+      _interfaceID: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    symbol(overrides?: CallOverrides): Promise<[string] & { _symbol: string }>;
+
+    tokenURI(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    transferFrom(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     transferOwnership(
       _newOwner: string,
@@ -268,11 +653,25 @@ export interface Marry3 extends BaseContract {
 
   NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<string>;
 
-  burn(
-    _addressA: string,
+  approve(
+    _approved: string,
+    _tokenId: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  "burn(address,bytes,bytes32[])"(
     _addressB: string,
     _signatureB: BytesLike,
+    _merkleProof: BytesLike[],
     overrides?: PayableOverrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "burn(address,address)"(
+    _addressA: string,
+    _addressB: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   burnByOwner(
@@ -281,17 +680,52 @@ export interface Marry3 extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  check(_a: string, _b: string, overrides?: CallOverrides): Promise<boolean>;
+
+  getApproved(
+    _tokenId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
   getMarryCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+  getPairInfo(
+    _a: string,
+    overrides?: CallOverrides
+  ): Promise<
+    [ERC721_520.AddressInfoStructOutput, ERC721_520.AddressInfoStructOutput]
+  >;
 
   getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-  mint(
+  isApprovedForAll(
+    _owner: string,
+    _operator: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  isWhiteList(
+    _address: string,
+    _merkleProof: BytesLike[],
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  "mint(address,address,uint8,uint8,bytes,bytes32[])"(
     _addressA: string,
     _addressB: string,
     _sexA: BigNumberish,
     _sexB: BigNumberish,
     _signatureB: BytesLike,
+    _merkleProof: BytesLike[],
     overrides?: PayableOverrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "mint(address,address,uint8,uint8)"(
+    _addressA: string,
+    _addressB: string,
+    _sexA: BigNumberish,
+    _sexB: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   mintByOwner(
@@ -302,7 +736,65 @@ export interface Marry3 extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  name(overrides?: CallOverrides): Promise<string>;
+
   owner(overrides?: CallOverrides): Promise<string>;
+
+  ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+  "safeTransferFrom(address,address,uint256)"(
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "safeTransferFrom(address,address,uint256,bytes)"(
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
+    _data: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setApprovalForAll(
+    _operator: string,
+    _approved: boolean,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setBaseURI(
+    _baseURI: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setMarryCount(
+    count: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setMercleRoot(
+    _merkleRoot: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  supportsInterface(
+    _interfaceID: BytesLike,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  symbol(overrides?: CallOverrides): Promise<string>;
+
+  tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
+  transferFrom(
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   transferOwnership(
     _newOwner: string,
@@ -334,10 +826,24 @@ export interface Marry3 extends BaseContract {
 
     NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<string>;
 
-    burn(
-      _addressA: string,
+    approve(
+      _approved: string,
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "burn(address,bytes,bytes32[])"(
       _addressB: string,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "burn(address,address)"(
+      _addressA: string,
+      _addressB: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -347,16 +853,51 @@ export interface Marry3 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    check(_a: string, _b: string, overrides?: CallOverrides): Promise<boolean>;
+
+    getApproved(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     getMarryCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getPairInfo(
+      _a: string,
+      overrides?: CallOverrides
+    ): Promise<
+      [ERC721_520.AddressInfoStructOutput, ERC721_520.AddressInfoStructOutput]
+    >;
 
     getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-    mint(
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    isWhiteList(
+      _address: string,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    "mint(address,address,uint8,uint8,bytes,bytes32[])"(
       _addressA: string,
       _addressB: string,
       _sexA: BigNumberish,
       _sexB: BigNumberish,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "mint(address,address,uint8,uint8)"(
+      _addressA: string,
+      _addressB: string,
+      _sexA: BigNumberish,
+      _sexB: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -368,7 +909,62 @@ export interface Marry3 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    name(overrides?: CallOverrides): Promise<string>;
+
     owner(overrides?: CallOverrides): Promise<string>;
+
+    ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setApprovalForAll(
+      _operator: string,
+      _approved: boolean,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setBaseURI(_baseURI: string, overrides?: CallOverrides): Promise<void>;
+
+    setMarryCount(
+      count: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setMercleRoot(
+      _merkleRoot: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    supportsInterface(
+      _interfaceID: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    symbol(overrides?: CallOverrides): Promise<string>;
+
+    tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
+    transferFrom(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     transferOwnership(
       _newOwner: string,
@@ -388,6 +984,38 @@ export interface Marry3 extends BaseContract {
   };
 
   filters: {
+    "Approval(address,address,uint256)"(
+      _owner?: string | null,
+      _approved?: string | null,
+      _tokenId?: BigNumberish | null
+    ): ApprovalEventFilter;
+    Approval(
+      _owner?: string | null,
+      _approved?: string | null,
+      _tokenId?: BigNumberish | null
+    ): ApprovalEventFilter;
+
+    "ApprovalForAll(address,address,bool)"(
+      _owner?: string | null,
+      _operator?: string | null,
+      _approved?: null
+    ): ApprovalForAllEventFilter;
+    ApprovalForAll(
+      _owner?: string | null,
+      _operator?: string | null,
+      _approved?: null
+    ): ApprovalForAllEventFilter;
+
+    "Burned(address)"(minter?: null): BurnedEventFilter;
+    Burned(minter?: null): BurnedEventFilter;
+
+    "Minted(address,uint256,uint256)"(
+      minter?: null,
+      tokenIdA?: null,
+      tokenIdB?: null
+    ): MintedEventFilter;
+    Minted(minter?: null, tokenIdA?: null, tokenIdB?: null): MintedEventFilter;
+
     "OwnershipTransferred(address,address)"(
       previousOwner?: string | null,
       newOwner?: string | null
@@ -396,6 +1024,17 @@ export interface Marry3 extends BaseContract {
       previousOwner?: string | null,
       newOwner?: string | null
     ): OwnershipTransferredEventFilter;
+
+    "Transfer(address,address,uint256)"(
+      _from?: string | null,
+      _to?: string | null,
+      _tokenId?: BigNumberish | null
+    ): TransferEventFilter;
+    Transfer(
+      _from?: string | null,
+      _to?: string | null,
+      _tokenId?: BigNumberish | null
+    ): TransferEventFilter;
   };
 
   estimateGas: {
@@ -405,11 +1044,25 @@ export interface Marry3 extends BaseContract {
 
     NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<BigNumber>;
 
-    burn(
-      _addressA: string,
+    approve(
+      _approved: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "burn(address,bytes,bytes32[])"(
       _addressB: string,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "burn(address,address)"(
+      _addressA: string,
+      _addressB: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     burnByOwner(
@@ -418,17 +1071,51 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    check(
+      _a: string,
+      _b: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getApproved(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     getMarryCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getPairInfo(_a: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     getPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-    mint(
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    isWhiteList(
+      _address: string,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "mint(address,address,uint8,uint8,bytes,bytes32[])"(
       _addressA: string,
       _addressB: string,
       _sexA: BigNumberish,
       _sexB: BigNumberish,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "mint(address,address,uint8,uint8)"(
+      _addressA: string,
+      _addressB: string,
+      _sexA: BigNumberish,
+      _sexB: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     mintByOwner(
@@ -439,7 +1126,71 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    name(overrides?: CallOverrides): Promise<BigNumber>;
+
     owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    ownerOf(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setApprovalForAll(
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setBaseURI(
+      _baseURI: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setMarryCount(
+      count: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setMercleRoot(
+      _merkleRoot: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    supportsInterface(
+      _interfaceID: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    symbol(overrides?: CallOverrides): Promise<BigNumber>;
+
+    tokenURI(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
+    transferFrom(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
 
     transferOwnership(
       _newOwner: string,
@@ -474,11 +1225,28 @@ export interface Marry3 extends BaseContract {
 
     NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    burn(
-      _addressA: string,
+    approve(
+      _approved: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    balanceOf(
+      _owner: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "burn(address,bytes,bytes32[])"(
       _addressB: string,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "burn(address,address)"(
+      _addressA: string,
+      _addressB: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     burnByOwner(
@@ -487,17 +1255,54 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
+    check(
+      _a: string,
+      _b: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getApproved(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     getMarryCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getPairInfo(
+      _a: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    mint(
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    isWhiteList(
+      _address: string,
+      _merkleProof: BytesLike[],
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "mint(address,address,uint8,uint8,bytes,bytes32[])"(
       _addressA: string,
       _addressB: string,
       _sexA: BigNumberish,
       _sexB: BigNumberish,
       _signatureB: BytesLike,
+      _merkleProof: BytesLike[],
       overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "mint(address,address,uint8,uint8)"(
+      _addressA: string,
+      _addressB: string,
+      _sexA: BigNumberish,
+      _sexB: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     mintByOwner(
@@ -508,7 +1313,71 @@ export interface Marry3 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
+    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    ownerOf(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setApprovalForAll(
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setBaseURI(
+      _baseURI: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setMarryCount(
+      count: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setMercleRoot(
+      _merkleRoot: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    supportsInterface(
+      _interfaceID: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    tokenURI(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    transferFrom(
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
 
     transferOwnership(
       _newOwner: string,

@@ -42,77 +42,51 @@ export declare namespace ERC721_520 {
   ] & { partner: string; sex: number; time: BigNumber; tokenId: BigNumber };
 }
 
-export interface Marry3TokenInterface extends utils.Interface {
+export interface ERC721_520TokenInterface extends utils.Interface {
   functions: {
-    "CANNOT_TRANSFER_TO_ZERO_ADDRESS()": FunctionFragment;
-    "NOT_CURRENT_OWNER()": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
-    "burn(address,address)": FunctionFragment;
     "check(address,address)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "getPairInfo(address)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "mint(address,address,uint8,uint8)": FunctionFragment;
     "name()": FunctionFragment;
-    "owner()": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
-    "setBaseURI(string)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
     "tokenURI(uint256)": FunctionFragment;
     "totalSupply()": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "CANNOT_TRANSFER_TO_ZERO_ADDRESS"
-      | "NOT_CURRENT_OWNER"
       | "approve"
       | "balanceOf"
-      | "burn"
       | "check"
       | "getApproved"
       | "getPairInfo"
       | "isApprovedForAll"
-      | "mint"
       | "name"
-      | "owner"
       | "ownerOf"
       | "safeTransferFrom(address,address,uint256)"
       | "safeTransferFrom(address,address,uint256,bytes)"
       | "setApprovalForAll"
-      | "setBaseURI"
       | "supportsInterface"
       | "symbol"
       | "tokenURI"
       | "totalSupply"
       | "transferFrom"
-      | "transferOwnership"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "CANNOT_TRANSFER_TO_ZERO_ADDRESS",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "NOT_CURRENT_OWNER",
-    values?: undefined
-  ): string;
   encodeFunctionData(
     functionFragment: "approve",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "burn",
-    values: [string, string]
-  ): string;
   encodeFunctionData(
     functionFragment: "check",
     values: [string, string]
@@ -126,12 +100,7 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [string, string]
   ): string;
-  encodeFunctionData(
-    functionFragment: "mint",
-    values: [string, string, BigNumberish, BigNumberish]
-  ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "ownerOf",
     values: [BigNumberish]
@@ -148,7 +117,6 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
   ): string;
-  encodeFunctionData(functionFragment: "setBaseURI", values: [string]): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [BytesLike]
@@ -166,22 +134,9 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "transferFrom",
     values: [string, string, BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [string]
-  ): string;
 
-  decodeFunctionResult(
-    functionFragment: "CANNOT_TRANSFER_TO_ZERO_ADDRESS",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "NOT_CURRENT_OWNER",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "burn", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "check", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "getApproved",
@@ -195,9 +150,7 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "safeTransferFrom(address,address,uint256)",
@@ -211,7 +164,6 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "setApprovalForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setBaseURI", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -226,17 +178,12 @@ export interface Marry3TokenInterface extends utils.Interface {
     functionFragment: "transferFrom",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
 
   events: {
     "Approval(address,address,uint256)": EventFragment;
     "ApprovalForAll(address,address,bool)": EventFragment;
     "Burned(address)": EventFragment;
     "Minted(address,uint256,uint256)": EventFragment;
-    "OwnershipTransferred(address,address)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
   };
 
@@ -244,7 +191,6 @@ export interface Marry3TokenInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Burned"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Minted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
 
@@ -291,18 +237,6 @@ export type MintedEvent = TypedEvent<
 
 export type MintedEventFilter = TypedEventFilter<MintedEvent>;
 
-export interface OwnershipTransferredEventObject {
-  previousOwner: string;
-  newOwner: string;
-}
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
-
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
-
 export interface TransferEventObject {
   _from: string;
   _to: string;
@@ -315,12 +249,12 @@ export type TransferEvent = TypedEvent<
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
-export interface Marry3Token extends BaseContract {
+export interface ERC721_520Token extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: Marry3TokenInterface;
+  interface: ERC721_520TokenInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -342,12 +276,6 @@ export interface Marry3Token extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    CANNOT_TRANSFER_TO_ZERO_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<[string]>;
-
     approve(
       _approved: string,
       _tokenId: BigNumberish,
@@ -355,12 +283,6 @@ export interface Marry3Token extends BaseContract {
     ): Promise<ContractTransaction>;
 
     balanceOf(_owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    burn(
-      _addressA: string,
-      _addressB: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
 
     check(
       _a: string,
@@ -386,17 +308,7 @@ export interface Marry3Token extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    mint(
-      _addressA: string,
-      _addressB: string,
-      _sexA: BigNumberish,
-      _sexB: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     name(overrides?: CallOverrides): Promise<[string] & { _name: string }>;
-
-    owner(overrides?: CallOverrides): Promise<[string]>;
 
     ownerOf(
       _tokenId: BigNumberish,
@@ -424,11 +336,6 @@ export interface Marry3Token extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    setBaseURI(
-      _baseURI: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     supportsInterface(
       _interfaceID: BytesLike,
       overrides?: CallOverrides
@@ -437,7 +344,7 @@ export interface Marry3Token extends BaseContract {
     symbol(overrides?: CallOverrides): Promise<[string] & { _symbol: string }>;
 
     tokenURI(
-      tokenId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
@@ -449,16 +356,7 @@ export interface Marry3Token extends BaseContract {
       _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
   };
-
-  CANNOT_TRANSFER_TO_ZERO_ADDRESS(overrides?: CallOverrides): Promise<string>;
-
-  NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<string>;
 
   approve(
     _approved: string,
@@ -467,12 +365,6 @@ export interface Marry3Token extends BaseContract {
   ): Promise<ContractTransaction>;
 
   balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  burn(
-    _addressA: string,
-    _addressB: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
 
   check(_a: string, _b: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -494,17 +386,7 @@ export interface Marry3Token extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  mint(
-    _addressA: string,
-    _addressB: string,
-    _sexA: BigNumberish,
-    _sexB: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   name(overrides?: CallOverrides): Promise<string>;
-
-  owner(overrides?: CallOverrides): Promise<string>;
 
   ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -529,11 +411,6 @@ export interface Marry3Token extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  setBaseURI(
-    _baseURI: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   supportsInterface(
     _interfaceID: BytesLike,
     overrides?: CallOverrides
@@ -541,7 +418,7 @@ export interface Marry3Token extends BaseContract {
 
   symbol(overrides?: CallOverrides): Promise<string>;
 
-  tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  tokenURI(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -552,16 +429,7 @@ export interface Marry3Token extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  transferOwnership(
-    _newOwner: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   callStatic: {
-    CANNOT_TRANSFER_TO_ZERO_ADDRESS(overrides?: CallOverrides): Promise<string>;
-
-    NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<string>;
-
     approve(
       _approved: string,
       _tokenId: BigNumberish,
@@ -569,12 +437,6 @@ export interface Marry3Token extends BaseContract {
     ): Promise<void>;
 
     balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    burn(
-      _addressA: string,
-      _addressB: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
 
     check(_a: string, _b: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -596,17 +458,7 @@ export interface Marry3Token extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    mint(
-      _addressA: string,
-      _addressB: string,
-      _sexA: BigNumberish,
-      _sexB: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     name(overrides?: CallOverrides): Promise<string>;
-
-    owner(overrides?: CallOverrides): Promise<string>;
 
     ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -631,8 +483,6 @@ export interface Marry3Token extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setBaseURI(_baseURI: string, overrides?: CallOverrides): Promise<void>;
-
     supportsInterface(
       _interfaceID: BytesLike,
       overrides?: CallOverrides
@@ -640,7 +490,10 @@ export interface Marry3Token extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<string>;
 
-    tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+    tokenURI(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -648,11 +501,6 @@ export interface Marry3Token extends BaseContract {
       _from: string,
       _to: string,
       _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    transferOwnership(
-      _newOwner: string,
       overrides?: CallOverrides
     ): Promise<void>;
   };
@@ -690,15 +538,6 @@ export interface Marry3Token extends BaseContract {
     ): MintedEventFilter;
     Minted(minter?: null, tokenIdA?: null, tokenIdB?: null): MintedEventFilter;
 
-    "OwnershipTransferred(address,address)"(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-    OwnershipTransferred(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-
     "Transfer(address,address,uint256)"(
       _from?: string | null,
       _to?: string | null,
@@ -712,12 +551,6 @@ export interface Marry3Token extends BaseContract {
   };
 
   estimateGas: {
-    CANNOT_TRANSFER_TO_ZERO_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<BigNumber>;
-
     approve(
       _approved: string,
       _tokenId: BigNumberish,
@@ -725,12 +558,6 @@ export interface Marry3Token extends BaseContract {
     ): Promise<BigNumber>;
 
     balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    burn(
-      _addressA: string,
-      _addressB: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
 
     check(
       _a: string,
@@ -751,17 +578,7 @@ export interface Marry3Token extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    mint(
-      _addressA: string,
-      _addressB: string,
-      _sexA: BigNumberish,
-      _sexB: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     ownerOf(
       _tokenId: BigNumberish,
@@ -789,11 +606,6 @@ export interface Marry3Token extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    setBaseURI(
-      _baseURI: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     supportsInterface(
       _interfaceID: BytesLike,
       overrides?: CallOverrides
@@ -802,7 +614,7 @@ export interface Marry3Token extends BaseContract {
     symbol(overrides?: CallOverrides): Promise<BigNumber>;
 
     tokenURI(
-      tokenId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -814,20 +626,9 @@ export interface Marry3Token extends BaseContract {
       _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    CANNOT_TRANSFER_TO_ZERO_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    NOT_CURRENT_OWNER(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     approve(
       _approved: string,
       _tokenId: BigNumberish,
@@ -837,12 +638,6 @@ export interface Marry3Token extends BaseContract {
     balanceOf(
       _owner: string,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    burn(
-      _addressA: string,
-      _addressB: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     check(
@@ -867,17 +662,7 @@ export interface Marry3Token extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    mint(
-      _addressA: string,
-      _addressB: string,
-      _sexA: BigNumberish,
-      _sexB: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     ownerOf(
       _tokenId: BigNumberish,
@@ -905,11 +690,6 @@ export interface Marry3Token extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    setBaseURI(
-      _baseURI: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     supportsInterface(
       _interfaceID: BytesLike,
       overrides?: CallOverrides
@@ -918,7 +698,7 @@ export interface Marry3Token extends BaseContract {
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     tokenURI(
-      tokenId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -928,11 +708,6 @@ export interface Marry3Token extends BaseContract {
       _from: string,
       _to: string,
       _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    transferOwnership(
-      _newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

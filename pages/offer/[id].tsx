@@ -9,7 +9,16 @@ import { Trans } from "@lingui/react";
 import { OfferStore } from "../../stores/main/offer.store";
 import useStore from "../../stores/useStore";
 import { t } from "@lingui/macro";
-import { Button, Form, Input, message, Select, Steps, Tooltip } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  message,
+  Select,
+  Steps,
+  StepsProps,
+  Tooltip,
+} from "antd";
 import { NFTStore } from "../../stores/main/nfts.store";
 
 import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";

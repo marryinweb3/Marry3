@@ -150,6 +150,16 @@ export const Team = (props: {}) => {
               <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
+                  href="https://twitter.com/PoorLandNFT"
+                  target={"_blank"}
+                >
+                  <img src="/poorland.jpeg" style={{ borderRadius: "50%" }} />
+                  PoorLandNFT
+                </a>
+              </div>
+              <div className={styles.partner_item} style={{}}>
+                <a
+                  className={styles.partner_item_link}
                   href="https://twitter.com/marryinweb3"
                   target={"_blank"}
                   style={{ color: "#f41870" }}

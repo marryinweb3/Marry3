@@ -2,16 +2,16 @@ import { ethers } from "ethers";
 import { web3Config } from "../stores/config";
 let privateKey = process.env.PRIVATE_KEY_mainnet;
 
-import abi from "../abi/Marry3Token.json";
-import { Marry3Token } from "../typechain-types";
+import abi from "../abi/Marry3.json";
+import { Marry3 } from "../typechain-types";
 
 const provider = new ethers.providers.JsonRpcProvider(web3Config.network.url);
 
 const marry3TokenContract = new ethers.Contract(
-  web3Config.address.marry3token,
+  web3Config.address.marry3,
   abi,
   provider
-) as Marry3Token;
+) as Marry3;
 
 export const verifyMarried = async function (address: string) {
   try {

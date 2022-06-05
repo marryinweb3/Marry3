@@ -69,7 +69,7 @@ const handler: NextApiHandler = async (req, res) => {
             ).format("YYYY-MM-DD")}, link: https://marry3.love/i/${tokenId}`,
             external_url: `https://marry3.love/i/${tokenId}`,
             image:
-              offer.imageData ||
+              (isA ? offer.imageData : offer.imageDataB) ||
               "https://bafybeialnklgnjla6p773rcuvtk25cwrjul25ccl7a2vnd4yqbuqsgse4y.ipfs.infura-ipfs.io/?filename=1.png",
             attributes: [
               {

@@ -15,6 +15,14 @@ export const NFT = (props: {
   const bgImage = props.offer?.bgIndex
     ? `url(${window.location.origin}/bg/${props.offer.bgIndex}.png)`
     : `url(${window.location.origin}/bg/1.png)`;
+
+  const coverA = props.offer?.Acover
+    ? `/api/proxy?url=${encodeURIComponent(props.offer?.Acover)}`
+    : "/heart-cover.png";
+
+  const coverB = props.offer?.Bcover
+    ? `/api/proxy?url=${encodeURIComponent(props.offer?.Bcover)}`
+    : "/heart-cover.png";
   useEffect(() => {
     const css = document.createElement("style");
     css.innerHTML = `
@@ -50,11 +58,7 @@ export const NFT = (props: {
           borderTopRightRadius: "50%",
           zIndex: 20,
         }}
-        src={
-          props.offer?.Acover
-            ? `/api/proxy?url=${encodeURIComponent(props.offer?.Acover)}`
-            : "/heart-cover.png"
-        }
+        src={props.isA ? coverA : coverB}
       />
       <img
         className="cover_2"
@@ -69,11 +73,7 @@ export const NFT = (props: {
           borderBottomRightRadius: "50%",
           zIndex: 20,
         }}
-        src={
-          props.offer?.Bcover
-            ? `/api/proxy?url=${encodeURIComponent(props.offer?.Bcover)}`
-            : "/heart-cover.png"
-        }
+        src={props.isA ? coverB : coverA}
       />
       <img
         className="logo"
@@ -478,7 +478,7 @@ export const NFT = (props: {
                   </g>
                 </g>
               </g>
-              <g id="道格拉斯盗盗" filter="url(#filter_44)">
+              <g id="" filter="url(#filter_44)">
                 <g opacity="1" transform="translate(410 172)  rotate(0 297 53)">
                   <text>
                     <tspan
@@ -491,7 +491,7 @@ export const NFT = (props: {
                       font-family="OPPOSans-L"
                       letter-spacing="0"
                     >
-                      {props.offer?.Aname}
+                      {props.isA ? props.offer?.Aname : props.offer?.Bname}
                     </tspan>
                   </text>
                 </g>
@@ -515,7 +515,7 @@ export const NFT = (props: {
                   </tspan>
                 </text>
               </g>
-              <g id="玲娜贝儿" filter="url(#filter_48)">
+              <g id="" filter="url(#filter_48)">
                 <g opacity="1" transform="translate(410 427)  rotate(0 191 53)">
                   <text>
                     <tspan
@@ -528,7 +528,7 @@ export const NFT = (props: {
                       font-family="OPPOSans-L"
                       letter-spacing="0"
                     >
-                      {props.offer?.Bname}
+                      {props.isA ? props.offer?.Bname : props.offer?.Aname}
                     </tspan>
                   </text>
                 </g>
@@ -565,7 +565,9 @@ export const NFT = (props: {
                   font-family="Inter-SemiBold"
                   letter-spacing="9.84"
                 >
-                  {props.offer?.Aaddress?.toUpperCase()}
+                  {props.isA
+                    ? props.offer?.Aaddress?.toUpperCase()
+                    : props.offer?.Baddress?.toUpperCase()}
                 </tspan>
               </text>
             </g>
@@ -584,7 +586,9 @@ export const NFT = (props: {
                   font-family="Inter-SemiBold"
                   letter-spacing="9.84"
                 >
-                  {props.offer?.Baddress?.toUpperCase()}
+                  {props.isA
+                    ? props.offer?.Baddress?.toUpperCase()
+                    : props.offer?.Aaddress?.toUpperCase()}
                 </tspan>
               </text>
             </g>
@@ -603,7 +607,9 @@ export const NFT = (props: {
                   font-family="Inter-SemiBold"
                   letter-spacing="9.84"
                 >
-                  {props.offer?.Baddress?.toUpperCase()}
+                  {props.isA
+                    ? props.offer?.Baddress?.toUpperCase()
+                    : props.offer?.Aaddress?.toUpperCase()}
                 </tspan>
               </text>
             </g>
@@ -619,7 +625,9 @@ export const NFT = (props: {
                   font-family="Inter-SemiBold"
                   letter-spacing="9.84"
                 >
-                  {props.offer?.Aaddress?.toUpperCase()}
+                  {props.isA
+                    ? props.offer?.Aaddress?.toUpperCase()
+                    : props.offer?.Baddress?.toUpperCase()}
                 </tspan>
               </text>
             </g>

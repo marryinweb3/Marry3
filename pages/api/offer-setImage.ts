@@ -38,12 +38,14 @@ const handler: NextApiHandler = async (req, res) => {
         if (verfiyAddress) {
           if (offer.Aaddress === verfiyAddress.toLowerCase()) {
             const ipfs = await uploadToIPFS(req.body.imageData);
+            const ipfs2 = await uploadToIPFS(req.body.imageData2);
             await prisma.offers.update({
               where: {
                 id,
               },
               data: {
                 imageData: ipfs,
+                imageDataB: ipfs2,
               },
             });
             return res.status(200).json(offer);
@@ -56,7 +58,7 @@ const handler: NextApiHandler = async (req, res) => {
     } catch (e) {
       console.error(e);
       res.status(400).json({
-        message: "create offer error",
+        message: "create image error",
       });
       return;
     }

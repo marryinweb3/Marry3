@@ -122,23 +122,29 @@ export class MarryStore implements IStore {
   ) {
     const walletInfo = await walletStore.getWalletInfo();
     try {
-      const result = await Marry3Contract().mint(
-        _addressA,
-        _addressB,
-        _sexA,
-        _sexB,
-        _signatureB,
-        {
+      const res = await fetch("/api/merkle", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await res.json();
+      if (json.proof) {
+        const result = await Marry3Contract()[
+          "mint(address,address,uint8,uint8,bytes,bytes32[])"
+        ](_addressA, _addressB, _sexA, _sexB, _signatureB, json.proof, {
           value: this.marryPrice,
-        }
-      );
-      await result.wait();
-      console.log("mint result", result);
-      message.success("mint success");
+        });
+        await result.wait();
+        console.log("mint result", result);
+        message.success("mint success");
 
-      this.pendingOffer.status = 2;
+        this.pendingOffer.status = 2;
 
-      return result.blockNumber;
+        return result.blockNumber;
+      } else {
+        throw new Error('"proof" is empty');
+      }
     } catch (e) {
       message.error(e.message);
     }

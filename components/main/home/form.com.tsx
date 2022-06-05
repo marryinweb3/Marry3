@@ -58,9 +58,6 @@ export const FormPage = (props: {}) => {
               </div>
               <br />
               <Trans id="Marry3 合约地址：" /> {web3Config.address.marry3}
-              <br />
-              <Trans id="Marry3 NFT 合约地址：" />{" "}
-              {web3Config.address.marry3token}
             </div>
           </div>
         </div>

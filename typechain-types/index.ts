@@ -22,10 +22,10 @@ export type { NFTokenMock } from "./contracts/mocks/nf-token-mock.sol/NFTokenMoc
 export { NFTokenMock__factory } from "./factories/contracts/mocks/nf-token-mock.sol/NFTokenMock__factory";
 export type { Ownable } from "./contracts/ownership/ownable.sol/Ownable";
 export { Ownable__factory } from "./factories/contracts/ownership/ownable.sol/Ownable__factory";
-export type { ERC520Token } from "./contracts/tokens/erc520-token.sol/ERC520Token";
-export { ERC520Token__factory } from "./factories/contracts/tokens/erc520-token.sol/ERC520Token__factory";
-export type { ERC520 } from "./contracts/tokens/erc520.sol/ERC520";
-export { ERC520__factory } from "./factories/contracts/tokens/erc520.sol/ERC520__factory";
+export type { ERC721_520Token } from "./contracts/tokens/erc721_520-token.sol/ERC721_520Token";
+export { ERC721_520Token__factory } from "./factories/contracts/tokens/erc721_520-token.sol/ERC721_520Token__factory";
+export type { ERC721_520 } from "./contracts/tokens/erc721_520.sol/ERC721_520";
+export { ERC721_520__factory } from "./factories/contracts/tokens/erc721_520.sol/ERC721_520__factory";
 export type { ERC721Enumerable } from "./contracts/tokens/erc721-enumerable.sol/ERC721Enumerable";
 export { ERC721Enumerable__factory } from "./factories/contracts/tokens/erc721-enumerable.sol/ERC721Enumerable__factory";
 export type { ERC721Metadata } from "./contracts/tokens/erc721-metadata.sol/ERC721Metadata";

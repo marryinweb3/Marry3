@@ -28,15 +28,15 @@ export const StatusPending = (props: {}) => {
   const copyRef = useRef(null);
   const inputRef = useRef(null);
 
-  const createImage = async () => {
-    const svg = svgref.current.getElementsByTagName("svg")[0];
+  const createImage = async (svgRef: any) => {
+    const svg = svgRef.current.getElementsByTagName("svg")[0];
     if (!svg) return;
     const size = 1080;
     const html = svg.outerHTML;
 
-    const image1 = svgref.current.getElementsByClassName("cover_1")[0];
-    const image2 = svgref.current.getElementsByClassName("cover_2")[0];
-    const logo = svgref.current.getElementsByClassName("logo")[0];
+    const image1 = svgRef.current.getElementsByClassName("cover_1")[0];
+    const image2 = svgRef.current.getElementsByClassName("cover_2")[0];
+    const logo = svgRef.current.getElementsByClassName("logo")[0];
     let canvas = document.createElement("canvas");
 
     const imageCompUp = new Image();
@@ -81,6 +81,8 @@ export const StatusPending = (props: {}) => {
       ? `/bg/${marryStore.pendingOffer.bgIndex}.png`
       : `/bg/1.png`;
     const bgImage_r: any = await imageLoaded(bgImage);
+    context.fillStyle = "white";
+    context.fillRect(0, 0, size, size);
     context.drawImage(bgImage_r, 0, 0, size, size);
     const svgImage = new Image();
     svgImage.src = `data:image/svg+xml;base64,${btoa(
@@ -102,14 +104,20 @@ export const StatusPending = (props: {}) => {
     );
 
     const png = canvas.toDataURL(); // default png
-    // download(png, "xx.png");
+    // var a = document.createElement("a");
+    // a.href = png;
+    // a.download = "output.png";
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
     return png;
     // document.body.appendChild(bgImage);
   };
   const mint = async () => {
-    let dataUrl;
+    let dataUrl, dataUrl2;
     try {
-      dataUrl = await createImage();
+      dataUrl = await createImage(svgref);
+      dataUrl2 = await createImage(svgref2);
       const uuid = uuidv4();
       const msg = await walletStore.signMessage(uuid);
       const body = {
@@ -117,6 +125,7 @@ export const StatusPending = (props: {}) => {
         signature: msg,
         id: marryStore.pendingOffer.id,
         imageData: dataUrl,
+        imageData2: dataUrl2,
       };
       setMinting(true);
       const offer = await fetch(
@@ -139,25 +148,30 @@ export const StatusPending = (props: {}) => {
           const Bsignature = res.Bsignature;
           console.log("Bsignature", res);
           const loading = message.loading("please wait until success...", 0);
-          const blockNo = await marryStore.mint(
-            res.Aaddress,
-            res.Baddress,
-            res.Asex,
-            res.Bsex,
-            Bsignature
-          );
-          await fetch(`/api/offer-setBlockNo`, {
-            method: "POST",
-            body: JSON.stringify({
-              Bsignature,
-              id: body.id,
-              blockNo,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          marryStore.getOffer();
+          try {
+            const blockNo = await marryStore.mint(
+              res.Aaddress,
+              res.Baddress,
+              res.Asex,
+              res.Bsex,
+              Bsignature
+            );
+            await fetch(`/api/offer-setBlockNo`, {
+              method: "POST",
+              body: JSON.stringify({
+                Bsignature,
+                id: body.id,
+                blockNo,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            marryStore.getOffer();
+          } catch (e) {
+            message.error("mint error");
+          }
+
           loading();
         } else {
           message.error("get signature error");
@@ -165,7 +179,9 @@ export const StatusPending = (props: {}) => {
       }
       setMinting(false);
     } catch (e) {
-      message.error("create nft cover error");
+      message.error(
+        "create nft cover error,make sure all pictures are loaded correct"
+      );
     }
   };
 
@@ -198,7 +214,7 @@ export const StatusPending = (props: {}) => {
             nftActiveIndex == 0 ? styles.nft_active : "",
           ].join(" ")}
         >
-          <NFT offer={marryStore.pendingOffer} width={340} />
+          <NFT offer={marryStore.pendingOffer} width={340} isA={true} />
         </div>
         <div
           style={{
@@ -211,7 +227,7 @@ export const StatusPending = (props: {}) => {
           ].join(" ")}
           ref={svgref2}
         >
-          <NFT offer={marryStore.pendingOffer} width={340} />
+          <NFT offer={marryStore.pendingOffer} width={340} isA={false} />
         </div>
         <div className={styles.control}>
           <div

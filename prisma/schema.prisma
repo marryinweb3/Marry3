@@ -31,6 +31,7 @@ model Offers {
     Acover     String?
     Bcover     String?
     imageData  String?
+    imageDataB String?
     bgIndex    Int?
     blockNo    String?
     mintedAt   DateTime?
