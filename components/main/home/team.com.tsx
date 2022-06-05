@@ -164,7 +164,7 @@ export const Team = (props: {}) => {
                   target={"_blank"}
                   style={{ color: "#f41870" }}
                 >
-                  联系我们
+                  <Trans id="联系我们" />
                 </a>
               </div>
             </div>

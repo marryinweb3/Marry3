@@ -33,14 +33,14 @@ export default function App({ Component, pageProps }) {
   const [showLang, setShowLang] = useState(false);
   useEffect(() => {
     if (!localStorage.getItem("locale")) {
-      const hasZH = window.navigator.languages.findIndex((f) => {
-        return f.indexOf("zh") != -1;
-      });
-      if (hasZH > 0 && hasZH < 1) {
-        i18n.activate("cn");
-      } else {
-        i18n.activate("en");
-      }
+      // const hasZH = window.navigator.languages.findIndex((f) => {
+      //   return f.indexOf("zh") != -1;
+      // });
+      // if (hasZH > 0 && hasZH < 1) {
+      //   i18n.activate("cn");
+      // } else {
+      i18n.activate("en");
+      // }
       setShowLang(true);
     } else {
       localStorage.getItem("locale") == "cn"
