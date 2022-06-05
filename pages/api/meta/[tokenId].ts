@@ -64,7 +64,7 @@ const handler: NextApiHandler = async (req, res) => {
             }`,
             description: `${offer.Aname} and ${
               offer.Bname
-            } got married in Web3, base on ERC520 stantard, on ${moment(
+            } got married in Web3, base on ERC721-520 Contract, on ${moment(
               pairInfo[0].time.toNumber() * 1000
             ).format("YYYY-MM-DD")}, link: https://marry3.love/i/${tokenId}`,
             external_url: `https://marry3.love/i/${tokenId}`,
