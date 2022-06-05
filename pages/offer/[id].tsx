@@ -190,7 +190,7 @@ export default function Offer(props) {
                       >
                         <Input
                           value={offerStore.form.Bname}
-                          placeholder="your ens name"
+                          placeholder="your ens name or nick"
                           onChange={async (e) => {
                             offerStore.form.Bname = e.target.value;
                           }}
