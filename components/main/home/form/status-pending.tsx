@@ -200,19 +200,21 @@ export const StatusPending = (props: {}) => {
       );
     }
   };
-
+  let clip: any;
   useEffect(() => {
     if (copyRef.current && inputRef.current) {
-      const clip = new ClipboardJS(copyRef.current!, {
-        target: () => inputRef.current!,
-      });
-      clip.on("success", function () {
-        message.success("copy success");
-        marryStore.shareClicked = true;
-      });
-      clip.on("error", () => {
-        message.error("copy fail");
-      });
+      if (!clip) {
+        clip = new ClipboardJS(copyRef.current!, {
+          target: () => inputRef.current!,
+        });
+        clip.on("success", function () {
+          message.success("copy success");
+          marryStore.shareClicked = true;
+        });
+        clip.on("error", () => {
+          message.error("copy fail");
+        });
+      }
     }
   }, [copyRef.current]);
   const [nftActiveIndex, setNftActiveIndex] = useState(0);

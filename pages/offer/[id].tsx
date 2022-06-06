@@ -202,10 +202,10 @@ export default function Offer(props) {
                           style={{ width: "100px" }}
                         >
                           <Select.Option value={0}>
-                            <Trans id="Man" />
+                            <Trans id="Male" />
                           </Select.Option>
                           <Select.Option value={1}>
-                            <Trans id="Woman" />
+                            <Trans id="Female" />
                           </Select.Option>
                           <Select.Option value={2}>
                             <Trans id="X" />

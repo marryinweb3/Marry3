@@ -36,7 +36,7 @@ const handler: NextApiHandler = async (req, res) => {
         Asignature: req.body.signature,
         Acomment: req.body.Acomment,
         Acover: req.body.Acover,
-        bgIndex: Math.floor(Math.random() * 14) + 1,
+        bgIndex: Math.floor(Math.random() * 9) + 1,
       };
       if (!data.Acover?.startsWith("http")) {
         data.Acover = "";
