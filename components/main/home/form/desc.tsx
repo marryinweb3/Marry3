@@ -14,51 +14,59 @@ export const FormDesc = (props: {}) => {
     <>
       {marryStore.pendingOffer?.status == 2 &&
       marryStore.pendingOffer.AtokenId ? (
-        <div className={styles.price_desc}>
-          <Trans id="查看 Marry3 Certificate 详情" />:
-          <a
-            href={`/i/${marryStore.pendingOffer.AtokenId}`}
-            target={"_blank"}
-            style={{ fontWeight: "500", marginLeft: "30px" }}
-          >
-            Token #{marryStore.pendingOffer.AtokenId}
-          </a>
-          <a
-            href={`${web3Config.opensea}/${web3Config.address.marry3}/${marryStore.pendingOffer.AtokenId}`}
-            target={"_blank"}
-            style={{ fontWeight: "500", marginLeft: "10px" }}
-          >
-            <img
-              src="/opensea-logo.png"
-              style={{
-                width: "15px",
-                height: "15px",
-                verticalAlign: "-3px",
-              }}
-            />
-          </a>
-          <a
-            href={`/i/${marryStore.pendingOffer.BtokenId}`}
-            target={"_blank"}
-            style={{ fontWeight: "500", marginLeft: "30px" }}
-          >
-            Token #{marryStore.pendingOffer.BtokenId}
-          </a>
-          <a
-            href={`${web3Config.opensea}/${web3Config.address.marry3}/${marryStore.pendingOffer.BtokenId}`}
-            target={"_blank"}
-            style={{ fontWeight: "500", marginLeft: "10px" }}
-          >
-            <img
-              src="/opensea-logo.png"
-              style={{
-                width: "15px",
-                height: "15px",
-                verticalAlign: "-3px",
-              }}
-            />
-          </a>
-        </div>
+        <>
+          <div className={styles.price_desc}>
+            <Trans id="查看 Marry3 Certificate 详情" />:
+            <a
+              href={`/i/${marryStore.pendingOffer.AtokenId}`}
+              target={"_blank"}
+              style={{ fontWeight: "500", marginLeft: "30px" }}
+            >
+              Token #{marryStore.pendingOffer.AtokenId}
+            </a>
+            <a
+              href={`${web3Config.opensea}${web3Config.address.marry3}/${marryStore.pendingOffer.AtokenId}`}
+              target={"_blank"}
+              style={{ fontWeight: "500", marginLeft: "10px" }}
+            >
+              <img
+                src="/opensea-logo.png"
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  verticalAlign: "-3px",
+                }}
+              />
+            </a>
+            <a
+              href={`/i/${marryStore.pendingOffer.BtokenId}`}
+              target={"_blank"}
+              style={{ fontWeight: "500", marginLeft: "30px" }}
+            >
+              Token #{marryStore.pendingOffer.BtokenId}
+            </a>
+            <a
+              href={`${web3Config.opensea}${web3Config.address.marry3}/${marryStore.pendingOffer.BtokenId}`}
+              target={"_blank"}
+              style={{ fontWeight: "500", marginLeft: "10px" }}
+            >
+              <img
+                src="/opensea-logo.png"
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  verticalAlign: "-3px",
+                }}
+              />
+            </a>
+          </div>
+          <div className={styles.join_holder}>
+            Join the Holder Discord:{" "}
+            <a href="https://discord.gg/4f7MnZ5kef" target={"_blank"}>
+              https://discord.gg/4f7MnZ5kef
+            </a>
+          </div>
+        </>
       ) : (
         <div className={styles.price_desc}>
           <Tooltip

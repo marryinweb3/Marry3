@@ -1,4 +1,4 @@
-import { message } from "antd";
+import { message, Modal } from "antd";
 import { BigNumber, utils } from "ethers";
 import { action, computed, makeAutoObservable } from "mobx";
 import { Marry3Contract } from "../../contracts";
@@ -63,10 +63,10 @@ export class OfferStore implements IStore {
   }
   async accept() {
     const nonce = "i will";
-    const msg = await walletStore.signMessage(nonce);
+
     const body = {
       nonce,
-      signature: msg,
+      signature: "",
       id: this.offer.id,
       address: (await walletStore.getWalletInfo()).account,
       Bsex: this.form.Bsex,
@@ -74,6 +74,10 @@ export class OfferStore implements IStore {
       Bcomment: this.form.Bcomment,
       Bcover: this.form.Bcover,
     };
+    if (!body.Bname) {
+      message.error("please input your nick");
+      return;
+    }
     if (body.Bname.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(body.address);
       console.log(ens);
@@ -84,6 +88,27 @@ export class OfferStore implements IStore {
         return;
       }
     }
+    if (!body.Bcover) {
+      const confirm = async () => {
+        return new Promise((resolve, reject) => {
+          Modal.confirm({
+            title: "Notice",
+            content:
+              "You have not yet selected PFP, are you sure you want to continue？if continue, your PFP will be set to default image",
+            onOk: () => {
+              resolve(true);
+            },
+            onCancel: () => {
+              // throw new Error("cancel");
+              reject(new Error("cancel"));
+            },
+          });
+        });
+      };
+      await confirm();
+    }
+    const msg = await walletStore.signMessage(nonce);
+    body.signature = msg;
     const offer = await fetch("/api/offer-b", {
       method: "POST",
       headers: {

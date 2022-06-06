@@ -58,6 +58,24 @@ export const FormPage = (props: {}) => {
               </div>
               <br />
               <Trans id="Marry3 合约地址：" /> {web3Config.address.marry3}
+              <a
+                href={web3Config.scan + web3Config.address.marry3}
+                target={"_blank"}
+              >
+                <img
+                  src="/scan-logo.png"
+                  style={{ width: 14, marginLeft: 10 }}
+                />
+              </a>
+              <a
+                href={web3Config.opensea + web3Config.address.marry3}
+                target={"_blank"}
+              >
+                <img
+                  src="/opensea-logo.png"
+                  style={{ width: 14, marginLeft: 10 }}
+                />
+              </a>
             </div>
           </div>
         </div>

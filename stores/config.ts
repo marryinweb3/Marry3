@@ -18,7 +18,7 @@ const config = {
   api_url: "",
   host: "rinkeby.marry3.love",
   scan: "https://rinkeby.etherscan.io/address/",
-  opensea: "https://testnets.opensea.io/assets/rinkeby",
+  opensea: "https://testnets.opensea.io/assets/rinkeby/",
 };
 
 const config_local = {
@@ -39,7 +39,7 @@ const config_local = {
   base_url: "/",
   api_url: "",
   scan: "https://rinkeby.etherscan.io/address/",
-  opensea: "https://testnets.opensea.io/assets/rinkeby",
+  opensea: "https://testnets.opensea.io/assets/rinkeby/",
 };
 
 const config_online = {
@@ -62,7 +62,7 @@ const config_online = {
   api_url: "",
   host: "marry3.love",
   scan: "https://etherscan.io/address/",
-  opensea: "https://opensea.io/assets/ethereum",
+  opensea: "https://opensea.io/assets/ethereum/",
 };
 
 const isOnline = String(process.env.NEXT_PUBLIC_ISONLINE);

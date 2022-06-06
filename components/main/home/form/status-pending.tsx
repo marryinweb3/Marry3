@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from "uuid";
 import { utils } from "ethers";
 import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
+import { Marry3Contract } from "../../../../contracts";
 
 export const StatusPending = (props: {}) => {
   const formItemLayout = {
@@ -164,18 +165,23 @@ export const StatusPending = (props: {}) => {
               res.Bsex,
               Bsignature
             );
+            try {
+              const pairedInfo = await Marry3Contract().getPairInfo(
+                res.Aaddress
+              );
+              if (pairedInfo[0] && pairedInfo[1]) {
+                await fetch(
+                  `/api/meta/${pairedInfo[0].tokenId.toString()}.json`,
+                  {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  }
+                );
+              }
+            } catch (e) {}
 
-            // await fetch(`/api/offer-setBlockNo`, {
-            //   method: "POST",
-            //   body: JSON.stringify({
-            //     Bsignature,
-            //     id: body.id,
-            //     blockNo,
-            //   }),
-            //   headers: {
-            //     "Content-Type": "application/json",
-            //   },
-            // });
             await marryStore.getOffer();
           } catch (e) {
             console.error(e);

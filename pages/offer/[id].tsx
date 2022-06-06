@@ -218,7 +218,12 @@ export default function Offer(props) {
                       <Button
                         onClick={async () => {
                           setAccepting(true);
-                          await offerStore.accept();
+                          try {
+                            await offerStore.accept();
+                          } catch (e) {
+                            message.error(e);
+                          }
+
                           setAccepting(false);
                         }}
                         disabled={offerStore.offer.status !== 0}

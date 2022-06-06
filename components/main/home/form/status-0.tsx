@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 import { Trans } from "@lingui/react";
-import { Button, Collapse, Form, Input, Select, Tooltip } from "antd";
+import { Button, Collapse, Form, Input, message, Select, Tooltip } from "antd";
 import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";
 import { useObserver } from "mobx-react";
 import wallet from "../../../../contracts/wallet";
@@ -9,6 +9,7 @@ import useStore from "../../../../stores/useStore";
 import { MarryStore } from "../../../../stores/main/marry.store";
 import { NFTStore } from "../../../../stores/main/nfts.store";
 import { useState } from "react";
+import { messages } from "../../../../locale/en";
 
 export const Status0 = (props: {}) => {
   const formItemLayout = {
@@ -21,7 +22,11 @@ export const Status0 = (props: {}) => {
   const begin = async (e) => {
     e.preventDefault();
     setSubmiting(true);
-    await marryStore.signA();
+    try {
+      await marryStore.signA();
+    } catch (e) {
+      message.error(e.message);
+    }
 
     setSubmiting(false);
   };
@@ -102,10 +107,10 @@ export const Status0 = (props: {}) => {
             style={{ width: "80px" }}
           >
             <Select.Option value={0}>
-              <Trans id="Man" />
+              <Trans id="Male" />
             </Select.Option>
             <Select.Option value={1}>
-              <Trans id="Woman" />
+              <Trans id="Female" />
             </Select.Option>
             <Select.Option value={2}>
               <Trans id="X" />

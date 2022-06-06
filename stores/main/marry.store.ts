@@ -1,4 +1,4 @@
-import { message } from "antd";
+import { message, Modal } from "antd";
 import { BigNumber, utils } from "ethers";
 import { action, computed, makeAutoObservable } from "mobx";
 import { Marry3Contract } from "../../contracts";
@@ -88,10 +88,9 @@ export class MarryStore implements IStore {
   async signA() {
     const uuid = uuidv4();
 
-    const msg = await walletStore.signMessage(uuid);
     const body = {
       nonce: uuid,
-      signature: msg,
+      signature: "",
       Aaddress: this.info.Aaddress,
       Asex: this.info.Asex,
       Aname: this.info.Aname,
@@ -101,6 +100,25 @@ export class MarryStore implements IStore {
     if (!body.Acomment) {
       message.error("commet empty");
       return;
+    }
+    if (!body.Acover) {
+      const confirm = async () => {
+        return new Promise((resolve, reject) => {
+          Modal.confirm({
+            title: "Notice",
+            content:
+              "You have not yet selected PFP, are you sure you want to continue？if continue, your PFP will be set to default image",
+            onOk: () => {
+              resolve(true);
+            },
+            onCancel: () => {
+              // throw new Error("cancel");
+              reject(new Error("cancel"));
+            },
+          });
+        });
+      };
+      await confirm();
     }
     if (body.Aname?.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(this.info.Aaddress);
@@ -112,6 +130,8 @@ export class MarryStore implements IStore {
         return;
       }
     }
+    const msg = await walletStore.signMessage(uuid);
+    body.signature = msg;
     const offer = await fetch("/api/offer-a", {
       method: "POST",
       headers: {

@@ -5,8 +5,8 @@ import { NextApiHandler } from "next";
 import { prisma } from "../../../lib/prisma";
 import { getTokenPairInfo, verifyMarried } from "../../../lib/verify";
 const sexMap = {
-  0: "Man",
-  1: "Woman",
+  0: "Male",
+  1: "Female",
   2: "X",
 };
 const handler: NextApiHandler = async (req, res) => {
@@ -78,6 +78,19 @@ const handler: NextApiHandler = async (req, res) => {
                 value: `${moment(pairInfo[0].time.toNumber() * 1000).format(
                   "YYYY-MM-DD"
                 )}`,
+              },
+              {
+                trait_type: "passed",
+                value: `${Math.floor(
+                  (moment().toDate().getTime() -
+                    moment(pairInfo[0].time.toNumber() * 1000)
+                      .toDate()
+                      .getTime()) /
+                    1000 /
+                    60 /
+                    60 /
+                    24
+                )} days`,
               },
               { trait_type: "sex", value: sexMap[pairInfo[0].sex] },
               { trait_type: "ensA", value: offer.Aname },
