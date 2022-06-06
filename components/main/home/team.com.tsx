@@ -137,7 +137,7 @@ export const Team = (props: {}) => {
                   CyberConnect
                 </a>
               </div>
-              <div className={styles.partner_item} style={{}}>
+              {/* <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
                   href="https://metamail.ink/"
@@ -146,7 +146,7 @@ export const Team = (props: {}) => {
                   <img src="https://metamail.ink/favicon/64x.ico" />
                   MetaMail.ink
                 </a>
-              </div>
+              </div> */}
               <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}

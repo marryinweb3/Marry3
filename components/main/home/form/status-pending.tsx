@@ -178,6 +178,7 @@ export const StatusPending = (props: {}) => {
             // });
             await marryStore.getOffer();
           } catch (e) {
+            console.error(e);
             message.error("mint error");
           }
 
