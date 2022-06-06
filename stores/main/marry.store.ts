@@ -168,8 +168,8 @@ export class MarryStore implements IStore {
     this.marryPriceFormated = utils.formatEther(mintPrice);
     console.log("mintPrice", this.marryPriceFormated);
 
-    const mintCount = await Marry3Contract().getMarryCount();
-    this.marryCount = mintCount.toNumber();
+    const mintCount = await Marry3Contract().totalSupply();
+    this.marryCount = Math.floor(mintCount.toNumber() / 2);
 
     console.log("mintCount", this.marryCount);
 
