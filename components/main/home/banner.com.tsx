@@ -62,7 +62,31 @@ export const MainBanner = (props: {}) => {
               <img src="/heart.png" title="heart" className={styles.heart} />
               <Trans id="ERC721-520 Token 可以通过多签协商销毁，销毁后可以与其他地址铸造新的 Token" />
             </p>
+            <div className={styles.socials}>
+              <a
+                href="https://twitter.com/marryinweb3"
+                className={[styles.social, styles.twitter].join(" ")}
+                target={"_blank"}
+              >
+                Twitter
+              </a>
+              <a
+                href="https://discord.gg/eAN9TaAaSq"
+                target={"_blank"}
+                className={[styles.social, styles.discord].join(" ")}
+              >
+                Discord
+              </a>
+              <a
+                href="https://github.com/marryinweb3"
+                target={"_blank"}
+                className={[styles.social, styles.github].join(" ")}
+              >
+                Github
+              </a>
+            </div>
           </h2>
+
           <img src="/flower.svg" className={styles.flower} title="flower" />
         </div>
       </div>
