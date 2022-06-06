@@ -277,6 +277,11 @@
     padding-bottom: 50px;
     position: relative;
     padding-top: 50px;
+    @media @mobile {
+      & {
+        margin-top: 50px;
+      }
+    }
     .mainFormWrapper {
       width: 100%;
       margin: 0 auto;
@@ -313,6 +318,10 @@
         width: 400px;
         height: 360px;
         position: relative;
+        @media @mobile {
+          margin: 0 auto;
+          margin-bottom: 20px;
+        }
         .nft {
           position: absolute;
 
@@ -692,6 +701,10 @@
       img {
         height: 20px;
         margin-right: 10px;
+        vertical-align: -5px;
+      }
+      svg {
+        height: 20px;
         vertical-align: -5px;
       }
     }
