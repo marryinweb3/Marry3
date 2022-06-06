@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }) {
       // } else {
       i18n.activate("en");
       // }
-      setShowLang(true);
+      // setShowLang(true);
     } else {
       localStorage.getItem("locale") == "cn"
         ? i18n.activate("cn")
@@ -99,7 +99,7 @@ export default function App({ Component, pageProps }) {
         <div className="mobile-tip">
           Use desktop version to get more friendly experience
         </div>
-        {showLang ? (
+        {/* {showLang ? (
           <div className="sc-AxgMl hkzEld web3modal-modal-lightbox">
             <div className="sc-AxheI fdbjE web3modal-modal-container">
               <div className="sc-Axmtr hvJMgY web3modal-modal-hitbox"></div>
@@ -139,7 +139,7 @@ export default function App({ Component, pageProps }) {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </SafeHydrate>
     </I18nProvider>
   );
