@@ -35,6 +35,9 @@ const handler: NextApiHandler = async (req, res) => {
                 Baddress: pairInfo[0].partner.toLowerCase(),
               },
             ],
+            status: {
+              not: -1,
+            },
           },
         });
         console.log("offer", offer);
