@@ -88,6 +88,7 @@ const handler: NextApiHandler = async (req, res) => {
           Bcover: true,
           imageData: true,
           bgIndex: true,
+          mintedAt: true,
         },
         skip: (pageIndex - 1) * pageSize,
         take: pageSize,
