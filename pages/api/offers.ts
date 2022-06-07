@@ -39,6 +39,7 @@ const handler: NextApiHandler = async (req, res) => {
           Bcover: true,
           imageData: true,
           bgIndex: true,
+          mintedAt: true,
         },
         orderBy: {
           updatedAt: "desc",
