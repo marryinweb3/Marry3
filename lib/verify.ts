@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { web3Config } from "../stores/config";
-let privateKey = process.env.PRIVATE_KEY_mainnet;
+// let privateKey = process.env.PRIVATE_KEY_mainnet;
 
 import abi from "../abi/Marry3.json";
 import { Marry3 } from "../typechain-types";
