@@ -34,12 +34,11 @@ export default function Upgrade(props) {
     marryStore.getMintInfo();
     (async () => {
       const walletInfo = await wallet.getWalletInfo();
+      marryStore.info.Aaddress = walletInfo.account;
+      marryStore.info.Aname = walletInfo.ens;
       const loading = message.loading("loading...", 0);
       await marryStore.getOffer();
       loading();
-
-      marryStore.info.Aaddress = walletInfo.account;
-      marryStore.info.Aname = walletInfo.ens;
     })();
   }, []);
 

@@ -56,15 +56,7 @@ export default function App({ Component, pageProps }) {
         (window.innerWidth * 100) / 1920
       }px`;
     });
-    if (
-      window.location.host.indexOf("localhost") == -1 &&
-      window.location.host != web3Config.host
-    ) {
-      window.location.href = window.location.href.replace(
-        window.location.host,
-        web3Config.host
-      );
-    }
+
     if (web3Config.network.chainId == 4) {
       notification.warning({
         placement: "bottomRight",
