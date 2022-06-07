@@ -236,4 +236,23 @@ export class MarryStore implements IStore {
       } catch (e) {}
     }
   }
+  async revoke() {
+    const uuid = uuidv4();
+    const msg = await walletStore.signMessage(uuid);
+    const body = {
+      nonce: uuid,
+      signature: msg,
+      id: this.pendingOffer.id,
+    };
+    const offer = await fetch(
+      `/api/offer-revoke?nonce=${body.nonce}&signature=${body.signature}&id=${body.id}`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }

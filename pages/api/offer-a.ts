@@ -62,16 +62,19 @@ const handler: NextApiHandler = async (req, res) => {
       // one offer one day
       const result = await prisma.offers.findFirst({
         where: {
-          createdAt: {
-            gt: new Date(Date.now() - 1000 * 60 * 60 * 24),
-          },
           Aaddress: data.Aaddress,
+          status: {
+            not: -1,
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       });
       console.log("result", result);
       if (result) {
         return res.status(400).json({
-          message: "one offer one day",
+          message: "you have not finished offer",
         });
       }
       // create offer

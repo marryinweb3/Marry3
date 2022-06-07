@@ -279,29 +279,50 @@ export const StatusPending = (props: {}) => {
           <Trans id="Minted " />
         </Button>
       ) : (
-        <Button
-          onClick={async () => {
-            setMinting(true);
-            try {
-              await mint();
-            } catch (e) {
-              console.error(e);
-            }
+        <>
+          <Button
+            onClick={async () => {
+              setMinting(true);
+              try {
+                await mint();
+              } catch (e) {
+                console.error(e);
+              }
 
-            setMinting(false);
-          }}
-          type="primary"
-          style={{ width: "100%" }}
-          className="shake-little"
-          loading={minting}
-        >
-          <Trans id="Mint " />(
-          {marryStore.marryPrice &&
-          Number(utils.formatEther(marryStore.marryPrice)) == 0
-            ? "Free"
-            : marryStore.marryPriceFormated + " Ξ"}
-          )
-        </Button>
+              setMinting(false);
+            }}
+            type="primary"
+            style={{ width: "78%" }}
+            className="shake-little"
+            loading={minting}
+          >
+            <Trans id="Mint " />(
+            {marryStore.marryPrice &&
+            Number(utils.formatEther(marryStore.marryPrice)) == 0
+              ? "Free"
+              : marryStore.marryPriceFormated + " Ξ"}
+            )
+          </Button>
+          <Button
+            onClick={async () => {
+              const loading = message.loading(
+                "please wait until success...",
+                0
+              );
+              try {
+                await marryStore.revoke();
+                window.location.reload();
+              } catch (e) {
+                console.error(e);
+              }
+              loading();
+            }}
+            style={{ width: "20%", marginLeft: "2%" }}
+            className="shake-little"
+          >
+            Revoke
+          </Button>
+        </>
       )}
 
       {marryStore.pendingOffer.status == 0 ? (

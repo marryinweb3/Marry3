@@ -154,21 +154,15 @@ export default function Offer(props) {
                           return (
                             <Select.Option
                               key={i}
-                              value={
-                                nft.detail.cached_file_url ||
-                                nft.detail?.metadata?.image
-                              }
+                              value={nft.cached_file_url || nft.metadata?.image}
                             >
                               <img
-                                src={
-                                  nft.detail.cached_file_url ||
-                                  nft.detail?.metadata?.image
-                                }
+                                src={nft.cached_file_url || nft.metadata?.image}
                                 title="nft"
                                 style={{ width: "25px", height: "25px" }}
                               />
                               <span style={{ paddingLeft: "10px" }}>
-                                {nft.detail?.metadata?.name}
+                                {nft.metadata?.name}
                               </span>
                             </Select.Option>
                           );

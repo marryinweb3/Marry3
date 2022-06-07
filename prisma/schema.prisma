@@ -22,7 +22,7 @@ model Offers {
     Bsex       Int?
     Aname      String?
     Bname      String?
-    status     Int       @default(0) // 0: a签名，1: b签名，2: 已mint
+    status     Int       @default(0) // 0: a签名，1: b签名，2: 已mint -1 : 已撤销
     createdAt  DateTime  @default(now())
     updatedAt  DateTime  @updatedAt
     AtokenId   String?

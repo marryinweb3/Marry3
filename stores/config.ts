@@ -52,11 +52,11 @@ const config_online = {
     name: "Ethereum Mainnet",
   },
   address: {
-    marry3: "",
+    marry3: "0xb92cF71Bb9dF4Dd30598fec340C1b8f22Ea30846",
   },
   tokenName: "token",
   siteName:
-    "Marry with another 0x address, get the Soulbound NFT Certificate on the chain, a non-financial Dapp",
+    "Marry with another 0x address, get Paired Soulbound NFT Certificate on the chain, a non-financial Dapp",
   ethName: "ETH",
   base_url: "/",
   api_url: "",

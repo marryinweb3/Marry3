@@ -11,6 +11,9 @@ const handler: NextApiHandler = async (req, res) => {
       const offer = await prisma.offers.findFirst({
         where: {
           Aaddress: Aaddress.toLowerCase(),
+          status: {
+            not: -1,
+          },
         },
         orderBy: {
           createdAt: "desc",
