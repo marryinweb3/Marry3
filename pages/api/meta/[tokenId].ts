@@ -39,6 +39,9 @@ const handler: NextApiHandler = async (req, res) => {
               not: -1,
             },
           },
+          orderBy: {
+            createdAt: "desc",
+          },
         });
         console.log("offer", offer);
         const isA = offer.Aaddress == pairInfo[1].partner.toLowerCase();
