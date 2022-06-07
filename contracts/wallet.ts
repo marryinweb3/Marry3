@@ -68,7 +68,7 @@ class Wallet extends EventEmitter {
 
   async connect() {
     console.log("connect wallet");
-    // const loading = message.loading("connecting wallet...", 0);
+    const loading = message.loading("connecting wallet...", 0);
     this.init();
     this.web3ModalProvider = await this.web3Modal.connect();
     this.ethProvider = new ethers.providers.Web3Provider(
@@ -77,7 +77,7 @@ class Wallet extends EventEmitter {
     );
 
     console.log("connected");
-    // loading();
+    loading();
     this.emit("connected");
     const network = await this.ethProvider.detectNetwork();
     console.log("network", network);
