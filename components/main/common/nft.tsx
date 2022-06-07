@@ -308,7 +308,6 @@ export const NFT = (props: {
                         line-height="0"
                         fill="#361041"
                         opacity="1"
-                        font-family="OPPOSans-R"
                         letter-spacing="0"
                       >
                         Blockchain
@@ -340,7 +339,6 @@ export const NFT = (props: {
                         line-height="0"
                         fill="#361041"
                         opacity="1"
-                        font-family="OPPOSans-R"
                         letter-spacing="0"
                       >
                         Ethereum
@@ -359,7 +357,6 @@ export const NFT = (props: {
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
                           Protocol
@@ -397,7 +394,6 @@ export const NFT = (props: {
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
                           ERC721-520
@@ -417,7 +413,6 @@ export const NFT = (props: {
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
                           Datetime
@@ -455,7 +450,6 @@ export const NFT = (props: {
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          font-family="OPPOSans-R"
                           letter-spacing="0"
                         >
                           {props.offer?.mintedAt
@@ -477,7 +471,6 @@ export const NFT = (props: {
                       line-height="0"
                       fill="#361041"
                       opacity="1"
-                      font-family="OPPOSans-R"
                       letter-spacing="0"
                     >
                       {props.isA ? props.offer?.Aname : props.offer?.Bname}
@@ -497,7 +490,6 @@ export const NFT = (props: {
                     line-height="0"
                     fill="#DDDDDD"
                     opacity="1"
-                    font-family="OPPOSans-R"
                     letter-spacing="0"
                   >
                     &amp;
@@ -514,7 +506,6 @@ export const NFT = (props: {
                       line-height="0"
                       fill="#361041"
                       opacity="1"
-                      font-family="OPPOSans-R"
                       letter-spacing="0"
                     >
                       {props.isA ? props.offer?.Bname : props.offer?.Aname}
