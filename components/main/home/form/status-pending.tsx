@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro";
 import { Trans } from "@lingui/react";
 import { Button, Collapse, Form, Input, message, Select, Tooltip } from "antd";
-
+import { TwitterOutlined } from "@ant-design/icons";
 import { useObserver } from "mobx-react";
 import wallet from "../../../../contracts/wallet";
 import styles from "./../../../../pages/home/home.module.less";
@@ -15,8 +15,7 @@ import { imageLoaded } from "../../../../utils/imageloaded";
 import { WalletStore } from "../../../../stores/main/wallet.store";
 import { v4 as uuidv4 } from "uuid";
 import { utils } from "ethers";
-import html2canvas from "html2canvas";
-import domtoimage from "dom-to-image";
+import QRCode from "qrcode";
 import { Marry3Contract } from "../../../../contracts";
 
 export const StatusPending = (props: {}) => {
@@ -32,7 +31,7 @@ export const StatusPending = (props: {}) => {
   const copyRef = useRef(null);
   const inputRef = useRef(null);
 
-  const createImage = async (svgRef: any) => {
+  const createImage = async (svgRef: any, tokenId?: string) => {
     console.log(svgRef.current.getElementsByTagName("div")[0]);
     const image1 = svgRef.current.getElementsByClassName("cover_1")[0];
     const image2 = svgRef.current.getElementsByClassName("cover_2")[0];
@@ -111,7 +110,38 @@ export const StatusPending = (props: {}) => {
     //   160 * 1.5,
     //   47 * 1.5
     // );
+    if (tokenId) {
+      let canvasQR = document.createElement("canvas");
 
+      canvasQR.width = 70;
+
+      canvasQR.height = 70;
+      let contextQR = canvasQR.getContext("2d");
+      contextQR.fillStyle = "white";
+      contextQR.fillRect(0, 0, 70, 70);
+      const gen = () => {
+        return new Promise((resolve) => {
+          QRCode.toCanvas(
+            canvasQR,
+            window.location.origin + "/i/" + tokenId,
+            {
+              margin: 2,
+              width: 70,
+              color: {
+                dark: "#333", // Blue dots
+                light: "#fff", // Transparent background
+              },
+            },
+            function (error) {
+              if (error) console.error(error);
+              resolve(null);
+            }
+          );
+        });
+      };
+      await gen();
+      context.drawImage(canvasQR, 30, size - 120, 70, 70);
+    }
     const png = canvas.toDataURL(); // default png
     // var a = document.createElement("a");
     // a.href = png;
@@ -121,6 +151,32 @@ export const StatusPending = (props: {}) => {
     // document.body.removeChild(a);
     return png;
     // document.body.appendChild(bgImage);
+  };
+  const [downloading, setDownloading] = useState(false);
+  const download = async () => {
+    let dataUrl, dataUrl2;
+    setDownloading(true);
+    try {
+      dataUrl = await createImage(svgref, marryStore.pendingOffer.AtokenId);
+      dataUrl2 = await createImage(svgref2, marryStore.pendingOffer.BtokenId);
+      var a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = `Marry3 Certificate #${marryStore.pendingOffer.AtokenId}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      var a = document.createElement("a");
+      a.href = dataUrl2;
+      a.download = `Marry3 Certificate #${marryStore.pendingOffer.BtokenId}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (e) {
+      message.error(
+        "create nft cover error,make sure all pictures are loaded correct"
+      );
+    }
+    setDownloading(false);
   };
   const mint = async () => {
     let dataUrl, dataUrl2;
@@ -275,9 +331,40 @@ export const StatusPending = (props: {}) => {
           <Trans id=" 等待接受" />
         </Button>
       ) : marryStore.pendingOffer.status == 2 ? (
-        <Button type="primary" style={{ width: "100%" }} disabled={true}>
-          <Trans id="Minted " />
-        </Button>
+        <>
+          <Button
+            style={{ width: "calc(100% - 70px)" }}
+            onClick={download}
+            loading={downloading}
+          >
+            <Trans id=" Minted, Click to Download PNG " />
+          </Button>
+          <a
+            style={{
+              width: "40px",
+              marginLeft: "10px",
+              background: "#fff",
+              display: "inline-block",
+              height: "40px",
+              verticalAlign: "-2px",
+              textAlign: "center",
+              borderRadius: "50%",
+              lineHeight: "40px",
+              border: "2px solid #eee",
+            }}
+            href={
+              "https://twitter.com/intent/tweet?text=" +
+              "i just marry in web3 with my lover,and mint Paired Soubound Marry3 Certificate, https://marry3.love/i/" +
+              marryStore.pendingOffer.AtokenId
+            }
+            target={"_blank"}
+          >
+            <TwitterOutlined
+              size={20}
+              style={{ fontSize: "18px", color: "#0057D6" }}
+            />
+          </a>
+        </>
       ) : (
         <>
           <Button

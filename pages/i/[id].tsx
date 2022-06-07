@@ -199,7 +199,13 @@ export default function Offer(props) {
               />
               <div className={styles.detail}>
                 <p className={styles.name}>{offer?.Aname}</p>
-                <p className={styles.address}>{offer?.Aaddress}</p>
+                <p className={styles.address}>
+                  {offer?.Aaddress
+                    ? offer?.Aaddress.substr(0, 6) +
+                      "..." +
+                      offer?.Aaddress.substr(offer?.Aaddress.length - 12, 12)
+                    : ""}
+                </p>
                 <p className={styles.actions}>
                   <Button
                     type="primary"
@@ -244,7 +250,13 @@ export default function Offer(props) {
               />
               <div className={styles.detail}>
                 <p className={styles.name}>{offer?.Bname}</p>
-                <p className={styles.address}>{offer?.Baddress}</p>
+                <p className={styles.address}>
+                  {offer?.Baddress
+                    ? offer?.Baddress.substr(0, 6) +
+                      "..." +
+                      offer?.Baddress.substr(offer?.Baddress.length - 12, 12)
+                    : ""}
+                </p>
                 <p className={styles.actions}>
                   <Button
                     type="primary"

@@ -460,6 +460,70 @@ export const NFT = (props: {
                     </g>
                   </g>
                 </g>
+                {props.offer.AtokenId ? (
+                  <g opacity="1" transform="translate(0 120)  rotate(0 113 16)">
+                    <g opacity="1" transform="translate(0 0)  rotate(0 113 16)">
+                      <g
+                        opacity="1"
+                        transform="translate(0 0)  rotate(0 47 16)"
+                      >
+                        <text>
+                          <tspan
+                            x="0"
+                            y="24"
+                            font-size="24"
+                            line-height="0"
+                            fill="#361041"
+                            opacity="1"
+                            letter-spacing="0"
+                          >
+                            TokenID
+                          </tspan>
+                        </text>
+                      </g>
+                      <g
+                        opacity="1"
+                        transform="translate(138 0)  rotate(0 6 14.5)"
+                      >
+                        <text>
+                          <tspan
+                            x="0"
+                            y="23"
+                            font-size="24"
+                            line-height="0"
+                            fill="#EDEDED"
+                            opacity="1"
+                            font-family="Inter-SemiBold"
+                            letter-spacing="0"
+                          >
+                            •
+                          </tspan>
+                        </text>
+                      </g>
+                      <g
+                        opacity="1"
+                        transform="translate(164 0)  rotate(0 45 16)"
+                      >
+                        <text>
+                          <tspan
+                            x="0"
+                            y="24"
+                            font-size="24"
+                            line-height="0"
+                            fill="#361041"
+                            opacity="1"
+                            letter-spacing="0"
+                          >
+                            #
+                            {props.isA
+                              ? props.offer.AtokenId
+                              : props.offer.BtokenId}
+                          </tspan>
+                        </text>
+                      </g>
+                    </g>
+                  </g>
+                ) : null}
               </g>
               <g id="" filter="url(#filter_44)">
                 <g opacity="1" transform="translate(410 172)  rotate(0 297 53)">
