@@ -68,7 +68,7 @@ export const FormPage = (props: {}) => {
                 />
               </a>
               <a
-                href={web3Config.opensea + web3Config.address.marry3}
+                href={"https://opensea.io/collection/marry3"}
                 target={"_blank"}
               >
                 <img
