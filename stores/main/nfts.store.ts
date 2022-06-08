@@ -26,7 +26,7 @@ export class NFTStore implements IStore {
     const walletInfo = await walletStore.getWalletInfo();
 
     const result = await fetch(
-      `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc721`,
+      `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc721&limit=100`,
       {
         method: "GET",
         headers: {
