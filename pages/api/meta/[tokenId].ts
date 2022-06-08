@@ -3,6 +3,8 @@ import { ethers } from "ethers";
 import moment from "moment";
 import { NextApiHandler } from "next";
 import { prisma } from "../../../lib/prisma";
+import SocialPost from "social-post-api"; // Install "npm i social-post-api"
+
 import { getTokenPairInfo, verifyMarried } from "../../../lib/verify";
 const sexMap = {
   0: "Male",
@@ -63,6 +65,21 @@ const handler: NextApiHandler = async (req, res) => {
                 id: offer.id,
               },
             });
+
+            const social = new SocialPost("TCG4RZ3-W6VM1BN-MSASVC3-1QWB0SX");
+
+            await social
+              .post({
+                post: `${offer.Aname} and ${offer.Bname} are now married in web3! Congratulations! https://marry3.love/i/${offer.AtokenId} #marry3 `,
+                platforms: ["twitter"],
+                mediaUrls: [
+                  "https://ipfs.infura.io/ipfs/" +
+                    offer.imageData.replace("ipfs://", ""),
+                  // "https://ipfs.infura.io/ipfs/" +
+                  //   offer.imageDataB.replace("ipfs://", ""),
+                ],
+              })
+              .catch(console.error);
           }
 
           const result = {
