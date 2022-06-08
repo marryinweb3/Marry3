@@ -71,7 +71,7 @@ export const MainBanner = (props: {}) => {
                 Twitter
               </a>
               <a
-                href="https://discord.gg/eAN9TaAaSq"
+                href="https://discord.gg/4f7MnZ5kef"
                 target={"_blank"}
                 className={[styles.social, styles.discord].join(" ")}
               >
