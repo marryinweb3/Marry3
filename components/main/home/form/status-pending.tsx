@@ -354,8 +354,11 @@ export const StatusPending = (props: {}) => {
             }}
             href={
               "https://twitter.com/intent/tweet?text=" +
-              "I just marry in web3 with my lover, and mint Paired Soubound Marry3 Certificate, https://marry3.love/i/" +
-              marryStore.pendingOffer.AtokenId
+              encodeURIComponent(
+                "I just marry in web3 with my lover, and mint Paired Soubound Marry3 Certificate, https://marry3.love/i/" +
+                  marryStore.pendingOffer.AtokenId +
+                  " @marryinweb3 #marry3"
+              )
             }
             target={"_blank"}
           >
