@@ -68,7 +68,7 @@ export default function Offer(props) {
       dataIndex: "action",
       key: "action",
       render: (_, record) => {
-        return <Tag color={"#F41870"}>结婚</Tag>;
+        return <Tag color={"#F41870"}>Married</Tag>;
       },
     },
     {
