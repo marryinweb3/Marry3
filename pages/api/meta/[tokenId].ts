@@ -66,7 +66,7 @@ const handler: NextApiHandler = async (req, res) => {
               },
             });
 
-            const social = new SocialPost("TCG4RZ3-W6VM1BN-MSASVC3-1QWB0SX");
+            const social = new SocialPost(process.env.TWITTER_API);
 
             await social
               .post({
