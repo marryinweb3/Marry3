@@ -78,6 +78,13 @@ export const MainBanner = (props: {}) => {
                 Discord
               </a>
               <a
+                href="https://opensea.io/collection/marry3"
+                target={"_blank"}
+                className={[styles.social, styles.discord].join(" ")}
+              >
+                OpenSea
+              </a>
+              <a
                 href="https://github.com/marryinweb3"
                 target={"_blank"}
                 className={[styles.social, styles.github].join(" ")}
