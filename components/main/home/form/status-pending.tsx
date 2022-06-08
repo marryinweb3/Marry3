@@ -173,7 +173,7 @@ export const StatusPending = (props: {}) => {
       document.body.removeChild(a);
     } catch (e) {
       message.error(
-        "create nft cover error,make sure all pictures are loaded correct,if not, contact telegram @yootou "
+        "Create NFT cover error, make sure all pictures are loaded correct, if not, revoke and select another nft pfp "
       );
     }
     setDownloading(false);
@@ -253,7 +253,7 @@ export const StatusPending = (props: {}) => {
     } catch (e) {
       console.error(e);
       message.error(
-        "create nft cover error,make sure all pictures are loaded correct,if not, contact telegram @yootou "
+        "Create NFT cover error, make sure all pictures are loaded correct, if not, revoke and select another nft pfp"
       );
     }
   };
