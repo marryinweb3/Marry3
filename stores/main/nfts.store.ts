@@ -93,10 +93,19 @@ export class NFTStore implements IStore {
     if (metajson) {
       try {
         const json = JSON.parse(metajson);
-        json.image = json.image.replace(
-          "ipfs://",
-          "https://ipfs.infura.io/ipfs/"
-        );
+
+        if (json.image) {
+          json.image = json.image.replace(
+            "ipfs://",
+            "https://ipfs.infura.io/ipfs/"
+          );
+        }
+        if (json.image_url) {
+          json.image = json.image_url.replace(
+            "ipfs://",
+            "https://ipfs.infura.io/ipfs/"
+          );
+        }
         nft.metadata = json;
       } catch (e) {}
     }
