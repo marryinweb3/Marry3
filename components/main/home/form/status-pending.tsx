@@ -251,6 +251,7 @@ export const StatusPending = (props: {}) => {
       }
       setMinting(false);
     } catch (e) {
+      console.error(e);
       message.error(
         "create nft cover error,make sure all pictures are loaded correct"
       );

@@ -17,11 +17,11 @@ export const NFT = (props: {
     : `url(${window.location.origin}/bg/1.png)`;
 
   const coverA = props.offer?.Acover
-    ? `/api/proxy?url=${encodeURIComponent(props.offer?.Acover)}`
+    ? props.offer?.Acover // `/api/proxy?url=${encodeURIComponent(props.offer?.Acover)}`
     : "/heart-cover.png";
 
   const coverB = props.offer?.Bcover
-    ? `/api/proxy?url=${encodeURIComponent(props.offer?.Bcover)}`
+    ? props.offer?.Bcover //`/api/proxy?url=${encodeURIComponent(props.offer?.Bcover)}`
     : "/heart-cover.png";
   useEffect(() => {
     const css = document.createElement("style");
@@ -57,6 +57,7 @@ export const NFT = (props: {
           borderTopRightRadius: "50%",
           zIndex: 20,
         }}
+        crossOrigin="anonymous"
         src={props.isA ? coverA : coverB}
       />
       <img
@@ -72,6 +73,7 @@ export const NFT = (props: {
           borderBottomRightRadius: "50%",
           zIndex: 20,
         }}
+        crossOrigin="anonymous"
         src={props.isA ? coverB : coverA}
       />
 
