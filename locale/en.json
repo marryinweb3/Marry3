@@ -49,7 +49,7 @@
   "partner name": "Partner name",
   "partner sex": "Partner sex",
   "your address": "Your ens or nick",
-  "your name": "Your Name",
+  "your name": ".eth/.bit or nick",
   "your sex": "Your Sex",
   "一个人可以 mint 几个 Marry3 Certificate？": "How many Marry3 Certificates can a person mint?",
   "一个地址在同一时间只能与另外一个地址 mint 出两个 Certificate，在此期间不可与其他地址再 mint。": "An address can only mint two certificates with another address at the same time, and cannot mint with other addresses during this period.",

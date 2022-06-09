@@ -122,7 +122,6 @@ export class MarryStore implements IStore {
     }
     if (body.Aname?.indexOf(".eth") != -1) {
       const ens = await walletStore.getENS(this.info.Aaddress);
-      console.log(ens);
       if (body.Aname?.toLowerCase() != ens?.toLowerCase()) {
         message.error(
           ".eth ens name must be yourself, you can input no .eth name"

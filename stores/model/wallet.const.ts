@@ -11,4 +11,5 @@ export interface IWallet {
   rewardTaxFee?: number;
   bnbhBalance?: BigNumber;
   bnbhBalanceFormated?: string;
+  bit?: string;
 }

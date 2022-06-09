@@ -52,7 +52,7 @@
   "partner name": "对方名字",
   "partner sex": "对方性别",
   "your address": "钱包地址",
-  "your name": "ENS或昵称",
+  "your name": "ENS/Bit/昵称",
   "your sex": "你的性别",
   "一个人可以 mint 几个 Marry3 Certificate？": "",
   "一个地址在同一时间只能与另外一个地址 mint 出两个 Certificate，在此期间不可与其他地址再 mint。": "",

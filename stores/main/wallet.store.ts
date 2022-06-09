@@ -5,6 +5,7 @@ import { BigNumber, ethers } from "ethers";
 import wallet from "../../contracts/wallet";
 import { message } from "antd";
 import { EventEmitter } from "eventemitter3";
+import Das from "das-sdk";
 const bus = new EventEmitter();
 export class WalletStore implements IStore {
   type = StoreType.web3modal;
@@ -51,6 +52,9 @@ export class WalletStore implements IStore {
         try {
           var ens = await this.getENS(account);
           walletInfo.ens = ens;
+
+          var bit = await this.getBit(account);
+          walletInfo.bit = bit;
         } catch (e) {
           console.log("e", e);
         }
@@ -114,5 +118,25 @@ export class WalletStore implements IStore {
       console.log("e", e);
     }
     return "";
+  }
+
+  async getBit(address: string): Promise<string> {
+    try {
+      const das = new Das({
+        url: "https://indexer-basic.did.id",
+      });
+      const account = await das.reverseRecord({
+        type: "blockchain",
+        key_info: {
+          coin_type: "60",
+          chain_id: "1",
+          key: address,
+        },
+      });
+      console.log("getbit", account);
+      return account;
+    } catch (e) {
+      return "";
+    }
   }
 }

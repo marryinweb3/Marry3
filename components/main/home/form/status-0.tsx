@@ -1,21 +1,39 @@
 import { t } from "@lingui/macro";
 import { Trans } from "@lingui/react";
-import { Button, Collapse, Form, Input, message, Select, Tooltip } from "antd";
-import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Collapse,
+  Dropdown,
+  Form,
+  Input,
+  Menu,
+  message,
+  Select,
+  Space,
+  Tooltip,
+} from "antd";
+import {
+  QuestionCircleOutlined,
+  LockOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
 import { useObserver } from "mobx-react";
 import wallet from "../../../../contracts/wallet";
 import styles from "./../../../../pages/home/home.module.less";
 import useStore from "../../../../stores/useStore";
 import { MarryStore } from "../../../../stores/main/marry.store";
 import { NFTStore } from "../../../../stores/main/nfts.store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { messages } from "../../../../locale/en";
+import { WalletStore } from "../../../../stores/main/wallet.store";
+import { ItemType } from "antd/lib/menu/hooks/useItems";
 
 export const Status0 = (props: {}) => {
   const formItemLayout = {
     wrapperCol: { span: 24 },
   };
   const marryStore = useStore(MarryStore);
+  const walletStore = useStore(WalletStore);
   const nftStore = useStore(NFTStore);
   const [submiting, setSubmiting] = useState(false);
 
@@ -30,6 +48,47 @@ export const Status0 = (props: {}) => {
 
     setSubmiting(false);
   };
+  const [ensList, setEnsList] = useState<ItemType[]>([]);
+  useEffect(() => {
+    (async () => {
+      const walletInfo = await walletStore.getWalletInfo();
+      const ens = walletInfo.ens;
+      const bit = walletInfo.bit;
+      const items = [];
+      if (ens) {
+        items.push({
+          label: ens,
+          key: ens,
+        });
+      }
+      if (bit) {
+        items.push({
+          label: bit,
+          key: bit,
+        });
+      }
+      setEnsList(items);
+    })();
+  }, []);
+
+  const menu = (
+    <Menu
+      onClick={(e) => {
+        marryStore.info.Aname = e.key;
+      }}
+      items={[
+        {
+          disabled: true,
+          label:
+            ensList.length > 0
+              ? "please choose .eth or .bit"
+              : "no .eth or .bit bind",
+          key: -1,
+        },
+        ...ensList,
+      ]}
+    />
+  );
   return useObserver(() => (
     <Form {...formItemLayout} layout={"vertical"} className={styles.mainForm}>
       <Form.Item
@@ -91,12 +150,17 @@ export const Status0 = (props: {}) => {
         >
           <Input
             value={marryStore.info.Aname}
-            placeholder="will get your ens name auto"
+            placeholder="will get your .eth/.bit name auto"
             onChange={async (e) => {
               marryStore.info.Aname = e.target.value;
             }}
-            style={{ width: "calc(100% - 80px)" }}
+            style={{ width: "calc(100% - 120px)" }}
           />
+          <Dropdown overlay={menu}>
+            <Button style={{ width: "40px" }}>
+              <DownOutlined />
+            </Button>
+          </Dropdown>
           <Select
             value={marryStore.info.Asex}
             onChange={(e) => (marryStore.info.Asex = e)}
