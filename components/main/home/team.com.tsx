@@ -164,16 +164,15 @@ export const Team = (props: {}) => {
                   </svg>
                 </a>
               </div>
-              {/* <div className={styles.partner_item} style={{}}>
+              <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
-                  href="https://metamail.ink/"
+                  href="https://www.did.id/"
                   target={"_blank"}
                 >
-                  <img src="https://metamail.ink/favicon/64x.ico" />
-                  MetaMail.ink
+                  <img src="https://app.did.id/images/explorer/das-logo.png" />
                 </a>
-              </div> */}
+              </div>
               <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
