@@ -137,6 +137,28 @@ export const Team = (props: {}) => {
                   CyberConnect
                 </a>
               </div>
+
+              <div className={styles.partner_item} style={{}}>
+                <a
+                  className={styles.partner_item_link}
+                  href="https://www.did.id/"
+                  target={"_blank"}
+                >
+                  <img src="https://app.did.id/images/explorer/das-logo.png" />
+                </a>
+              </div>
+              <div className={styles.partner_item} style={{}}>
+                <a
+                  className={styles.partner_item_link}
+                  href="https://chainbase.online/"
+                  target={"_blank"}
+                >
+                  <img
+                    src="https://chainbase.online/assets/logo.png"
+                    style={{ height: "15px" }}
+                  />
+                </a>
+              </div>
               <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
@@ -162,15 +184,6 @@ export const Team = (props: {}) => {
                       fill="#4E51F4"
                     ></path>
                   </svg>
-                </a>
-              </div>
-              <div className={styles.partner_item} style={{}}>
-                <a
-                  className={styles.partner_item_link}
-                  href="https://www.did.id/"
-                  target={"_blank"}
-                >
-                  <img src="https://app.did.id/images/explorer/das-logo.png" />
                 </a>
               </div>
               <div className={styles.partner_item} style={{}}>
