@@ -11,8 +11,10 @@ import useStore from "../../stores/useStore";
 import { t } from "@lingui/macro";
 import {
   Button,
+  Dropdown,
   Form,
   Input,
+  Menu,
   message,
   Select,
   Steps,
@@ -21,7 +23,12 @@ import {
 } from "antd";
 import { NFTStore } from "../../stores/main/nfts.store";
 
-import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";
+import {
+  QuestionCircleOutlined,
+  LockOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+import { ItemType } from "antd/lib/menu/hooks/useItems";
 
 export default function Offer(props) {
   const offerStore = useStore(OfferStore);
@@ -31,6 +38,7 @@ export default function Offer(props) {
   const router = useRouter();
   const { id } = router.query;
   const [accepting, setAccepting] = useState(false);
+  const [ensList, setEnsList] = useState<ItemType[]>([]);
 
   useEffect(() => {
     if (id) {
@@ -44,12 +52,47 @@ export default function Offer(props) {
       const walletInfo = await walletStore.getWalletInfo();
       offerStore.form.Baddress = walletInfo.account;
       offerStore.form.Bname = walletInfo.ens;
+
+      const ens = walletInfo.ens;
+      const bit = walletInfo.bit;
+      const items = [];
+      if (ens) {
+        items.push({
+          label: ens,
+          key: ens,
+        });
+      }
+      if (bit) {
+        items.push({
+          label: bit,
+          key: bit,
+        });
+      }
+      setEnsList(items);
     })();
   }, [router.query.id]);
   const formItemLayout = {
     labelCol: { span: 12 },
     wrapperCol: { span: 12 },
   };
+  const menu = (
+    <Menu
+      onClick={(e) => {
+        offerStore.form.Bname = e.key;
+      }}
+      items={[
+        {
+          disabled: true,
+          label:
+            ensList.length > 0
+              ? "please choose .eth or .bit"
+              : "no .eth or .bit bind",
+          key: -1,
+        },
+        ...ensList,
+      ]}
+    />
+  );
   return useObserver(() => {
     return (
       <div className={styles.upgrade}>
@@ -188,8 +231,13 @@ export default function Offer(props) {
                           onChange={async (e) => {
                             offerStore.form.Bname = e.target.value;
                           }}
-                          style={{ width: "calc(100% - 100px)" }}
+                          style={{ width: "calc(100% - 140px)" }}
                         />
+                        <Dropdown overlay={menu}>
+                          <Button style={{ width: "40px" }}>
+                            <DownOutlined />
+                          </Button>
+                        </Dropdown>
                         <Select
                           value={offerStore.form.Bsex}
                           onChange={(e) => (offerStore.form.Bsex = e)}
