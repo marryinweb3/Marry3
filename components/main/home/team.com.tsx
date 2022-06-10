@@ -99,6 +99,17 @@ export const Team = (props: {}) => {
                 </div>
               </div>
             </div>
+            <div className={styles.team_item}>
+              <div className={styles.team_item_img}>
+                <img src={"/chou.jpg"} alt="" />
+              </div>
+              <div className={styles.team_item_info}>
+                <div className={styles.team_item_info_title}>Len Chou</div>
+                <div className={styles.team_item_info_desc}>
+                  <Trans id="Operations Manager" /> <br />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className={[styles.Page_partner, "shake-trigger"].join(" ")}>
