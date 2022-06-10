@@ -1,4 +1,4 @@
-![编组](https://user-images.githubusercontent.com/897401/171214522-65a32bb9-21e8-4a8e-8089-c1c669325391.png)
+![Marshalling](https://user-images.githubusercontent.com/897401/171214522-65a32bb9-21e8-4a8e-8089-c1c669325391.png)
 
 <p align="center">
   <a href="./README_EN.md"><img src="https://img.shields.io/badge/English%20Version%20README-333333?&labelColor=000&style=for-the-badge" />
@@ -6,26 +6,12 @@
 </p>
 
 <p align="center">
-  <a href="https://Marry3.love"><img src="https://img.shields.io/badge/https%3A%2F%2FMarry3.love-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
-  <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://img.shields.io/badge/https%3A%2F%2FERC520.com-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat-square" /></a>
-</p> 
+  <a href="https://Marry3.love"><img src="https://img.shields.io/badge/https%3A%2F%2FMarry3.love-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat -square" /></a>
+  <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://img.shields.io/badge/https%3A%2F%2FERC520.com-F41870?&labelColor =1D1D1D&logo=googlechrome&style=flat-square" /></a>
+</p>
 <p align="center">
-  <a href="https://twitter.com/marryinweb3"><img src="https://img.shields.io/badge/%40marryinweb3-F41870?&labelColor=1D1D1D&logo=twitter&style=flat-square" /></a>
+  <a href="https://twitter.com/marryinweb3"><img src="https://img.shields.io/badge/%40marryinweb3-F41870?&labelColor=1D1D1D&logo=twitter&style=flat-square" /> </a>
 </p>
-
-![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
-
-<p align="left" style="margin:50px 0;">
-    <a href="https://marry3.love"><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height="120"/><a>
-    
-</p>
-
-Marry3 is an on-chain Dapp developed based on the ERC721-520 standard contract. Its core implements:
-
-- ERC721-520 Token, which is an extension of the standard ERC721 token, it has some special features, it is non-transferable, non-sellable, and an address can only have one token at the same time.
-- Marry3 contract and Dapp, which implements the logic of payment and multi-signature verification (analogous to negotiated marriage proposal, negotiated divorce, etc. in the real world).
-
-In the future, he will also add other capabilities, such as basic multi-signature contracts (compatible with multi-signature wallets) and mutual savings contracts. Interested students are welcome to discuss together.
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
@@ -34,16 +20,32 @@ In the future, he will also add other capabilities, such as basic multi-signatur
     
 </p>
 
-ERC721-520 Token is an implementation of NFT-like Soulbound Token Standard (soul bound certificate)
+ERC721-520 Token is an implementation of NFT-like Soulbound Token Standard, which is an extension of ERC721 standard.
 
 - ERC721-520 Tokens are non-transferable and non-sellable, one person can only have one valid Token at the same time
 - After the ERC721-520 Token is negotiated by the two parties through multi-signature, Mint will issue 2 Tokens at one time
 - ERC721-520 Tokens can be destroyed through multi-signature negotiation, and new Tokens can be minted with other addresses after destruction
 
+detail: https://erc721-520.com
+
+![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
+
+<p align="left" style="margin:50px 0;">
+    <a href="https://marry3.love"><img src="https://user-images.githubusercontent.com/897401/171043905-03916966-af42-468c-9fc8-b8a00f09f439.png" height=" 120"/><a>
+    
+</p>
+
+Marry3 is an on-chain Dapp developed based on the ERC721-520 standard contract. Its core implements:
+
+- Marry3 Certificate, based on the ERC721-520 standard, it has some special features, it is non-transferable, non-sellable, and an address can only have one Token at the same time.
+- The Marry3 contract and Dapp implement the logic of payment and multi-signature verification (analogous to negotiated marriage proposal, negotiated divorce, etc. in the real world).
+
+In the future, he will add other abilities, including MarryDAO/LovesDAO/Marry3verse, etc. For details, see: Roadmap
+
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171090175-95158e2e-9ed4-48d6-a4c2-35fdd75a01ec.png" height="40"/>
+      <img src="https://user-images.githubusercontent.com/897401/171090175-95158e2e-9ed4-48d6-a4c2-35fdd75a01ec.png" width="520"/>
 </p>
       
       
@@ -55,18 +57,32 @@ ERC721-520 Token is an implementation of NFT-like Soulbound Token Standard (soul
 
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171209373-8979cbae-f256-4335-9c11-4605737b5add.png" height="40"/>
-</p> 
+</p>
       <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171209437-e8e9ae0e-0653-4c7b-885a-62b036311e15.png" height="400"/>
+      <img src="https://user-images.githubusercontent.com/897401/171209437-e8e9ae0e-0653-4c7b-885a-62b036311e15.png" width="800"/>
 </p>
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 <p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171046502-6da1dbc7-b3c5-46e0-b042-e47637089dde.png" height="40"/>
+      <img src="https://user-images.githubusercontent.com/897401/171557100-13a3e3a6-440d-4d0e-85c7-7346704c0522.png" height="80"/>
 </p>
 
-Marry3 is a social experiment project. His original idea originated from the bottom-level thinking of the 0x address in Web3 as an aboriginal, and his landing idea was based on thinking about some unhealthy status quo of the Web3 ecology.
+Marry3 is a social experiment project. His original idea originated from the bottom-level thinking about the 0x address in Web3 as an aboriginal, and his landing idea was based on thinking about some unhealthy status quo of the Web3 ecology. The answer is a non-tradable, non-transferable, pair-bound no-finance nft, which fits perfectly with the idea of ​​SBTs (soulbound tokens).
+
+![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
+
+<p align="center" style="margin:20px 0;">
+      <img src="https://user-images.githubusercontent.com/897401/171558578-3ba70584-e7c6-47bb-b1f3-49b7584474b2.png" height="40"/>
+</p>
+
+A while ago, after studying V God's speech & paper, we are more certain about the development ideas of soulbound no-finance nft-like token. We believe that the next Web3 application boom will rise because of this point of view.
+
+1. First of all, in the Web3 world, 0x addresses are natives, not "users" or you and me.
+2. When an address is bound to more and more no-finance identity nfts, the no-finance nft and the identity data and social relationship data behind it will become a very vivid expression of the aborigines of the 0x address, making it Personality, credibility, preferences
+3. The cost of forging such an identity will also be higher, especially if there is no profit-driven (no-finance) premise.
+
+A future soulbound no-finance nft-like token could be the key to giving 0x natives a credible personality
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
@@ -89,7 +105,7 @@ Going back to the 0x address natives and the new world of Web3, I will ask mysel
 Thanks to the many foundational elements of Web3 for providing us with the basis for an interesting application of social experimentation.
 
 - Web3 brings the possibility of breaking through the physical limitations of the information society, and now any address and address can form an intimate relationship, regardless of geography, gender, age, race, and even species!
-- At the same time, the blockchain provides a rule guarantee (Code is Law) for this relationship. The relationship is on the chain, cannot be tampered with, cannot be transferred, and is open and transparent.
+- At the same time, the blockchain provides a rule guarantee (Code is Law) for this relationship, the relationship is on the chain, cannot be tampered with, and cannot be transferred,Open and transparent.
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
@@ -119,7 +135,7 @@ So we decided to implement the Marry3 project like this:
 <p align="center" style="margin:20px 0;">
       <img src="https://user-images.githubusercontent.com/897401/171047228-78b4a4aa-2000-4cd4-bfaa-034ff9424f42.png" height="40"/>
 </p>
-The above two points are our reflections on the status quo, and ultimately become our source of inspiration and landing method. This project is a social experimental work. We hope that all users who use the product can experience the concept of 0x aboriginal from the product. , the importance of intimacy, and thinking about the current state of Web3, we are looking forward to seeing rich applications built on this intimate social relationship, and all of our relationship data is open.
+The above two points are our reflections on the current situation, and ultimately become our source of inspiration and implementation method. This project is a social experimental work. We hope that all users who use the product can experience the concept of 0x aboriginal people from the product. , the importance of intimacy, and thinking about the current state of Web3, we are looking forward to seeing rich applications built on this intimate social relationship, and all of our relationship data is open.
 
 In this way, the significance of our development of this project has been achieved, and no matter how it develops in the future, this is its most important social significance.
 
@@ -130,7 +146,7 @@ In this way, the significance of our development of this project has been achiev
 </p>
       
       
-![roadmap](https://user-images.githubusercontent.com/897401/171048224-a594b28b-49d6-4f88-9be5-6a5f6e3a892f.png)
+![roadmap](https://marry3.love/roadmap.png)
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
