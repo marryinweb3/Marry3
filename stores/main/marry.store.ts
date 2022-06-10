@@ -180,6 +180,46 @@ export class MarryStore implements IStore {
   }
 
   async getMintInfo() {
+    const r = await fetch(
+      "https://api.chainbase.online/v1/account/balance?chain_id=1&address=" +
+        web3Config.address.marry3,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": web3Config.chainbase_key,
+        },
+      }
+    );
+
+    const json = await r.json();
+
+    if (json.data) {
+      this.ethBalance = BigNumber.from(json.data);
+      this.ethBalanceFormated = Number(
+        Number(utils.formatEther(this.ethBalance)).toFixed(2)
+      ).toLocaleString();
+    }
+    console.log("ethBalanceFormated", this.ethBalanceFormated);
+    const r2 = await fetch(
+      "https://api.chainbase.online/v1/token/metadata?chain_id=1&contract_address=" +
+        web3Config.address.marry3,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": web3Config.chainbase_key,
+        },
+      }
+    );
+    const json2 = await r2.json();
+
+    if (json2.data?.total_supply) {
+      const mintCount = BigNumber.from(json2.data.total_supply);
+      this.marryCount = Math.floor(mintCount.toNumber() / 2);
+
+      console.log("mintCount", this.marryCount);
+    }
     const walletInfo = await walletStore.getWalletInfo();
     await this.getMerkle();
     const mintPrice = await Marry3Contract().getPriceByProof(this.proof);
@@ -187,20 +227,15 @@ export class MarryStore implements IStore {
     this.marryPriceFormated = utils.formatEther(mintPrice);
     console.log("mintPrice", this.marryPriceFormated);
 
-    const mintCount = await Marry3Contract().totalSupply();
-    this.marryCount = Math.floor(mintCount.toNumber() / 2);
+    // const ethBalance = await (
+    //   await wallet.getEthProvider()
+    // ).getBalance(Marry3Contract().address);
 
-    console.log("mintCount", this.marryCount);
-
-    const ethBalance = await (
-      await wallet.getEthProvider()
-    ).getBalance(Marry3Contract().address);
-
-    this.ethBalance = ethBalance;
-    this.ethBalanceFormated = Number(
-      Number(utils.formatEther(ethBalance)).toFixed(2)
-    ).toLocaleString();
-    console.log("ethBalance", ethBalance);
+    // this.ethBalance = ethBalance;
+    // this.ethBalanceFormated = Number(
+    //   Number(utils.formatEther(ethBalance)).toFixed(2)
+    // ).toLocaleString();
+    // console.log("ethBalance", ethBalance);
   }
 
   async getOffer() {
