@@ -64,13 +64,13 @@ In the future, he will add other abilities, including MarryDAO/LovesDAO/Marry3ve
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-### express
+### Express
 
 Marry3 is a social experiment project. His original idea originated from the bottom-level thinking about the 0x address in Web3 as an aboriginal, and his landing idea was based on thinking about some unhealthy status quo of the Web3 ecology. The answer is a non-tradable, non-transferable, pair-bound no-finance nft, which fits perfectly with the idea of ​​SBTs (soulbound tokens).
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-### soulbound token
+### Soulbound Tokens
 
 A while ago, after studying V God's speech & paper, we are more certain about the development ideas of soulbound no-finance nft-like token. We believe that the next Web3 application boom will rise because of this point of view.
 
@@ -103,7 +103,7 @@ Thanks to the many foundational elements of Web3 for providing us with the basis
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-### less healthy ecology
+### No Healthy Ecology
 
 After entering the Web3 world, I often reflect on the Web3 world I see in my eyes. I firmly believe in the underlying ideas of Web3, and I am willing to believe in his ideals and beliefs, but in reality, what I see more is the ubiquitous bubbles and monotony. ecology.
 
