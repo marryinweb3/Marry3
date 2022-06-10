@@ -64,17 +64,13 @@ In the future, he will add other abilities, including MarryDAO/LovesDAO/Marry3ve
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-<p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171557100-13a3e3a6-440d-4d0e-85c7-7346704c0522.png" height="80"/>
-</p>
+#### express
 
 Marry3 is a social experiment project. His original idea originated from the bottom-level thinking about the 0x address in Web3 as an aboriginal, and his landing idea was based on thinking about some unhealthy status quo of the Web3 ecology. The answer is a non-tradable, non-transferable, pair-bound no-finance nft, which fits perfectly with the idea of ​​SBTs (soulbound tokens).
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-<p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171558578-3ba70584-e7c6-47bb-b1f3-49b7584474b2.png" height="40"/>
-</p>
+#### soulbound token
 
 A while ago, after studying V God's speech & paper, we are more certain about the development ideas of soulbound no-finance nft-like token. We believe that the next Web3 application boom will rise because of this point of view.
 
@@ -86,9 +82,7 @@ A future soulbound no-finance nft-like token could be the key to giving 0x nativ
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-<p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171046821-7458b3ea-6ea7-43fb-aa5f-a709b836eb06.png" height="40"/>
-</p>
+#### 0x address
 
 The 0x address is the aboriginal in Web3, and all behaviors and data on the chain depend on it.
 
@@ -109,9 +103,7 @@ Thanks to the many foundational elements of Web3 for providing us with the basis
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-<p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171047043-679b8c54-9f99-46e9-864b-a00a9591c8a0.png" height="40"/>
-</p>
+#### less healthy ecology
 
 After entering the Web3 world, I often reflect on the Web3 world I see in my eyes. I firmly believe in the underlying ideas of Web3, and I am willing to believe in his ideals and beliefs, but in reality, what I see more is the ubiquitous bubbles and monotony. ecology.
 
@@ -132,9 +124,8 @@ So we decided to implement the Marry3 project like this:
 
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
-<p align="center" style="margin:20px 0;">
-      <img src="https://user-images.githubusercontent.com/897401/171047228-78b4a4aa-2000-4cd4-bfaa-034ff9424f42.png" height="40"/>
-</p>
+#### Social Significance
+      
 The above two points are our reflections on the current situation, and ultimately become our source of inspiration and implementation method. This project is a social experimental work. We hope that all users who use the product can experience the concept of 0x aboriginal people from the product. , the importance of intimacy, and thinking about the current state of Web3, we are looking forward to seeing rich applications built on this intimate social relationship, and all of our relationship data is open.
 
 In this way, the significance of our development of this project has been achieved, and no matter how it develops in the future, this is its most important social significance.
