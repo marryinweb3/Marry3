@@ -21,6 +21,7 @@ import { Status0 } from "../../components/main/home/form/status-0";
 import { StatusPending } from "../../components/main/home/form/status-pending";
 import { FormDesc } from "../../components/main/home/form/desc";
 import { FormPage } from "../../components/main/home/form.com";
+import { GAS } from "../../components/main/home/gas";
 // import "../../public/mo.umd.js";
 
 export default function Upgrade(props) {
@@ -40,6 +41,8 @@ export default function Upgrade(props) {
       await marryStore.getOffer();
       loading();
     })();
+
+    setInterval(marryStore.getNowGas, 10000);
   }, []);
 
   return useObserver(() => {
@@ -48,6 +51,7 @@ export default function Upgrade(props) {
         <div className={styles.content}>
           <MainBanner />
           <FormPage />
+          <GAS />
           <Project />
           <RoadMap />
           <QA />

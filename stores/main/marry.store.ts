@@ -8,6 +8,8 @@ import { IStore, StoreType } from "../store.interface";
 import useStore from "../useStore";
 import { WalletStore } from "./wallet.store";
 import { v4 as uuidv4 } from "uuid";
+import qs from "qs";
+import moment from "moment";
 const walletStore = useStore(WalletStore);
 
 // 基地
@@ -53,6 +55,11 @@ export class MarryStore implements IStore {
   pendingOffer: Offers = {};
 
   proof: string[] = [];
+
+  lastdayGases: any[] = [];
+  todayGases: any[] = [];
+
+  nowGas = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -179,7 +186,29 @@ export class MarryStore implements IStore {
     }
   }
 
+  async getNowGas() {
+    const r3 = await fetch(
+      "https://app.defisaver.com/api/gas-price/1559/current",
+
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const json3 = await r3.json();
+    if (
+      json3.blockPrices &&
+      json3.blockPrices.length &&
+      json3.blockPrices[0].baseFeePerGas
+    ) {
+      this.nowGas = Math.floor(json3.blockPrices[0].baseFeePerGas);
+    }
+  }
   async getMintInfo() {
+    this.getNowGas();
     const r = await fetch(
       "https://api.chainbase.online/v1/account/balance?chain_id=1&address=" +
         web3Config.address.marry3,
@@ -220,6 +249,48 @@ export class MarryStore implements IStore {
 
       console.log("mintCount", this.marryCount);
     }
+
+    const r3 = await fetch(
+      "https://app.defisaver.com/api/gas-price/1559/history?days=2",
+
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const json3 = await r3.json();
+    console.log("fas", json3);
+
+    if (json3 && json3.history) {
+      const lastDayStart = moment().subtract(1, "days").startOf("day");
+      const lastDayEnd = moment().subtract(1, "days").endOf("day");
+      const todayStart = moment().startOf("day");
+      const todayEnd = moment().endOf("day");
+      const lastDayGases = [];
+      const todayGases = [];
+      json3.history.forEach((item) => {
+        const t = item[0];
+        const gas = item[1];
+        if (t > lastDayStart && t < lastDayEnd) {
+          lastDayGases.push({
+            t: t,
+            v: gas,
+          });
+        }
+        if (t > todayStart && t < todayEnd) {
+          todayGases.push({
+            t: t,
+            v: gas,
+          });
+        }
+      });
+      this.lastdayGases = lastDayGases;
+      this.todayGases = todayGases;
+    }
+
     const walletInfo = await walletStore.getWalletInfo();
     await this.getMerkle();
     const mintPrice = await Marry3Contract().getPriceByProof(this.proof);

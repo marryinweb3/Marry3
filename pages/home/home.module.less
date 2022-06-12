@@ -763,3 +763,36 @@
     color: #361041;
   }
 }
+.Page_gas {
+  height: 110px;
+  background-color: #fff6f6;
+}
+@keyframes scrollx {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: -900px;
+  }
+}
+.gas_anim {
+  height: 22px;
+  background: rgba(54, 16, 65, 0.6);
+  color: #fff;
+  font-weight: bold;
+  overflow: hidden;
+  .gas_anim_inner {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 4500px;
+    animation: scrollx 10s linear infinite;
+  }
+
+  .gas_anim_item {
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 22px;
+    width: 300px;
+    font-style: italic;
+  }
+}

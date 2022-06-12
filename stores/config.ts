@@ -20,6 +20,7 @@ const config = {
   scan: "https://rinkeby.etherscan.io/address/",
   opensea: "https://testnets.opensea.io/assets/rinkeby/",
   chainbase_key: "2ANDzY2fVrENXwUSGjyI20vaFKR",
+  gas_key: "ccbd870d826f4bed8bccbe90f09cd679",
 };
 
 const config_local = {
@@ -66,6 +67,7 @@ const config_online = {
   scan: "https://etherscan.io/address/",
   opensea: "https://opensea.io/assets/ethereum/",
   chainbase_key: "2ANDzY2fVrENXwUSGjyI20vaFKR",
+  gas_key: "ccbd870d826f4bed8bccbe90f09cd679",
 };
 
 const isOnline = String(process.env.NEXT_PUBLIC_ISONLINE);
