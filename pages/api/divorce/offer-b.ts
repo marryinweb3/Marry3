@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
 import { ethers } from "ethers";
 import { NextApiHandler } from "next";
-import { prisma } from "../../lib/prisma";
-import { verifyMarried } from "../../lib/verify";
+import { prisma } from "../../../lib/prisma";
+import { checkPair, verifyMarried } from "../../../lib/verify";
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
@@ -33,37 +33,14 @@ const handler: NextApiHandler = async (req, res) => {
         Baddress: req.body.address.toLowerCase(),
         Bsignature: req.body.signature,
         status: 1,
-        Bname: req.body.Bname,
-        Bsex: req.body.Bsex,
-        Bcomment: req.body.Bcomment,
-        Bcover: req.body.Bcover,
       };
-      if (!data.Bcover?.startsWith("http")) {
-        data.Bcover = "";
-      }
-      if (!data.Bname) {
-        return res.status(400).json({
-          message: "name empty",
-        });
-      }
-      if (data.Bsex === null || data.Bsex === undefined) {
-        return res.status(400).json({
-          message: "sex empty",
-        });
-      }
-      const marriedB = await verifyMarried(data.Baddress);
 
-      if (marriedB) {
-        return res.status(400).json({
-          message: "you have married",
-        });
-      }
       // check
       const result = await prisma.offers.findFirst({
         where: {
           id: data.id,
           status: 0,
-          type: 0,
+          type: 1,
         },
       });
       if (!result) {
@@ -76,6 +53,20 @@ const handler: NextApiHandler = async (req, res) => {
           message: "Aaddress and Baddress is same",
         });
       }
+      try {
+        const isPair = await checkPair(result.Aaddress, data.Baddress);
+
+        if (!isPair) {
+          return res.status(400).json({
+            message: "you have not paired",
+          });
+        }
+      } catch (e) {
+        return res.status(400).json({
+          message: "you have not paired",
+        });
+      }
+
       // update offer
       const offer = await prisma.offers.update({
         data: data,

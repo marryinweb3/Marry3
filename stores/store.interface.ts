@@ -3,6 +3,7 @@ export enum StoreType {
   marry = "marry",
   nft = "nft",
   offer = "offer",
+  devorce = "devorce",
   web3modal = "web3modal",
 }
 export interface IStore {

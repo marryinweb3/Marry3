@@ -40,6 +40,7 @@ const handler: NextApiHandler = async (req, res) => {
             status: {
               not: -1,
             },
+            type: 0,
           },
           orderBy: {
             createdAt: "desc",

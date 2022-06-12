@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
 import { ethers } from "ethers";
 import { NextApiHandler } from "next";
-import { prisma } from "../../lib/prisma";
-import { verifyMarried } from "../../lib/verify";
+import { prisma } from "../../../lib/prisma";
+import { verifyMarried } from "../../../lib/verify";
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
@@ -29,33 +29,17 @@ const handler: NextApiHandler = async (req, res) => {
           message: "error signature",
         });
       }
+
       const data = {
         Aaddress: req.body.Aaddress.toLowerCase(),
-        Asex: req.body.Asex,
-        Aname: req.body.Aname,
         Asignature: req.body.signature,
-        Acomment: req.body.Acomment,
-        Acover: req.body.Acover,
-        bgIndex: Math.floor(Math.random() * 9) + 1,
+        type: 1,
       };
-      if (!data.Acover?.startsWith("http")) {
-        data.Acover = "";
-      }
-      if (!data.Aname) {
-        return res.status(400).json({
-          message: "name empty",
-        });
-      }
-      if (data.Asex === null || data.Asex === undefined) {
-        return res.status(400).json({
-          message: "sex empty",
-        });
-      }
       const married = await verifyMarried(data.Aaddress);
 
-      if (married) {
+      if (!married) {
         return res.status(400).json({
-          message: "you have married",
+          message: "you have not married",
         });
       }
 
@@ -66,7 +50,7 @@ const handler: NextApiHandler = async (req, res) => {
           status: {
             not: -1,
           },
-          type: 0,
+          type: 1,
         },
         orderBy: {
           createdAt: "desc",

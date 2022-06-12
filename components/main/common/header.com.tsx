@@ -80,22 +80,16 @@ export const Header = (props: {
         className={styles.navs}
         style={{ display: props.hideAll ? "none" : "" }}
       >
-        {!props.hideIndex ? (
-          <span>
-            <a href="#about" title={t`关于项目`}>
-              <Trans id="关于项目" />
-            </a>
-            <a href="#qa" title={t`问与答`}>
-              <Trans id="问与答" />
-            </a>
-            <a href="#team" title={t`团队`}>
-              <Trans id="团队" />
-            </a>
-            <a href="" title={t`离婚`}>
-              <Trans id="解除（即将上线）" />
-            </a>
-          </span>
-        ) : null}
+        <span>
+          <a href="/" title={t`结婚`}>
+            <Trans id="建立关系" />
+          </a>
+        </span>
+        <span>
+          <a href="/divorce" title={t`离婚`}>
+            <Trans id="解除关系" />
+          </a>
+        </span>
 
         <a href="/explore" title={t`已婚列表`} target={"_blank"}>
           <Trans id="档案室" />

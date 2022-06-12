@@ -1,9 +1,9 @@
 import { Prisma } from "@prisma/client";
 import { ethers } from "ethers";
 import { NextApiHandler } from "next";
-import { prisma } from "../../lib/prisma";
-import uploadToIPFS from "../../lib/upload";
-import { verifyMarried } from "../../lib/verify";
+import { prisma } from "../../../lib/prisma";
+import uploadToIPFS from "../../../lib/upload";
+import { verifyMarried } from "../../../lib/verify";
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
@@ -28,8 +28,6 @@ const handler: NextApiHandler = async (req, res) => {
       const offer = await prisma.offers.findFirst({
         where: {
           id,
-          status: 1,
-          type: 0,
         },
       });
       if (!offer) {
@@ -39,14 +37,6 @@ const handler: NextApiHandler = async (req, res) => {
       } else {
         if (verfiyAddress) {
           if (offer.Aaddress === verfiyAddress.toLowerCase()) {
-            await prisma.offers.update({
-              where: {
-                id,
-              },
-              data: {
-                status: -1,
-              },
-            });
             return res.status(200).json(offer);
           }
         }

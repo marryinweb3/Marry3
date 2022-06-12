@@ -22,6 +22,15 @@ export const verifyMarried = async function (address: string) {
   }
 };
 
+export const checkPair = async function (addressA: string, addressB: string) {
+  // try {
+  const result = await marry3TokenContract.check(addressA, addressB);
+  return result;
+  // } catch (e) {
+  //   return false;
+  // }
+};
+
 export const getTokenPairInfo = async function (tokenId: string) {
   try {
     const address = await marry3TokenContract.ownerOf(Number(tokenId));

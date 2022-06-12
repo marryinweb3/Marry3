@@ -40,9 +40,9 @@ export class MarryStore implements IStore {
   type = StoreType.marry;
 
   marryPrice: BigNumber;
+  marryPriceFormated: string = "0.00";
   ethBalance: BigNumber;
   ethBalanceFormated: string = "0.00";
-  marryPriceFormated: string = "0.00";
 
   marryCount = 0;
 

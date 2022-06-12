@@ -11,6 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
       const offer = await prisma.offers.findFirst({
         where: {
           OR: [{ AtokenId: id }, { BtokenId: id }],
+          type: 0,
         },
         orderBy: {
           createdAt: "desc",

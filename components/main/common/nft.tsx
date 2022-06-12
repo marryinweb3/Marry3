@@ -128,8 +128,8 @@ export const NFT = (props: {
             y2="1000%"
             gradientUnits="objectBoundingBox"
           >
-            <stop offset="0" stop-color="#ffd2d2" stop-opacity="0.66" />
-            <stop offset="1" stop-color="#ffd2d2" stop-opacity="0.32" />
+            <stop offset="0" stopColor="#ffd2d2" stopOpacity="0.66" />
+            <stop offset="1" stopColor="#ffd2d2" stopOpacity="0.32" />
           </linearGradient>
           <filter
             id="filter_13"
@@ -138,9 +138,9 @@ export const NFT = (props: {
             width="1260"
             height="1140"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feGaussianBlur
               in="BackgroundImage"
               stdDeviation="60"
@@ -165,9 +165,9 @@ export const NFT = (props: {
             width="596"
             height="108"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -198,9 +198,9 @@ export const NFT = (props: {
             width="584"
             height="108"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -277,7 +277,7 @@ export const NFT = (props: {
           <g mask="url(#bg-mask-0)">
             <path
               id="Rectangle"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               style={{ fill: "url(#pattern0)" }}
               transform="translate(0 0)  rotate(-360 540 540)"
               opacity="1"
@@ -292,7 +292,7 @@ export const NFT = (props: {
               >
                 <path
                   id="Bg shape"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   fill="url(#linear_0)"
                   transform="translate(30 30)  rotate(0 510 450)"
                   opacity="1"
@@ -306,11 +306,11 @@ export const NFT = (props: {
                       <tspan
                         x="0"
                         y="24"
-                        font-size="24"
+                        fontSize="24"
                         line-height="0"
                         fill="#361041"
                         opacity="1"
-                        letter-spacing="0"
+                        letterSpacing="0"
                       >
                         Blockchain
                       </tspan>
@@ -321,12 +321,12 @@ export const NFT = (props: {
                       <tspan
                         x="0"
                         y="23"
-                        font-size="24"
+                        fontSize="24"
                         line-height="0"
                         fill="#EDEDED"
                         opacity="1"
-                        font-family="Inter-SemiBold"
-                        letter-spacing="0"
+                        fontFamily="Inter-SemiBold"
+                        letterSpacing="0"
                       >
                         •
                       </tspan>
@@ -337,11 +337,11 @@ export const NFT = (props: {
                       <tspan
                         x="0"
                         y="24"
-                        font-size="24"
+                        fontSize="24"
                         line-height="0"
                         fill="#361041"
                         opacity="1"
-                        letter-spacing="0"
+                        letterSpacing="0"
                       >
                         Ethereum
                       </tspan>
@@ -355,11 +355,11 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="24"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          letter-spacing="0"
+                          letterSpacing="0"
                         >
                           Protocol
                         </tspan>
@@ -373,12 +373,12 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="23"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#EDEDED"
                           opacity="1"
-                          font-family="Inter-SemiBold"
-                          letter-spacing="0"
+                          fontFamily="Inter-SemiBold"
+                          letterSpacing="0"
                         >
                           •
                         </tspan>
@@ -392,11 +392,11 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="24"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          letter-spacing="0"
+                          letterSpacing="0"
                         >
                           ERC721-520
                         </tspan>
@@ -411,11 +411,11 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="24"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          letter-spacing="0"
+                          letterSpacing="0"
                         >
                           Datetime
                         </tspan>
@@ -429,12 +429,12 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="23"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#EDEDED"
                           opacity="1"
-                          font-family="Inter-SemiBold"
-                          letter-spacing="0"
+                          fontFamily="Inter-SemiBold"
+                          letterSpacing="0"
                         >
                           •
                         </tspan>
@@ -448,11 +448,11 @@ export const NFT = (props: {
                         <tspan
                           x="0"
                           y="24"
-                          font-size="24"
+                          fontSize="24"
                           line-height="0"
                           fill="#361041"
                           opacity="1"
-                          letter-spacing="0"
+                          letterSpacing="0"
                         >
                           {props.offer?.mintedAt
                             ? moment(props.offer?.mintedAt).format("YYYY-MM-DD")
@@ -473,11 +473,11 @@ export const NFT = (props: {
                           <tspan
                             x="0"
                             y="24"
-                            font-size="24"
+                            fontSize="24"
                             line-height="0"
                             fill="#361041"
                             opacity="1"
-                            letter-spacing="0"
+                            letterSpacing="0"
                           >
                             TokenID
                           </tspan>
@@ -491,12 +491,12 @@ export const NFT = (props: {
                           <tspan
                             x="0"
                             y="23"
-                            font-size="24"
+                            fontSize="24"
                             line-height="0"
                             fill="#EDEDED"
                             opacity="1"
-                            font-family="Inter-SemiBold"
-                            letter-spacing="0"
+                            fontFamily="Inter-SemiBold"
+                            letterSpacing="0"
                           >
                             •
                           </tspan>
@@ -510,11 +510,11 @@ export const NFT = (props: {
                           <tspan
                             x="0"
                             y="24"
-                            font-size="24"
+                            fontSize="24"
                             line-height="0"
                             fill="#361041"
                             opacity="1"
-                            letter-spacing="0"
+                            letterSpacing="0"
                           >
                             #
                             {props.isA
@@ -533,11 +533,11 @@ export const NFT = (props: {
                     <tspan
                       x="0"
                       y="80"
-                      font-size="80"
+                      fontSize="80"
                       line-height="0"
                       fill="#361041"
                       opacity="1"
-                      letter-spacing="0"
+                      letterSpacing="0"
                     >
                       {props.isA ? props.offer?.Aname : props.offer?.Bname}
                     </tspan>
@@ -552,11 +552,11 @@ export const NFT = (props: {
                   <tspan
                     x="0"
                     y="96"
-                    font-size="96"
+                    fontSize="96"
                     line-height="0"
                     fill="#DDDDDD"
                     opacity="1"
-                    letter-spacing="0"
+                    letterSpacing="0"
                   >
                     &amp;
                   </tspan>
@@ -568,11 +568,11 @@ export const NFT = (props: {
                     <tspan
                       x="0"
                       y="80"
-                      font-size="80"
+                      fontSize="80"
                       line-height="0"
                       fill="#361041"
                       opacity="1"
-                      letter-spacing="0"
+                      letterSpacing="0"
                     >
                       {props.isA ? props.offer?.Bname : props.offer?.Aname}
                     </tspan>
@@ -581,7 +581,7 @@ export const NFT = (props: {
               </g>
               <path
                 id="Rectangle 242"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 style={{ fill: "url(#pattern1)" }}
                 transform="translate(90 340)  rotate(0 125 125)"
                 opacity="1"
@@ -589,7 +589,7 @@ export const NFT = (props: {
               />
               <path
                 id="Rectangle 243"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 style={{ fill: "url(#pattern2)" }}
                 transform="translate(90 90)  rotate(0 125 125)"
                 opacity="1"
@@ -604,12 +604,12 @@ export const NFT = (props: {
                 <tspan
                   x="0"
                   y="23"
-                  font-size="24"
+                  fontSize="24"
                   line-height="0"
                   fill="#EDEDED"
                   opacity="1"
-                  font-family="Inter-SemiBold"
-                  letter-spacing="9.84"
+                  fontFamily="Inter-SemiBold"
+                  letterSpacing="9.84"
                 >
                   {props.isA
                     ? props.offer?.Aaddress?.toUpperCase()
@@ -625,12 +625,12 @@ export const NFT = (props: {
                 <tspan
                   x="0"
                   y="23"
-                  font-size="24"
+                  fontSize="24"
                   line-height="0"
                   fill="#EDEDED"
                   opacity="1"
-                  font-family="Inter-SemiBold"
-                  letter-spacing="9.84"
+                  fontFamily="Inter-SemiBold"
+                  letterSpacing="9.84"
                 >
                   {props.isA
                     ? props.offer?.Baddress?.toUpperCase()
@@ -646,12 +646,12 @@ export const NFT = (props: {
                 <tspan
                   x="0"
                   y="23"
-                  font-size="24"
+                  fontSize="24"
                   line-height="0"
                   fill="#EDEDED"
                   opacity="1"
-                  font-family="Inter-SemiBold"
-                  letter-spacing="9.84"
+                  fontFamily="Inter-SemiBold"
+                  letterSpacing="9.84"
                 >
                   {props.isA
                     ? props.offer?.Baddress?.toUpperCase()
@@ -664,12 +664,12 @@ export const NFT = (props: {
                 <tspan
                   x="0"
                   y="23"
-                  font-size="24"
+                  fontSize="24"
                   line-height="0"
                   fill="#EDEDED"
                   opacity="1"
-                  font-family="Inter-SemiBold"
-                  letter-spacing="9.84"
+                  fontFamily="Inter-SemiBold"
+                  letterSpacing="9.84"
                 >
                   {props.isA
                     ? props.offer?.Aaddress?.toUpperCase()
