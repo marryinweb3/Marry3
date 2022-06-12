@@ -35,7 +35,6 @@ export const GAS = (props: {}) => {
       tooltip: {
         trigger: "axis",
         backgroundColor: "#1A161C",
-        alwaysShowContent: true,
         formatter: (d) => {
           const lastday = d[0];
           return `<div style="display:flex;align-items:center;color:#fff;">
