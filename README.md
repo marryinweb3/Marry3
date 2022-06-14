@@ -1,11 +1,6 @@
 ![Marshalling](https://user-images.githubusercontent.com/897401/171214522-65a32bb9-21e8-4a8e-8089-c1c669325391.png)
 
 <p align="center">
-  <a href="./README_EN.md"><img src="https://img.shields.io/badge/English%20Version%20README-333333?&labelColor=000&style=for-the-badge" />
-    </a>
-</p>
-
-<p align="center">
   <a href="https://Marry3.love"><img src="https://img.shields.io/badge/https%3A%2F%2FMarry3.love-F41870?&labelColor=1D1D1D&logo=googlechrome&style=flat -square" /></a>
   <a href="https://github.com/marryinweb3/ERC721-520"><img src="https://img.shields.io/badge/https%3A%2F%2FERC520.com-F41870?&labelColor =1D1D1D&logo=googlechrome&style=flat-square" /></a>
 </p>
@@ -79,8 +74,6 @@ Marry3 is a social experiment project. His original idea originated from the bot
 ![0xsoul-id 003](https://user-images.githubusercontent.com/897401/173595730-9975d59e-2646-4d98-bcee-5e393c352eee.png)
       
 ![0xsoul-id 004](https://user-images.githubusercontent.com/897401/173595753-7405fd87-c100-44aa-a004-c2ea4a7ee8ea.png)
-      
-![0xsoul-id 004](https://user-images.githubusercontent.com/897401/173595776-8d92bed2-3bda-460e-96f2-1eed901661e2.png)
       
 ![0xsoul-id 005](https://user-images.githubusercontent.com/897401/173595810-d2f3a03c-d0d7-4f62-9ffe-6c65e7597f36.png)
       
