@@ -7,7 +7,7 @@ export const RoadMap = (props: {}) => {
   return useObserver(() => (
     <div className={[styles.Page_roadmap, "shake-trigger"].join(" ")}>
       <div className={styles.tech_content}>
-        <img src={t`/roadmap2.png`} alt="Marry3eco" />
+        {/* <img src={t`/roadmap2.png`} alt="Marry3eco" /> */}
       </div>
       <div className={styles.socials}>
         <a
