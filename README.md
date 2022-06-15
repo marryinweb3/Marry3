@@ -67,7 +67,8 @@ Marry3 is a social experiment project. His original idea originated from the bot
       
 ![0xsoul-id 009](https://user-images.githubusercontent.com/897401/173595646-a93194ff-0577-49f0-a1f1-d56c27e6d91a.png)
       
-![0xsoul-id 010](https://user-images.githubusercontent.com/897401/173595683-9b7a83b0-b3e4-4603-89f6-f55063e41b95.png)
+![0xsoul-id 010](https://user-images.githubusercontent.com/897401/173714604-05b9fad1-21a6-4cbd-bbc5-626f48fe7b1f.mp4)
+
 
 ![0xsoul-id 002](https://user-images.githubusercontent.com/897401/173595711-9d3d5f8f-4334-4078-b5d6-96c643a4f700.png)
       
