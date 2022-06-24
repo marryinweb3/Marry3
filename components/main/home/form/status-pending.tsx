@@ -235,6 +235,14 @@ export const StatusPending = (props: {}) => {
                     },
                   }
                 );
+                window.open(
+                  "https://twitter.com/intent/tweet?text=" +
+                    encodeURIComponent(
+                      "I just marry in web3 with my lover, and mint Paired Soubound Marry3 Certificate, https://marry3.love/i/" +
+                        pairedInfo[0].tokenId +
+                        " @marryinweb3 #marry3"
+                    )
+                );
               }
             } catch (e) {}
 
