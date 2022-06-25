@@ -1,6 +1,15 @@
 import { t } from "@lingui/macro";
 import { Trans } from "@lingui/react";
-import { Button, Collapse, Form, Input, message, Select, Tooltip } from "antd";
+import {
+  Button,
+  Collapse,
+  Form,
+  Input,
+  message,
+  Popover,
+  Select,
+  Tooltip,
+} from "antd";
 import { TwitterOutlined } from "@ant-design/icons";
 import { useObserver } from "mobx-react";
 import wallet from "../../../../contracts/wallet";
@@ -438,7 +447,7 @@ export const StatusPending = (props: {}) => {
               window.location.origin + `/offer/${marryStore.pendingOffer.id}`
             }
             style={{
-              width: "calc(100% - 110px)",
+              width: "calc(100% - 160px)",
               color: "#999CA0",
               fontWeight: "300",
               border: "2px solid #EBEBEB ",
@@ -455,6 +464,46 @@ export const StatusPending = (props: {}) => {
           >
             {t`复制并分享`}
           </Button>
+          <a
+            style={{
+              width: "40px",
+              marginLeft: "10px",
+              background: "#fff",
+              display: "inline-block",
+              height: "40px",
+              verticalAlign: "-2px",
+              textAlign: "center",
+              borderRadius: "50%",
+              lineHeight: "40px",
+              border: "2px solid #eee",
+            }}
+            href={
+              "https://twitter.com/intent/tweet?text=" +
+              encodeURIComponent(
+                "I just make an offer in marry3.love, anyone want to marry with me? we will get two Soubound Marry3 Certificate NFT, and witness by code. " +
+                  window.location.origin +
+                  `/offer/${marryStore.pendingOffer.id}` +
+                  " @marryinweb3 #marry3"
+              )
+            }
+            target={"_blank"}
+          >
+            <Popover
+              placement="right"
+              content={
+                <div style={{ width: "180px" }}>
+                  share to twitter
+                  <br /> we will help you found your lover
+                </div>
+              }
+              visible={true}
+            >
+              <TwitterOutlined
+                size={20}
+                style={{ fontSize: "18px", color: "#0057D6" }}
+              />
+            </Popover>
+          </a>
         </Input.Group>
       ) : null}
     </Form>
