@@ -4,6 +4,7 @@ import moment from "moment";
 import { NextApiHandler } from "next";
 import { prisma } from "../../../lib/prisma";
 import SocialPost from "social-post-api"; // Install "npm i social-post-api"
+import webhook from "webhook-discord";
 
 import { getTokenPairInfo, verifyMarried } from "../../../lib/verify";
 const sexMap = {
@@ -66,6 +67,11 @@ const handler: NextApiHandler = async (req, res) => {
                 id: offer.id,
               },
             });
+            const Hook = new webhook.Webhook(process.env.DISCORD_HOOK);
+            Hook.success(
+              "New Married in web3!",
+              `${offer.Aname} and ${offer.Bname} are now married in web3! Congratulations! https://marry3.love/i/${offer.AtokenId} #marry3 `
+            );
 
             const social = new SocialPost(process.env.TWITTER_API);
 
@@ -81,6 +87,8 @@ const handler: NextApiHandler = async (req, res) => {
                 ],
               })
               .catch(console.error);
+
+            //https://discord.com/api/webhooks/990174448994902017/hpGR60LY5WwY7P2G-Pdef_DB1XbOg6AW4KiaXHtpcXKj0NjgWDera3M2svtVk31G6Wmb
           }
 
           const result = {

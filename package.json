@@ -53,7 +53,8 @@
     "styled-components": "^5.1.18",
     "typescript": "^4.3.2",
     "uuid": "^8.3.2",
-    "web3modal": "^1.9.4"
+    "web3modal": "^1.9.4",
+    "webhook-discord": "^3.7.8"
   },
   "devDependencies": {
     "@babel/core": "7.14.3",
