@@ -49,7 +49,7 @@ export class Footer extends React.Component<any, any> {
               </svg>
             </a>
             <a
-              href="https://discord.gg/4f7MnZ5kef"
+              href="https://discord.gg/eAN9TaAaSq"
               target={"_blank"}
               className={styles.social}
             >

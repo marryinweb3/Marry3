@@ -87,8 +87,6 @@ const handler: NextApiHandler = async (req, res) => {
                 ],
               })
               .catch(console.error);
-
-            //https://discord.com/api/webhooks/990174448994902017/hpGR60LY5WwY7P2G-Pdef_DB1XbOg6AW4KiaXHtpcXKj0NjgWDera3M2svtVk31G6Wmb
           }
 
           const result = {

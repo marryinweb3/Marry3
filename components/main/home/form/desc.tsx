@@ -62,8 +62,8 @@ export const FormDesc = (props: {}) => {
           </div>
           <div className={styles.join_holder}>
             Join the Holder Discord:{" "}
-            <a href="https://discord.gg/4f7MnZ5kef" target={"_blank"}>
-              https://discord.gg/4f7MnZ5kef
+            <a href="https://discord.gg/eAN9TaAaSq" target={"_blank"}>
+              https://discord.gg/eAN9TaAaSq
             </a>
           </div>
         </>
