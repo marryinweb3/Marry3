@@ -200,6 +200,16 @@ export const Team = (props: {}) => {
               <div className={styles.partner_item} style={{}}>
                 <a
                   className={styles.partner_item_link}
+                  href="https://mad.xyz"
+                  target={"_blank"}
+                >
+                  <img src="/mad.png" style={{ borderRadius: "50%" }} />
+                  MAD.xyz
+                </a>
+              </div>
+              <div className={styles.partner_item} style={{}}>
+                <a
+                  className={styles.partner_item_link}
                   href="https://twitter.com/PoorLandNFT"
                   target={"_blank"}
                 >
