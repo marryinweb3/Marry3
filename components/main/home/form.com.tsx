@@ -82,13 +82,7 @@ export const FormPage = (props: {}) => {
         <div className={styles.right}>
           <div className={styles.mainFormWrapper}>
             <div className={styles.mainFormBG}></div>
-            {marryStore.pendingOffer.status === 0 ||
-            marryStore.pendingOffer.status === 1 ||
-            marryStore.pendingOffer.status === 2 ? (
-              <StatusPending />
-            ) : (
-              <Status0 />
-            )}
+            <Status0 />
             {!marryStore.info.Aaddress ? (
               <div className={styles.noconnectWrapper}>
                 <div

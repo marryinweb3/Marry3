@@ -51,6 +51,18 @@ export class NFTStore implements IStore {
 
       console.log("nfts", this.nfts);
     }
+
+    const result1155 = await fetch(
+      `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc1155&limit=100`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": "IgTNVFa5",
+        },
+      }
+    );
+    const data1155 = await result1155.json();
   }
 
   async getNFTMeta(nft: any) {
