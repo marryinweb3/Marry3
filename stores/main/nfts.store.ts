@@ -25,44 +25,61 @@ export class NFTStore implements IStore {
   async getNFTS() {
     const walletInfo = await walletStore.getWalletInfo();
 
-    const result = await fetch(
-      `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc721&limit=100`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": "IgTNVFa5",
-        },
-      }
-    );
-    const data = await result.json();
-
-    if (data?.data?.content?.length) {
-      const nfts = data.data.content;
-      console.log("all nft", nfts);
-      for (let i = 0; i < nfts.length; i++) {
-        const nft = nfts[i];
-        nfts[i] = await this.getNFTMeta(nft);
-      }
-
+    try {
+      const result1155 = await fetch(
+        `/api/opensea?address=${walletInfo.account}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data1155 = await result1155.json();
+      const nfts = [];
+      data1155.json.assets.forEach((asset: any) => {
+        nfts.push({
+          metadata: {
+            image: asset.image_url,
+            name: asset.name,
+          },
+          contract_address: asset.asset_contract.address,
+          creator_address: asset.asset_contract.owner,
+          token_id: asset.token_id,
+        });
+      });
       this.nfts = nfts.filter((nft: any) => {
         return nft.metadata;
       });
+    } catch (e) {}
+    if (this.nfts.length == 0) {
+      const result = await fetch(
+        `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc721&limit=100`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-KEY": "IgTNVFa5",
+          },
+        }
+      );
+      const data = await result.json();
 
-      console.log("nfts", this.nfts);
-    }
+      if (data?.data?.content?.length) {
+        const nfts = data.data.content;
+        console.log("all nft", nfts);
+        for (let i = 0; i < nfts.length; i++) {
+          const nft = nfts[i];
+          nfts[i] = await this.getNFTMeta(nft);
+        }
 
-    const result1155 = await fetch(
-      `https://restapi.nftscan.com/api/v2/account/own/${walletInfo.account}?erc_type=erc1155&limit=100`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": "IgTNVFa5",
-        },
+        this.nfts = nfts.filter((nft: any) => {
+          return nft.metadata;
+        });
+
+        console.log("nfts", this.nfts);
       }
-    );
-    const data1155 = await result1155.json();
+    }
   }
 
   async getNFTMeta(nft: any) {

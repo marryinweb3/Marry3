@@ -120,7 +120,7 @@ export const Status0 = (props: {}) => {
           {nftStore.nfts.map((nft) => {
             return (
               <Select.Option
-                key={nft.token_id}
+                key={nft.contract_address + ":" + nft.token_id}
                 value={nft.cached_file_url || nft.metadata?.image}
               >
                 <img
