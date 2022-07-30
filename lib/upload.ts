@@ -11,7 +11,6 @@ const uploadToIPFS = async function (imageDataUrl: string) {
 
   const imageData = imageDataUrl.replace(/^data:image\/png;base64,/, "");
   const imageBuffer = Buffer.from(imageData, "base64");
-  // const stream = Readable.from(imageBuffer);
 
   const someData = new Blob([imageBuffer]);
   //@ts-ignore
