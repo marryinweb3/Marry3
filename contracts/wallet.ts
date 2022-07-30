@@ -78,15 +78,7 @@ class Wallet extends EventEmitter {
 
     console.log("connected");
     loading();
-    this.emit("connected");
-    const network = await this.ethProvider.detectNetwork();
-    console.log("network", network);
-    if (network.chainId != web3Config.network.chainId) {
-      message.error(
-        "please connect to " + web3Config.network.name + " network",
-        0
-      );
-    }
+
     this.web3ModalProvider.on("accountsChanged", (accounts: string[]) => {
       console.log("accountsChanged", accounts);
       this.emit("connected");
@@ -112,6 +104,16 @@ class Wallet extends EventEmitter {
         this.emit("disconnected");
       }
     );
+    const network = await this.ethProvider.detectNetwork();
+    console.log("network", network);
+    if (network.chainId != web3Config.network.chainId) {
+      message.error(
+        "please connect to " + web3Config.network.name + " network",
+        0
+      );
+      return this.switchNetwork();
+    }
+    this.emit("connected");
     return this.ethProvider;
   }
   // 恢复
@@ -134,6 +136,17 @@ class Wallet extends EventEmitter {
       typeof this.web3ModalProvider.disconnect === "function"
     ) {
       await this.web3ModalProvider.disconnect();
+    }
+  }
+  async switchNetwork() {
+    try {
+      await this.ethProvider.send("wallet_switchEthereumChain", [
+        { chainId: "0x" + web3Config.network.chainId.toString(16) },
+      ]);
+    } catch (error) {
+      console.log(error);
+
+      throw error;
     }
   }
 }

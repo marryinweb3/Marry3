@@ -48,6 +48,7 @@
     "next": "12.1.0",
     "next-images": "^1.8.4",
     "next-with-less": "^2.0.2",
+    "nft.storage": "^7.0.0",
     "particles.js": "^2.0.0",
     "qrcode": "^1.5.0",
     "react": "^17.0.2",

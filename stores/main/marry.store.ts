@@ -207,6 +207,7 @@ export class MarryStore implements IStore {
       this.nowGas = Math.floor(json3.blockPrices[0].baseFeePerGas);
     }
   }
+
   async getMintInfo() {
     this.getNowGas();
     const r = await fetch(
