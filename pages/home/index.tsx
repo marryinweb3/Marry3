@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Footer } from "../../components/main/common/footer.com";
 import styles from "./home.module.less";
 import useStore from "../../stores/useStore";
@@ -6,56 +6,130 @@ import { useObserver } from "mobx-react";
 import { web3Config } from "../../stores/config";
 import { message, Tooltip } from "antd";
 import { WalletStore } from "../../stores/main/wallet.store";
-import { MarryStore } from "../../stores/main/marry.store";
-import { Trans } from "@lingui/react";
+import { MainStore } from "../../stores/main/main.store";
 
-import { QuestionCircleOutlined, LockOutlined } from "@ant-design/icons";
-import { NFTStore } from "../../stores/main/nfts.store";
-import { loveBubbles } from "../../utils/bubbles";
-import { Project } from "../../components/main/home/project.com";
-import { RoadMap } from "../../components/main/home/roadmap.com";
-import { QA } from "../../components/main/home/qa.com";
-import { Team } from "../../components/main/home/team.com";
-import { MainBanner } from "../../components/main/home/banner.com";
-import { Status0 } from "../../components/main/home/form/status-0";
-import { StatusPending } from "../../components/main/home/form/status-pending";
-import { FormDesc } from "../../components/main/home/form/desc";
-import { FormPage } from "../../components/main/home/form.com";
-import { GAS } from "../../components/main/home/gas";
-// import "../../public/mo.umd.js";
-
+const LETTERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
 export default function Upgrade(props) {
   const wallet = useStore(WalletStore);
-  const nftStore = useStore(NFTStore);
-
-  const marryStore = useStore(MarryStore);
-
+  const mainStore = useStore(MainStore);
+  // const [addressList, setAddressList] = useState([]);
   useEffect(() => {
-    nftStore.getNFTS();
-    marryStore.getMintInfo();
     (async () => {
-      const walletInfo = await wallet.getWalletInfo();
-      marryStore.info.Aaddress = walletInfo.account;
-      marryStore.info.Aname = walletInfo.ens;
-      const loading = message.loading("loading...", 0);
-      await marryStore.getOffer();
-      loading();
+      mainStore.getList();
     })();
-
-    setInterval(marryStore.getNowGas, 10000);
   }, []);
 
   return useObserver(() => {
     return (
       <div className={styles.upgrade}>
         <div className={styles.content}>
-          <MainBanner />
-          <FormPage />
-          <GAS />
-          <Project />
-          <RoadMap />
-          <QA />
-          <Team />
+          <div className={styles.boardHeader}>
+            {LETTERS.map((l) => {
+              return <div className={styles.letter}>{l}</div>;
+            })}
+          </div>
+          <div className={styles.board}>
+            {LETTERS.map((l) => {
+              if (mainStore.letters[l]) {
+                return (
+                  <div className={styles.letterSpace}>
+                    {mainStore.letters[l].map((addr) => {
+                      return (
+                        <Tooltip title={addr.address}>
+                          <a
+                            className={styles.letter}
+                            style={{
+                              backgroundColor: addr.color,
+                              color: addr.textColor,
+                            }}
+                          >
+                            <span className={styles.letterInner}>{l}</span>
+                          </a>
+                        </Tooltip>
+                      );
+                    })}
+                  </div>
+                );
+              } else {
+                return <div className={styles.letterSpace}></div>;
+              }
+            })}
+          </div>
+          <div className={styles.action}>
+            <h1 className={styles.desc}>Measuring the Metaverse</h1>
+            <div className={styles.desc}>
+              This is an art experiment for web3 0x addresses
+            </div>
+            <div className={styles.desc}>Join and Measuring the Metaverse</div>
+            <div className={styles.desc}>↓</div>
+            {wallet.walletInfo.account ? (
+              <>
+                <div className={styles.desc}>
+                  0x{wallet.walletInfo.account?.substring(2).toUpperCase()}
+                </div>
+                <button
+                  className={styles.measuring}
+                  onClick={() => {
+                    mainStore.add();
+                  }}
+                  type="button"
+                >
+                  {mainStore.listLoading ? "Loading MetaVerse..." : "Measuring"}
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className={styles.measuring}
+                  onClick={() => {
+                    wallet.connect();
+                  }}
+                  type="button"
+                >
+                  Connect Wallet
+                </button>
+              </>
+            )}
+          </div>
+          <div className={styles.result}>
+            {LETTERS.map((l) => {
+              if (mainStore.letters[l]) {
+                return (
+                  <div
+                    className={styles.resultLine}
+                    style={{
+                      opacity:
+                        mainStore.letters[l].length / mainStore.lettersMaxLen,
+                      backgroundColor: mainStore.resultBGColor,
+                    }}
+                  >
+                    <a>{l}</a>
+                    <div>{mainStore.letters[l].length}</div>
+                  </div>
+                );
+              } else {
+                return <div className={styles.letterSpace}></div>;
+              }
+            })}
+          </div>
+          <div className={styles.action}>
+            <div className={styles.desc}>
+              Archive the metaverse status to chain and restart it!
+            </div>
+            <div className={styles.desc}>↓</div>
+            <button
+              className={styles.archive}
+              onClick={() => {
+                mainStore.add();
+              }}
+              type="button"
+            >
+              Archive to Chain
+            </button>
+          </div>
+          <div className={styles.action}>
+            <h1 className={styles.desc}>Archive History</h1>
+          </div>
         </div>
         <Footer />
       </div>

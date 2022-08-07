@@ -88,9 +88,7 @@ export default function App({ Component, pageProps }) {
       <SafeHydrate>
         <Web3Head />
         <Component {...pageProps} />
-        <div className="mobile-tip">
-          Use desktop version to get more friendly experience
-        </div>
+
         {/* {showLang ? (
           <div className="sc-AxgMl hkzEld web3modal-modal-lightbox">
             <div className="sc-AxheI fdbjE web3modal-modal-container">

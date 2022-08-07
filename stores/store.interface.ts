@@ -1,6 +1,6 @@
 export enum StoreType {
   test = "test",
-  marry = "marry",
+  main = "main",
   nft = "nft",
   offer = "offer",
   devorce = "devorce",
