@@ -7,9 +7,10 @@ export class Footer extends React.Component<any, any> {
       <div className={styles.footer}>
         <div className={styles.inner}>
           <div className={styles.left}>
-            <br />© 2022, Measuring the metaverse
+            <img src="/logo.png" title="" width="160" />
+            <br />© 2022, Marry3 & MarryDAO
           </div>
-          {/* <div className={styles.right}>
+          <div className={styles.right}>
             <a
               href="https://twitter.com/marryinweb3"
               className={styles.social}
@@ -68,7 +69,7 @@ export class Footer extends React.Component<any, any> {
                 />
               </svg>
             </a>
-          </div> */}
+          </div>
         </div>
       </div>
     );

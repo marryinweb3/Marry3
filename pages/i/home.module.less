@@ -1,0 +1,323 @@
+@import "../../styles/rem.less";
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 0;
+  flex-wrap: wrap;
+}
+.left {
+  width: 400px;
+  margin-top: 30px;
+  @media @mobile {
+    width: 100%;
+    margin-top: 0;
+    .nfts {
+      margin: 0 auto;
+      width: 400px;
+    }
+  }
+}
+.right {
+  width: 700px;
+  padding-top: 0px;
+  @media @mobile {
+    width: 100%;
+
+    padding-top: 50px;
+  }
+}
+.shares {
+  margin-top: 50px;
+  height: 70px;
+  width: 400px;
+  @media @mobile {
+    margin: 50px auto;
+  }
+  a {
+    margin-right: 10px;
+    margin-bottom: 0;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.info {
+  width: 500px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  color: #361041;
+  font-size: 16px;
+  @media @mobile {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  p {
+    margin: 0;
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  .cover {
+    width: 125px;
+    height: 125px;
+    margin-right: 50px;
+  }
+  .detail {
+  }
+  .name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #361041;
+  }
+  .address {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+
+    color: #9d9d9d;
+  }
+  .actions {
+    margin-top: 10px;
+    .button {
+      height: 34px;
+      border: none;
+      border-radius: 0;
+      background: #000000;
+      color: #fff;
+    }
+  }
+}
+.content {
+  background: linear-gradient(
+    135.23deg,
+    rgba(255, 230, 0, 0.08) 0%,
+    rgba(239, 60, 210, 0.12) 100%
+  );
+}
+.Page1 {
+  background: linear-gradient(
+    135.23deg,
+    rgba(255, 230, 0, 0.08) 0%,
+    rgba(239, 60, 210, 0.12) 100%
+  );
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  .Page_inner {
+    height: 100%;
+  }
+  .s404 {
+    color: rgba(54, 16, 65, 1);
+    letter-spacing: -1.5px;
+    font-size: 30px;
+    line-height: 1.2;
+    position: relative;
+    top: 130px;
+    text-align: center;
+  }
+  .title {
+    width: 626px;
+    height: 255px;
+    color: rgba(54, 16, 65, 1);
+    letter-spacing: -1.5px;
+    font-size: 50px;
+    line-height: 1.2;
+    position: relative;
+    top: -40px;
+    .fly {
+      left: 565px;
+      top: -20px;
+      width: 56px;
+      position: absolute;
+      height: 47px;
+      transform: rotate(-6.05deg);
+    }
+    background-image: url(/c.png);
+    background-repeat: no-repeat;
+    background-size: 152px;
+    background-position: 0px 0px;
+    padding-top: 45px;
+  }
+  .flower {
+    right: -100px;
+    position: absolute;
+    bottom: -60px;
+    width: 489px;
+    height: 489px;
+    // transform: rotate(-284.19deg);
+  }
+  .subInfo {
+    color: rgba(54, 16, 65, 1);
+    letter-spacing: -0.45px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 100px;
+    p {
+      margin-bottom: 10px;
+      font-weight: 300;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 26px;
+      /* or 144% */
+
+      display: flex;
+      align-items: center;
+
+      color: #848484;
+    }
+    .subInfoMain {
+      color: rgba(54, 16, 65, 1);
+      letter-spacing: -0.54px;
+      font-size: 18px;
+      line-height: 2;
+      font-weight: normal;
+    }
+    .heart {
+      width: 17px;
+      height: 16px;
+      margin-right: 10px;
+      vertical-align: -2px;
+    }
+  }
+  .subInfo2 {
+    color: rgba(54, 16, 65, 1);
+    letter-spacing: -0.45px;
+    font-size: 14px;
+    line-height: 20px;
+    position: absolute;
+    bottom: 50px;
+    p {
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    .subInfoMain {
+      color: rgba(54, 16, 65, 1);
+      letter-spacing: -0.54px;
+      font-size: 14px;
+      line-height: 2;
+      font-weight: normal;
+    }
+    .logo {
+      width: 160px;
+    }
+  }
+  .right {
+    position: absolute;
+    width: 484px;
+    height: 616px;
+    right: 0px;
+    top: 190px;
+
+    background: linear-gradient(
+      142.97deg,
+      rgba(255, 230, 0, 0.06) 17.43%,
+      rgba(239, 60, 210, 0.06) 73.23%
+    );
+    // opacity: 0.5;
+    // filter: blur(1px);
+    // backdrop-filter: blur(464px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 23px;
+    .xin {
+      width: 200px;
+      height: 200px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 25px;
+    }
+    .mainForm {
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+      padding-top: 25px;
+      :global(input) {
+        height: 40px;
+      }
+      :global(button) {
+        height: 40px;
+      }
+      :global(.ant-select-selection-placeholder) {
+        line-height: 35px;
+      }
+      :global(.ant-select-selector) {
+        height: 40px;
+        line-height: 40px !important;
+        input {
+          height: 30px;
+        }
+        .ant-select-selection-item {
+          line-height: 40px !important;
+        }
+      }
+      :global(.ant-select-selection-item) {
+        height: 40px;
+        line-height: 34px !important;
+      }
+    }
+  }
+}
+.Page_inner {
+  width: 1200px;
+  margin: 0px auto;
+  position: relative;
+}
+.nfts {
+  margin-bottom: 20px;
+  width: 400px;
+  height: 360px;
+  position: relative;
+  .nft {
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+    width: 340px;
+    height: 340px;
+    box-shadow: -1px -1px 1px #fff;
+    transition: all 0.3s ease-in-out;
+    z-index: 9;
+    &.nft_active {
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+    }
+  }
+  .control {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+
+    .control_item {
+      transition: all 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+      margin-top: 10px;
+      background: url(/form/unactive.png) no-repeat center center;
+      background-size: 100%;
+      cursor: pointer;
+      &.control_item_active {
+        background: url(/form/active.png) no-repeat center center;
+        background-size: 100%;
+      }
+    }
+  }
+}

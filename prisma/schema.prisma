@@ -37,9 +37,3 @@ model Offers {
     blockNo    String?
     mintedAt   DateTime?
 }
-
-model Measurings {
-    id        String   @id @default(uuid())
-    address   String   @unique
-    createdAt DateTime @default(now())
-}
