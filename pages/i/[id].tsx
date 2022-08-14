@@ -88,7 +88,7 @@ export default function Offer(props) {
         <meta
           name="twitter:image"
           content={
-            "https://ipfs.infura.io/ipfs/" +
+            "https://nftstorage.link/ipfs/" +
             (offer.AtokenId == id
               ? offer.imageData
               : offer.imageData2

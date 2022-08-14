@@ -126,13 +126,13 @@ export class NFTStore implements IStore {
         if (json.image) {
           json.image = json.image.replace(
             "ipfs://",
-            "https://ipfs.infura.io/ipfs/"
+            "https://nftstorage.link/ipfs/"
           );
         }
         if (json.image_url) {
           json.image = json.image_url.replace(
             "ipfs://",
-            "https://ipfs.infura.io/ipfs/"
+            "https://nftstorage.link/ipfs/"
           );
         }
         nft.metadata = json;

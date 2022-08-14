@@ -80,7 +80,7 @@ const handler: NextApiHandler = async (req, res) => {
                 post: `${offer.Aname} and ${offer.Bname} are now married in web3! Congratulations! https://marry3.love/i/${offer.AtokenId} #marry3 `,
                 platforms: ["twitter"],
                 mediaUrls: [
-                  "https://ipfs.infura.io/ipfs/" +
+                  "https://nftstorage.link/ipfs/" +
                     offer.imageData.replace("ipfs://", ""),
                   // "https://ipfs.infura.io/ipfs/" +
                   //   offer.imageDataB.replace("ipfs://", ""),
@@ -101,7 +101,7 @@ const handler: NextApiHandler = async (req, res) => {
             external_url: `https://marry3.love/i/${tokenId}`,
             image:
               (isA ? offer.imageData : offer.imageDataB) ||
-              "https://bafybeialnklgnjla6p773rcuvtk25cwrjul25ccl7a2vnd4yqbuqsgse4y.ipfs.infura-ipfs.io/?filename=1.png",
+              "ipfs://bafkreigvd3gjh5cuhhdchieiw6oali77d3plgvp7us4tgttz33eik244i4",
             attributes: [
               {
                 trait_type: "date",
