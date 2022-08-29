@@ -65,6 +65,19 @@ Because it takes place in the new world, it will make full use of the rules of t
   <img src="https://user-images.githubusercontent.com/897401/173596705-960f1b73-abc6-4bac-be7a-6c75e2a81851.png" height="350"/>
 </p>
 
+## What is LXDAO?
+
+LXDAO is an R&D-focused DAO in Web3. Our mission is to bring together buidlers to buidl and maintain valuable projects for Web3, in a sustainable manner. More links:
+
+- LXDAO Website: <https://lxdao.io/>
+- LXDAO Project Details: <https://lxdao.io/projects/004>
+- LXDAO Forum: <https://forum.lxdao.io/c/projects/004-marry3/16>
+- LXDAO Discord: <https://discord.lxdao.io>
+- LXDAO Twitter: <https://twitter.com/LXDAO_Official>
+- LXDAO Telegram: <https://t.me/LXDAO>
+
+<a target="_blank" href="https://lxdao.io/"><img alt="Buidl in LXDAO" src="https://raw.githubusercontent.com/lxdao-official/LXDAO-Developer-Guide/main/buildinlxdao.png" width="180" /></a>
+
 ![line](https://user-images.githubusercontent.com/897401/171048003-7b7adb40-9f72-4bfc-84de-e948892bf7f9.png)
 
 
