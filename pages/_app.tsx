@@ -1,6 +1,7 @@
 import { Provider } from "mobx-react";
 import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
+import TagManager from "react-gtm-module";
 // import { en, sv } from "make-plural/plurals";
 import { messages as enMessages } from "../locale/en";
 import { messages as cnMessages } from "../locale/zh_CN";
@@ -32,6 +33,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [showLang, setShowLang] = useState(false);
   useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-NV95S3L" });
     if (!localStorage.getItem("locale")) {
       // const hasZH = window.navigator.languages.findIndex((f) => {
       //   return f.indexOf("zh") != -1;
