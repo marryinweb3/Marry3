@@ -45,9 +45,11 @@ export const FormPage = (props: {}) => {
           <div className={styles.left_inner} ref={circleDom}></div>
           <div className={styles.circle_text}>
             <div className={styles.t1}>
-              <Trans id="国库收益(ETH)" />
+              <Trans id="已颁发结婚证数量" />
             </div>
-            <div className={styles.t2}>{marryStore.ethBalanceFormated}</div>
+            <div className={styles.t2}>
+              {Math.floor(marryStore.marryCount) * 2}
+            </div>
             <div className={styles.t3}>
               <Trans id="协议已见证了" /> {marryStore.marryCount}{" "}
               <Trans id="对新人" />

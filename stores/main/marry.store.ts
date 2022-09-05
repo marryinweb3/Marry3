@@ -209,6 +209,13 @@ export class MarryStore implements IStore {
   }
 
   async getMintInfo() {
+    const walletInfo = await walletStore.getWalletInfo();
+    await this.getMerkle();
+    const mintPrice = await Marry3Contract().getPriceByProof(this.proof);
+    this.marryPrice = mintPrice;
+    this.marryPriceFormated = utils.formatEther(mintPrice);
+    console.log("mintPrice", this.marryPriceFormated);
+
     this.getNowGas();
     const r = await fetch(
       "https://api.chainbase.online/v1/account/balance?chain_id=1&address=" +
@@ -291,23 +298,6 @@ export class MarryStore implements IStore {
       this.lastdayGases = lastDayGases;
       this.todayGases = todayGases;
     }
-
-    const walletInfo = await walletStore.getWalletInfo();
-    await this.getMerkle();
-    const mintPrice = await Marry3Contract().getPriceByProof(this.proof);
-    this.marryPrice = mintPrice;
-    this.marryPriceFormated = utils.formatEther(mintPrice);
-    console.log("mintPrice", this.marryPriceFormated);
-
-    // const ethBalance = await (
-    //   await wallet.getEthProvider()
-    // ).getBalance(Marry3Contract().address);
-
-    // this.ethBalance = ethBalance;
-    // this.ethBalanceFormated = Number(
-    //   Number(utils.formatEther(ethBalance)).toFixed(2)
-    // ).toLocaleString();
-    // console.log("ethBalance", ethBalance);
   }
 
   async getOffer() {
