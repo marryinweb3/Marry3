@@ -90,7 +90,9 @@ export const Header = (props: {
             <Trans id="解除关系" />
           </a>
         </span>
-
+        <a href="/wedding" title={t`已婚列表`} target={"_blank"}>
+          <Trans id="创建婚礼" />
+        </a>
         <a href="/explore" title={t`已婚列表`} target={"_blank"}>
           <Trans id="档案室" />
           {!props.hideIndex ? (
