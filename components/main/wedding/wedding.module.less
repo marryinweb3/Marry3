@@ -1,5 +1,9 @@
+@import "../../../styles/rem.less";
 .weddingForm {
-  margin-right: 288px;
+  .rem(margin-right,288);
+  @media @mobile {
+    .rem(margin-bottom,60);
+  }
   .headPort {
     width: 310px;
     height: 171.34px;
@@ -9,32 +13,50 @@
     justify-content: space-between;
     padding: 15px 30px;
     margin-bottom: 40px;
+    margin-left: 120px;
+    @media @mobile {
+      width: 210px;
+      height: 101.34px;
+      margin-left: 70px;
+    }
     .head {
       width: 107.58px;
       height: 107.58px;
       border-radius: 50%;
       margin-bottom: 12px;
+      @media @mobile {
+        width: 50px;
+        height: 50px;
+      }
     }
     .name {
       font-family: "Jura";
       font-style: normal;
       font-weight: 700;
-      font-size: 15.9383px;
-      line-height: 19px;
+      .rem(font-size,16);
+      .rem(line-height,19);
     }
   }
   .formContent {
     .item {
       display: flex;
+      align-items: center;
       margin-bottom: 34px;
       .label {
         width: 80px;
-        margin-right: 39px;
+        .rem(margin-right,39);
         word-break: break-all;
       }
       .value {
         width: 310px;
       }
+      .lockIcon {
+        margin-right: 8px;
+      }
+    }
+    .center {
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -54,6 +76,73 @@
 
       color: #361041;
       margin-bottom: 24px;
+    }
+    .icons {
+      display: flex;
+      @media @mobile {
+        display: block;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .text {
+        font-family: "OPPOSans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        /* or 143% */
+
+        color: #361041;
+        @media @mobile {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .stepIcon {
+      width: 24px;
+      height: 24px;
+    }
+    .line {
+      width: 95px;
+      height: 2px;
+      background: #ffbbbc;
+      margin: 0 42px;
+    }
+    .radius {
+      width: 62px;
+      height: 62px;
+
+      background: rgba(255, 187, 188, 0.4);
+      border: 2px dashed #ffbbbc;
+      border-radius: 80px;
+      margin-right: 25px;
+    }
+    .flex {
+      display: flex;
+    }
+    .firstText {
+      font-family: "OPPOSans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 34px;
+      color: #361041;
+    }
+    .secondText {
+      font-family: "OPPOSans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: #361041;
+    }
+    .framedate {
+      width: 54px;
+      height: 54px;
+      margin-right: 15px;
     }
   }
 }

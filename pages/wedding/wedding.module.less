@@ -1,6 +1,8 @@
 @import "../../styles/rem.less";
 
 .wedding {
+  background: #fff0f3;
+  backdrop-filter: blur(42px);
   .title {
     font-family: "OPPOSans";
     font-style: normal;
@@ -12,11 +14,25 @@
     letter-spacing: -0.03em;
 
     color: #361041;
-    margin: 112px 277px 60px;
+    .rem(margin-top,112);
+    .rem(margin-left,277);
+    .rem(margin-bottom,112);
+    @media @mobile {
+      font-size: 24px;
+      line-height: 30px;
+      margin-left: 90px;
+    }
   }
 
   .weddingContent {
     display: flex;
-    padding: 0 154px;
+    .rem(padding-left,154);
+    .rem(padding-right,154);
+    .rem(padding-bottom,170);
+    @media @mobile {
+      width: 100%;
+      display: block;
+      padding: 0 18px;
+    }
   }
 }

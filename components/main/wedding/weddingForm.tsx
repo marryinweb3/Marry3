@@ -5,6 +5,7 @@ import styles from "./wedding.module.less";
 export default function WeddingForm() {
   const { TextArea } = Input;
   const router = useRouter();
+  const textarea = `XXXX.ETH与 Ooooo.eth 谨定于2022年11月11日11时在元宇宙世界举行结婚典礼。敬备喜筵，恭请光临！`;
   const back = () => {
     router.push("/town");
   };
@@ -63,13 +64,15 @@ export default function WeddingForm() {
               placeholder="textarea with clear icon"
               allowClear
               onChange={onChangeText}
-              value={`XXXX.ETH与 Ooooo.eth 谨定于2022年11月11日11时在元宇宙世界举行结婚典礼。敬备喜筵，恭请光临！`}
             />
           </div>
         </div>
-        <Button type="primary" danger>
-          签名生成请帖连接
-        </Button>
+        <div className={styles.center}>
+          <Button type="primary" danger>
+            <img src="/wedding/lock.svg" className={styles.lockIcon} />
+            签名生成请帖连接
+          </Button>
+        </div>
       </div>
     </div>
   );
