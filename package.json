@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run gen;next",
-    "build": "npm run gen;next build",
+    "dev": "npm run gen&&next",
+    "build": "npm run gen&&next build",
     "start": "next start",
-    "gen": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy' npx prisma generate --data-proxy",
+    "gen": "set PRISMA_CLIENT_ENGINE_TYPE='dataproxy'&&npx prisma generate --data-proxy",
     "push": "npx prisma db push",
     "postinstall": "npm run build",
     "extract": "lingui extract",
