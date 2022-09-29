@@ -2,11 +2,9 @@ import { useRouter } from "next/router";
 import styles from "./wedding.module.less";
 export default function WorkInfo() {
   const router = useRouter();
-  const back = () => {
-    router.push("/town");
-  };
+  const back = () => {};
   return (
-    <div className={styles.workInfo} onClick={back}>
+    <div className={styles.workInfo}>
       <div className={styles.info}>
         <div className={styles.title}>How it works</div>
         <div className={styles.steps}>

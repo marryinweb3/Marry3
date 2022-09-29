@@ -23,7 +23,7 @@ export default function WeddingForm() {
     console.log(`selected ${value}`);
   };
   return (
-    <div className={styles.weddingForm} onClick={back}>
+    <div className={styles.weddingForm}>
       <div className={styles.headPort}>
         <div className={styles.headPerson}>
           <div className={styles.head}></div>

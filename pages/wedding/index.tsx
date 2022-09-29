@@ -37,7 +37,11 @@ export default function createWedding(props) {
   return useObserver(() => {
     return (
       <div className={styles.wedding}>
-        <Header hasBack={true} />
+        <img src="/wedding/BlurEffects.png" className={styles.bgImg} />
+        <img src="/wedding/Ellipse.svg" className={styles.bgIcon} />
+        <div className={styles.headDiv}>
+          <Header hasBack={true} />
+        </div>
         <div className={styles.title}>创建婚礼</div>
         <div className={styles.weddingContent}>
           <WeddingForm />

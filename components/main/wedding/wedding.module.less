@@ -2,6 +2,7 @@
 .weddingForm {
   .rem(margin-right,288);
   @media @mobile {
+    margin-right: 0px;
     .rem(margin-bottom,60);
   }
   .headPort {
@@ -17,7 +18,7 @@
     @media @mobile {
       width: 210px;
       height: 101.34px;
-      margin-left: 70px;
+      margin-left: 85px;
     }
     .head {
       width: 107.58px;
@@ -46,9 +47,19 @@
         width: 80px;
         .rem(margin-right,39);
         word-break: break-all;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        @media @mobile {
+          margin-right: 4px;
+        }
       }
       .value {
         width: 310px;
+        @media @mobile {
+          width: 250px;
+        }
       }
       .lockIcon {
         margin-right: 8px;
