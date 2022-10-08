@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styles from "./wedding.module.less";
-export default function WorkInfo() {
+export default function WorkInfo(props: any) {
   const router = useRouter();
   const back = () => {};
   return (

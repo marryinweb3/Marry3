@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./wedding.module.less";
 import useStore from "../../stores/useStore";
 import { useObserver } from "mobx-react";
@@ -19,6 +19,7 @@ export default function createWedding(props) {
 
   const marryStore = useStore(MarryStore);
 
+  const [state, setState] = useState("join");
   useEffect(() => {
     nftStore.getNFTS();
     marryStore.getMintInfo();
@@ -42,10 +43,12 @@ export default function createWedding(props) {
         <div className={styles.headDiv}>
           <Header hasBack={true} />
         </div>
-        <div className={styles.title}>创建婚礼</div>
+        <div className={styles.title}>
+          {state == "create" ? "创建婚礼" : "参加婚礼"}
+        </div>
         <div className={styles.weddingContent}>
-          <WeddingForm />
-          <WorkInfo />
+          <WeddingForm state={state} />
+          <WorkInfo state={state} />
         </div>
         <Footer />
       </div>

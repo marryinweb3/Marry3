@@ -29,6 +29,12 @@
         width: 50px;
         height: 50px;
       }
+      .headImg {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 1px solid #ffbbbc;
+      }
     }
     .name {
       font-family: "Jura";
@@ -36,6 +42,7 @@
       font-weight: 700;
       .rem(font-size,16);
       .rem(line-height,19);
+      text-align: center;
     }
   }
   .formContent {
@@ -69,6 +76,57 @@
       width: 100%;
       text-align: center;
     }
+  }
+  .joinform {
+    width: 441px;
+    height: 293px;
+    background: #ffffff;
+    /* Light/shadow-xl */
+
+    box-shadow: 0px 32px 32px -8px rgba(0, 0, 0, 0.08),
+      0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 16px 24px;
+    margin-bottom: 10px;
+    .item {
+      margin-bottom: 24px;
+      .label {
+        font-family: "OPPOSans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+      }
+    }
+    .line {
+      width: 401px;
+      height: 1px;
+
+      background: rgba(0, 0, 0, 0.08);
+      margin: 12px 0;
+    }
+    .btn {
+      float: right;
+      padding: 8px 10px;
+
+      width: 111px;
+      height: 32px;
+
+      background: #f41870;
+      border-radius: 4px;
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+  .disabled {
+    background: rgba(244, 24, 112, 0.2);
+    border: none;
   }
 }
 
@@ -156,5 +214,8 @@
       height: 54px;
       margin-right: 15px;
     }
+  }
+  .disabled {
+    background: rgba(54, 16, 65, 0.2);
   }
 }
