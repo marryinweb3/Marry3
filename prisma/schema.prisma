@@ -1,6 +1,3 @@
-// Schema for an identity service for a SaaS
-// This service tracks existing users & their accounts, as well as invites for users who haven't joined yet
-
 generator client {
     provider        = "prisma-client-js"
     previewFeatures = ["dataProxy"]
@@ -13,27 +10,59 @@ datasource db {
 
 model Offers {
     id         String    @id @default(uuid())
-    type       Int       @default(0) // 0 = 结婚, 1 = 离婚
     Aaddress   String
     Baddress   String?
     Asignature String
     Bsignature String?
-    Asex       Int?
-    Bsex       Int?
-    Aname      String?
-    Bname      String?
-    status     Int       @default(0) // 0: a签名，1: b签名，2: 已mint -1 : 已撤销
+    status     Int       @default(0)
     createdAt  DateTime  @default(now())
     updatedAt  DateTime  @updatedAt
+    Aname      String?
+    Asex       Int?
+    Bname      String?
+    Bsex       Int?
     AtokenId   String?
     BtokenId   String?
     Acomment   String?
-    Bcomment   String?
     Acover     String?
+    Bcomment   String?
     Bcover     String?
     imageData  String?
-    imageDataB String?
     bgIndex    Int?
     blockNo    String?
     mintedAt   DateTime?
+    imageDataB String?
+    type       Int       @default(0)
+}
+
+model Measurings {
+    id        String   @id
+    address   String   @unique
+    createdAt DateTime @default(now())
+}
+
+model wedding {
+    id         String   @id @default(uuid())
+    addressA   String?
+    addressB   String?
+    nameA      String?
+    nameB      String?
+    coverA     String?
+    coverB     String?
+    wedding_at DateTime
+    type       Int? // 0 = 中式，1 = 西式
+    comment    String? // 请帖内容
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model wedding_join {
+    id        String   @id @default(uuid())
+    weddingId String?
+    name      String?
+    address   String?
+    cover     String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
