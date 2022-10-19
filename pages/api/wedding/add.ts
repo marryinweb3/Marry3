@@ -53,13 +53,13 @@ const handler: NextApiHandler = async (req, res) => {
         });
       }
 
-      const married = await verifyMarried(req.body.addressA);
+      // const married = await verifyMarried(req.body.addressA);
 
-      if (!married) {
-        return res.status(400).json({
-          message: "not married yet",
-        });
-      }
+      // if (!married) {
+      //   return res.status(400).json({
+      //     message: "not married yet",
+      //   });
+      // }
       const data = {
         addressA: req.body.addressA.toLowerCase(),
         addressB: req.body.addressB.toLowerCase(),
