@@ -3,7 +3,12 @@ import { ethers } from "ethers";
 import { NextApiHandler } from "next";
 import { prisma } from "../../../lib/prisma";
 import { verifyMarried } from "../../../lib/verify";
-
+/**
+ * /api/wedding/add
+ * @param req
+ * @param res
+ * @returns
+ */
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
     try {

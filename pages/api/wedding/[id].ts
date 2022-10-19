@@ -29,6 +29,20 @@ const handler: NextApiHandler = async (req, res) => {
         message: "not exist id",
       });
     }
+  } else if (req.method === "POST") {
+    let id = req.query.id as string;
+    const join = await prisma.wedding_join.create({
+      data: {
+        weddingId: id,
+        name: req.body.name,
+        address: req.body.address,
+        cover: req.body.cover,
+      },
+    });
+    res.status(200).json({
+      message: "ok",
+      data: join,
+    });
   } else {
     res.status(404).send({
       message: "not exist id",
