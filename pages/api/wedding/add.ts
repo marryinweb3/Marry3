@@ -3,7 +3,12 @@ import { ethers } from "ethers";
 import { NextApiHandler } from "next";
 import { prisma } from "../../../lib/prisma";
 import { verifyMarried } from "../../../lib/verify";
-
+/**
+ * /api/wedding/add
+ * @param req
+ * @param res
+ * @returns
+ */
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
     try {
@@ -48,13 +53,13 @@ const handler: NextApiHandler = async (req, res) => {
         });
       }
 
-      const married = await verifyMarried(req.body.addressA);
+      // const married = await verifyMarried(req.body.addressA);
 
-      if (!married) {
-        return res.status(400).json({
-          message: "not married yet",
-        });
-      }
+      // if (!married) {
+      //   return res.status(400).json({
+      //     message: "not married yet",
+      //   });
+      // }
       const data = {
         addressA: req.body.addressA.toLowerCase(),
         addressB: req.body.addressB.toLowerCase(),
