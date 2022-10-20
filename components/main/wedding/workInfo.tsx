@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styles from "./wedding.module.less";
+import { CountDown } from "../../../utils/count";
 export default function WorkInfo(props: any) {
   const router = useRouter();
   const back = () => {};

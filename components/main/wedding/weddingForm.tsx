@@ -30,6 +30,9 @@ export default function WeddingForm(props: any) {
   const nftChange = (value: string) => {
     console.log(`selected ${value}`);
   };
+  const submit = () => {
+    console.log("提交并生成分享链接");
+  };
   const selectAfter = (
     <Select defaultValue="man" className="select-after">
       <Option value="man">男士</Option>
@@ -123,7 +126,13 @@ export default function WeddingForm(props: any) {
             <div className={styles.btn}>apply</div>
           </div>
           <div className={styles.center}>
-            <Button type="primary" danger className={styles.disabled}>
+            <Button
+              type="primary"
+              danger
+              className={styles.disabled}
+              onClick={submit}
+              disabled
+            >
               <img src="/wedding/lock.svg" className={styles.lockIcon} />
               签名确认参加婚礼
             </Button>

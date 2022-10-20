@@ -12,24 +12,6 @@ import { Header } from "../../components/main/common/header.com";
 import { Footer } from "../../components/main/common/footer.com";
 import { Avatar, Button, List, Skeleton } from "antd";
 
-interface DataType {
-  gender?: string;
-  name: {
-    title?: string;
-    first?: string;
-    last?: string;
-  };
-  email?: string;
-  picture: {
-    large?: string;
-    medium?: string;
-    thumbnail?: string;
-  };
-  nat?: string;
-  loading: boolean;
-}
-
-const count = 3;
 const headData = [
   {
     title: "新人",
