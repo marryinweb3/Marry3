@@ -5,7 +5,7 @@ import { useObserver } from "mobx-react";
 import { web3Config } from "../../stores/config";
 import { message, Tooltip } from "antd";
 import { WalletStore } from "../../stores/main/wallet.store";
-import { MarryStore } from "../../stores/main/marry.store";
+import { WeddingStore } from "../../stores/main/wedding.store";
 import { Trans } from "@lingui/react";
 import { NFTStore } from "../../stores/main/nfts.store";
 import { Header } from "../../components/main/common/header.com";
@@ -30,7 +30,6 @@ interface DataType {
 }
 
 const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 const headData = [
   {
     title: "新人",
@@ -52,55 +51,23 @@ export default function createWedding(props) {
   const wallet = useStore(WalletStore);
   const nftStore = useStore(NFTStore);
 
-  const marryStore = useStore(MarryStore);
+  const weddingStore = useStore(WeddingStore);
 
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<DataType[]>([]);
-  const [list, setList] = useState<any[]>();
 
   useEffect(() => {
-    nftStore.getNFTS();
-    marryStore.getMintInfo();
     (async () => {
-      const walletInfo = await wallet.getWalletInfo();
-      marryStore.info.Aaddress = walletInfo.account;
-      marryStore.info.Aname = walletInfo.ens;
       const loading = message.loading("loading...", 0);
-      await marryStore.getOffer();
+      await weddingStore.getList();
       loading();
+      setInitLoading(false);
     })();
-
-    setInterval(marryStore.getNowGas, 10000);
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
   }, []);
 
-  const onLoadMore = () => {
-    setLoading(true);
-    setList(
-      data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        }))
-      )
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false);
-        window.dispatchEvent(new Event("resize"));
-      });
+  const onLoadMore = async () => {
+    await weddingStore.getList();
+    console.log("加载更多。。。");
   };
 
   const loadMore =
@@ -132,7 +99,7 @@ export default function createWedding(props) {
             loading={initLoading}
             itemLayout="horizontal"
             loadMore={loadMore}
-            dataSource={list}
+            dataSource={weddingStore.weddingList}
             header={
               <div className={styles.listHead}>
                 {headData.map((hh) => (
@@ -140,12 +107,15 @@ export default function createWedding(props) {
                 ))}
               </div>
             }
-            renderItem={(item) => (
-              <List.Item actions={[<a key="list-loadmore-edit">详情</a>]}>
+            renderItem={(item, i) => (
+              <List.Item
+                actions={[<a key="list-loadmore-edit">详情</a>]}
+                key={i}
+              >
                 <Skeleton avatar title={false} loading={item.loading} active>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.picture?.large} />}
-                    title={<a href="https://ant.design">{item.name?.last}</a>}
+                    avatar={<Avatar src={item.picture} />}
+                    title={<a href="https://ant.design">{item.name}</a>}
                     description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                   />
                   <div>content</div>

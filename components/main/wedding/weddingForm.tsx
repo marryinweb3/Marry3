@@ -2,7 +2,11 @@ import { useRouter } from "next/router";
 import type { DatePickerProps } from "antd";
 import { Input, DatePicker, Select, Button } from "antd";
 import styles from "./wedding.module.less";
+
+import { WeddingStore } from "../../../stores/main/wedding.store";
+import useStore from "../../../stores/useStore";
 export default function WeddingForm(props: any) {
+  const weddingStore = useStore(WeddingStore);
   const { TextArea } = Input;
   const router = useRouter();
   const state = props.state;
@@ -12,16 +16,16 @@ export default function WeddingForm(props: any) {
   };
   const onChangeDate: DatePickerProps["onChange"] = (date, dateString) => {
     console.log(date, dateString);
+    weddingStore.createInfo.wedding_at = dateString;
   };
   const { Option } = Select;
 
   const onChange = (value: string) => {
     console.log(`selected ${value}`);
   };
-  const onChangeText = (
-    value: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const onChangeText = (value) => {
     console.log(`selected ${value}`);
+    weddingStore.createInfo.comment = value;
   };
   const nftChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -37,13 +41,17 @@ export default function WeddingForm(props: any) {
       <div className={styles.headPort}>
         <div className={styles.headPerson}>
           <div className={styles.head}>
-            <div className={styles.headImg}></div>
+            <div className={styles.headImg}>
+              <img src={weddingStore.wedding.Acover} />
+            </div>
           </div>
           <div className={styles.name}>xxxxxxx.eth</div>
         </div>
         <div className={styles.headPerson}>
           <div className={styles.head}>
-            <div className={styles.headImg}></div>
+            <div className={styles.headImg}>
+              <img src={weddingStore.wedding.Bcover} />
+            </div>
           </div>
           <div className={styles.name}>xxxxxxx.eth</div>
         </div>

@@ -5,7 +5,7 @@ import { useObserver } from "mobx-react";
 import { web3Config } from "../../stores/config";
 import { message, Tooltip } from "antd";
 import { WalletStore } from "../../stores/main/wallet.store";
-import { MarryStore } from "../../stores/main/marry.store";
+import { WeddingStore } from "../../stores/main/wedding.store";
 import { Trans } from "@lingui/react";
 import { NFTStore } from "../../stores/main/nfts.store";
 import { Header } from "../../components/main/common/header.com";
@@ -54,21 +54,14 @@ export default function createWedding(props) {
   const wallet = useStore(WalletStore);
   const nftStore = useStore(NFTStore);
 
-  const marryStore = useStore(MarryStore);
+  const weddingStore = useStore(WeddingStore);
 
   useEffect(() => {
-    nftStore.getNFTS();
-    marryStore.getMintInfo();
     (async () => {
-      const walletInfo = await wallet.getWalletInfo();
-      marryStore.info.Aaddress = walletInfo.account;
-      marryStore.info.Aname = walletInfo.ens;
       const loading = message.loading("loading...", 0);
-      await marryStore.getOffer();
+      await weddingStore.getListByDate();
       loading();
     })();
-
-    setInterval(marryStore.getNowGas, 10000);
   }, []);
   const onPanelChange = (value: Moment, mode: CalendarMode) => {
     console.log(value.format("YYYY-MM-DD"), mode);

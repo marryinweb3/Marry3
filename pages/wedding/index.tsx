@@ -5,7 +5,7 @@ import { useObserver } from "mobx-react";
 import { web3Config } from "../../stores/config";
 import { message, Tooltip } from "antd";
 import { WalletStore } from "../../stores/main/wallet.store";
-import { MarryStore } from "../../stores/main/marry.store";
+import { WeddingStore } from "../../stores/main/wedding.store";
 import { Trans } from "@lingui/react";
 import { NFTStore } from "../../stores/main/nfts.store";
 import { Header } from "../../components/main/common/header.com";
@@ -17,22 +17,19 @@ export default function createWedding(props) {
   const wallet = useStore(WalletStore);
   const nftStore = useStore(NFTStore);
 
-  const marryStore = useStore(MarryStore);
+  const weddingStore = useStore(WeddingStore);
 
-  const [state, setState] = useState("join");
+  const [state, setState] = useState("create");
   useEffect(() => {
-    nftStore.getNFTS();
-    marryStore.getMintInfo();
     (async () => {
-      const walletInfo = await wallet.getWalletInfo();
-      marryStore.info.Aaddress = walletInfo.account;
-      marryStore.info.Aname = walletInfo.ens;
       const loading = message.loading("loading...", 0);
-      await marryStore.getOffer();
+      //根据地址获取结婚记录
+      await weddingStore.getOffer();
+      //如果没有结婚记录不予预约
+      console.log("结婚记录", weddingStore.wedding);
+      //如果有
       loading();
     })();
-
-    setInterval(marryStore.getNowGas, 10000);
   }, []);
 
   return useObserver(() => {
