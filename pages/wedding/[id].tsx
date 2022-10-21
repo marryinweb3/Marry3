@@ -12,26 +12,31 @@ import { Header } from "../../components/main/common/header.com";
 import { Footer } from "../../components/main/common/footer.com";
 import WeddingForm from "../../components/main/wedding/weddingForm";
 import WorkInfo from "../../components/main/wedding/workInfo";
+import { useRouter } from "next/router";
 
 export default function createWedding(props) {
   const wallet = useStore(WalletStore);
   const nftStore = useStore(NFTStore);
 
   const weddingStore = useStore(WeddingStore);
-
+  const router = useRouter();
+  const { id } = router.query;
   const [state, setState] = useState("");
   useEffect(() => {
+    if (id == "create") {
+      setState("create");
+    } else if (id) {
+      setState("edit");
+      weddingStore.getWeddingInfo(id);
+    }
     (async () => {
       const loading = message.loading("loading...", 0);
       //根据地址获取结婚记录
       await weddingStore.getOffer();
-      //如果没有结婚记录不予预约
       console.log("结婚记录", weddingStore.wedding);
-      setState("create");
-      //如果有
       loading();
     })();
-  }, []);
+  }, [router.query.id]);
 
   return useObserver(() => {
     return (

@@ -60,6 +60,10 @@ export default function createWedding(props) {
     (async () => {
       const loading = message.loading("loading...", 0);
       await weddingStore.getListByDate();
+      console.log(
+        "weddingList by date---------------------",
+        weddingStore.weddingList
+      );
       loading();
     })();
   }, []);
