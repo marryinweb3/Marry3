@@ -1,9 +1,14 @@
 import { useRouter } from "next/router";
 import styles from "./wedding.module.less";
 import { CountDown } from "../../../utils/count";
+import { WeddingStore } from "../../../stores/main/wedding.store";
+import useStore from "../../../stores/useStore";
+
 export default function WorkInfo(props: any) {
   const router = useRouter();
   const back = () => {};
+  const weddingStore = useStore(WeddingStore);
+  const date = weddingStore.weddingDetail?.wedding?.wedding_at || new Date();
   return (
     <div className={styles.workInfo}>
       <div className={styles.info}>
@@ -39,9 +44,20 @@ export default function WorkInfo(props: any) {
         <div className={styles.title}>Wedding Guests</div>
         <div className={styles.steps}>
           <div className={styles.flex}>
-            <div className={styles.radius}></div>
-            <div className={styles.radius}></div>
-            <div className={styles.radius}></div>
+            {weddingStore.weddingDetail.joiners &&
+            weddingStore.weddingDetail.joiners.length > 0 ? (
+              weddingStore.weddingDetail.joiners.map((joiner) => (
+                <div className={styles.radius}>
+                  <img src={joiner.cover} />
+                </div>
+              ))
+            ) : (
+              <>
+                <div className={styles.radius}></div>
+                <div className={styles.radius}></div>
+                <div className={styles.radius}></div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -51,7 +67,14 @@ export default function WorkInfo(props: any) {
           <div className={styles.flex}>
             <img src="/wedding/framedate.svg" className={styles.framedate} />
             <div>
-              <div className={styles.firstText}>NaN</div>
+              <div className={styles.firstText}>
+                {CountDown(
+                  date.getFullYear(),
+                  date.getMonth() + 1,
+                  date.getDate(),
+                  ""
+                )}
+              </div>
               <div className={styles.secondText}>倒数日</div>
             </div>
           </div>

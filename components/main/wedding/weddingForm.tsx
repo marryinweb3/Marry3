@@ -5,40 +5,77 @@ import styles from "./wedding.module.less";
 
 import { WeddingStore } from "../../../stores/main/wedding.store";
 import useStore from "../../../stores/useStore";
+import { useEffect, useState } from "react";
+import { RangePickerProps } from "antd/lib/date-picker";
+import moment from "moment";
 export default function WeddingForm(props: any) {
   const weddingStore = useStore(WeddingStore);
+  console.log("WeddingForm--------------", weddingStore);
+  const [disabled, setDisabled] = useState(true);
+  const [submiting, setSubmiting] = useState(false);
   const { TextArea } = Input;
   const router = useRouter();
   const state = props.state;
-  const textarea = `XXXX.ETH与 Ooooo.eth 谨定于2022年11月11日11时在元宇宙世界举行结婚典礼。敬备喜筵，恭请光临！`;
+  const textarea = `XXXX.ETH与 Ooooo.ETH 谨定于2022年11月11日11时在元宇宙世界举行结婚典礼。敬备喜筵，恭请光临！`;
   const back = () => {
     router.push("/town");
   };
   const onChangeDate: DatePickerProps["onChange"] = (date, dateString) => {
     console.log(date, dateString);
     weddingStore.createInfo.wedding_at = dateString;
+    isAble();
   };
   const { Option } = Select;
 
-  const onChange = (value: string) => {
+  const onChange = (value: number) => {
     console.log(`selected ${value}`);
+    weddingStore.createInfo.type = value;
+    isAble();
   };
   const onChangeText = (value) => {
     console.log(`selected ${value}`);
-    weddingStore.createInfo.comment = value;
+    weddingStore.createInfo.comment = value.target.value;
+    isAble();
   };
   const nftChange = (value: string) => {
     console.log(`selected ${value}`);
+    weddingStore.joinInfo.name = value; //暂时没找到对应参数
   };
-  const submit = () => {
+  const submitCreate = async () => {
+    setSubmiting(true);
     console.log("提交并生成分享链接");
+    console.log("创建婚礼submit", weddingStore);
+    await weddingStore.createWedding({});
+    setSubmiting(false);
   };
+  const submitJoin = async () => {
+    setSubmiting(true);
+    console.log("提交并生成分享链接");
+    console.log("参加婚礼submit", weddingStore);
+    await weddingStore.joinWedding({});
+    setSubmiting(false);
+  };
+  const isAble = () => {
+    const a =
+      weddingStore.createInfo.comment &&
+      weddingStore.createInfo.wedding_at &&
+      weddingStore.createInfo.type;
+    setDisabled(!Boolean(a));
+  };
+  useEffect(() => {
+    isAble();
+  }, [weddingStore]);
   const selectAfter = (
     <Select defaultValue="man" className="select-after">
       <Option value="man">男士</Option>
       <Option value="woman">女士</Option>
     </Select>
   );
+  // eslint-disable-next-line arrow-body-style
+  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf("day");
+  };
   return (
     <div className={styles.weddingForm}>
       <div className={styles.headPort}>
@@ -63,7 +100,11 @@ export default function WeddingForm(props: any) {
         <div className={styles.formContent}>
           <div className={styles.item}>
             <div className={styles.label}>预约时间：</div>
-            <DatePicker onChange={onChangeDate} className={styles.value} />
+            <DatePicker
+              onChange={onChangeDate}
+              className={styles.value}
+              disabledDate={disabledDate}
+            />
           </div>
           <div className={styles.item}>
             <div className={styles.label}>婚礼形式：</div>
@@ -79,22 +120,28 @@ export default function WeddingForm(props: any) {
               }
               className={styles.value}
             >
-              <Option value="jack">中式婚礼</Option>
-              <Option value="lucy">西式婚礼</Option>
+              <Option value={1}>中式婚礼</Option>
+              <Option value={2}>西式婚礼</Option>
             </Select>
           </div>
           <div className={styles.item}>
             <div className={styles.label}>请帖内容：</div>
             <div className={styles.value}>
               <TextArea
-                placeholder="textarea with clear icon"
+                placeholder={textarea}
                 allowClear
                 onChange={onChangeText}
               />
             </div>
           </div>
           <div className={styles.center}>
-            <Button type="primary" danger>
+            <Button
+              type="primary"
+              danger
+              onClick={submitCreate}
+              disabled={disabled}
+              loading={submiting}
+            >
               <img src="/wedding/lock.svg" className={styles.lockIcon} />
               签名生成请帖连接
             </Button>
@@ -120,7 +167,13 @@ export default function WeddingForm(props: any) {
             </div>
             <div className={styles.item}>
               <div className={styles.label}>称呼</div>
-              <Input addonAfter={selectAfter} defaultValue="sex" />
+              <Input
+                addonAfter={selectAfter}
+                defaultValue="guset"
+                onChange={async (e) => {
+                  weddingStore.joinInfo.name = e.target.value;
+                }}
+              />
             </div>
             <div className={styles.line}></div>
             <div className={styles.btn}>apply</div>
@@ -130,7 +183,7 @@ export default function WeddingForm(props: any) {
               type="primary"
               danger
               className={styles.disabled}
-              onClick={submit}
+              onClick={submitJoin}
               disabled
             >
               <img src="/wedding/lock.svg" className={styles.lockIcon} />

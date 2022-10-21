@@ -8,6 +8,30 @@ import { Marry3Contract } from "../../contracts";
 import { BigNumber, utils } from "ethers";
 import { action } from "mobx";
 const walletStore = useStore(WalletStore);
+export type wedding = {
+  id: string;
+  addressA: string | null;
+  addressB: string | null;
+  nameA: string | null;
+  nameB: string | null;
+  coverA: string | null;
+  coverB: string | null;
+  wedding_at: Date;
+  type: number | null;
+  comment: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type wedding_join = {
+  id: string;
+  weddingId: string | null;
+  name: string | null;
+  address: string | null;
+  cover: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
 type WeddingType = {
   status?: number;
   loading?: boolean;
@@ -18,18 +42,9 @@ type WeddingType = {
   Bcover?: string;
 };
 type CurrentType = {
-  id?: number;
-  addressA?: string | null;
-  addressB?: string | null;
-  nameA?: string | null;
-  nameB?: string | null;
-  coverA?: string | null;
-  coverB?: string | null;
-  wedding_at?: Date;
-  type?: number | null;
-  comment?: string | null;
-  createdAt?: Date;
-  updatedAt?: Date;
+  message?: string;
+  wedding?: wedding;
+  joiners?: wedding_join[];
 };
 type Offers = {
   weddingId?: string | null;
@@ -77,12 +92,12 @@ type Offers_ = {
 export class WeddingStore implements IStore {
   static type = StoreType.wedding;
   type = StoreType.wedding;
-  wedding: WeddingType = {}; //History info
-  currentWedding: CurrentType = {};
-  createInfo: COffers = {};
-  joinInfo: Offers = {};
-  weddingList: WeddingType[] = [];
-  total: number = 0;
+  wedding: WeddingType = {}; //History marry info
+  weddingDetail: CurrentType = {}; //detail by id
+  createInfo: COffers = {}; //create wedding info
+  joinInfo: Offers = {}; //join wedding info
+  weddingList: WeddingType[] = []; // wedding list
+  total: number = 0; //list total
   async getOffer() {
     //History
     const account = "0xF95555A29E58188147D3A3AcD6e2Ffeb04EA7dd5"; //(await walletStore.getWalletInfo()).account;
@@ -107,6 +122,7 @@ export class WeddingStore implements IStore {
     }
   }
   async getWeddingInfo(id) {
+    //get detail
     try {
       const result = await fetch("/api/wedding/" + id, {
         method: "GET",
@@ -116,7 +132,7 @@ export class WeddingStore implements IStore {
       });
       const json = await result.json();
       if (!json.message) {
-        this.wedding = json;
+        this.weddingDetail = json;
       }
     } catch (e) {}
 
@@ -169,12 +185,8 @@ export class WeddingStore implements IStore {
     } catch (e) {}
   }
   async createWedding(data) {
-    const body: COffers = {};
-    if (!body.wedding_at) {
-      message.error("commet empty");
-      return;
-    }
-    const offer = await fetch(`/api/ddeginw/add`, {
+    const body: COffers = { ...this.wedding, ...this.createInfo };
+    const offer = await fetch(`/api/wedding/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -183,9 +195,8 @@ export class WeddingStore implements IStore {
     });
     const res = await offer.json();
     if (res.id) {
-      this.wedding = res;
-      this.wedding.status = 1;
-      this.wedding.inviteLink = "/offer/" + res.id;
+      this.createInfo = {};
+      this.wedding.inviteLink = "/wedding/" + res.id;
       this.getOffer();
     } else {
       message.error(res.message);
@@ -198,7 +209,7 @@ export class WeddingStore implements IStore {
       message.error("commet empty");
       return;
     }
-    const offer = await fetch(`/api/wedding/` + this.currentWedding.id, {
+    const offer = await fetch(`/api/wedding/` + this.weddingDetail.wedding.id, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -207,8 +218,7 @@ export class WeddingStore implements IStore {
     });
     const res = await offer.json();
     if (res.id) {
-      this.wedding = res;
-      this.wedding.status = 1;
+      this.joinInfo = {};
       this.wedding.inviteLink = "/offer/" + res.id;
       this.getOffer();
     } else {

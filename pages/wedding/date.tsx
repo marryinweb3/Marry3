@@ -81,8 +81,8 @@ export default function createWedding(props) {
     const listData = getListData(value);
     return (
       <ul className={styles.events}>
-        {listData.map((item) => (
-          <div className={styles.raduis}></div>
+        {listData.map((item, i) => (
+          <div className={styles.raduis} style={{ left: 20 * i }}></div>
         ))}
       </ul>
     );
@@ -101,6 +101,7 @@ export default function createWedding(props) {
             onPanelChange={onPanelChange}
             dateCellRender={dateCellRender}
             monthCellRender={monthCellRender}
+            style={{ overflow: "hidden" }}
           />
         </div>
         <Footer />

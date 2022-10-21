@@ -19,7 +19,7 @@ export default function createWedding(props) {
 
   const weddingStore = useStore(WeddingStore);
 
-  const [state, setState] = useState("create");
+  const [state, setState] = useState("");
   useEffect(() => {
     (async () => {
       const loading = message.loading("loading...", 0);
@@ -27,6 +27,7 @@ export default function createWedding(props) {
       await weddingStore.getOffer();
       //如果没有结婚记录不予预约
       console.log("结婚记录", weddingStore.wedding);
+      setState("create");
       //如果有
       loading();
     })();
@@ -44,8 +45,8 @@ export default function createWedding(props) {
           {state == "create" ? "创建婚礼" : "参加婚礼"}
         </div>
         <div className={styles.weddingContent}>
-          <WeddingForm state={state} />
-          <WorkInfo state={state} />
+          <WeddingForm state={state} info={weddingStore} />
+          <WorkInfo state={state} info={weddingStore} />
         </div>
         <Footer />
       </div>
