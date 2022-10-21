@@ -14,26 +14,26 @@ const handler: NextApiHandler = async (req, res) => {
     try {
       // @todo 首先去合约中检查是否已经结婚
       // verify signature
-      if (!req.body.nonce || !req.body.signature) {
-        return res.status(400).json({
-          message: "no valid signature",
-        });
-      }
+      // if (!req.body.nonce || !req.body.signature) {
+      //   return res.status(400).json({
+      //     message: "no valid signature",
+      //   });
+      // }
 
-      const hash = ethers.utils.keccak256(
-        ethers.utils.defaultAbiCoder.encode(["string"], [req.body.nonce])
-      );
+      // const hash = ethers.utils.keccak256(
+      //   ethers.utils.defaultAbiCoder.encode(["string"], [req.body.nonce])
+      // );
 
-      const message = ethers.utils.arrayify(hash);
-      const verfiyAddress = ethers.utils.verifyMessage(
-        message,
-        req.body.signature
-      );
-      if (verfiyAddress != req.body.addressA) {
-        return res.status(400).json({
-          message: "error signature",
-        });
-      }
+      // const message = ethers.utils.arrayify(hash);
+      // const verfiyAddress = ethers.utils.verifyMessage(
+      //   message,
+      //   req.body.signature
+      // );
+      // if (verfiyAddress != req.body.addressA) {
+      //   return res.status(400).json({
+      //     message: "error signature",
+      //   });
+      // }
 
       const offerForA = await prisma.offers.findFirst({
         where: {
