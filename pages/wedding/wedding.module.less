@@ -1,0 +1,150 @@
+@import "../../styles/rem.less";
+
+.wedding {
+  background: #fff0f3;
+  backdrop-filter: blur(42px);
+  position: relative;
+  .bgImg {
+    width: 795px;
+    height: 773px;
+    position: absolute;
+    top: -299px;
+    left: -148px;
+    z-index: -1;
+  }
+  .bgIcon {
+    position: absolute;
+    .rem(left,28);
+    .rem(top,172);
+    width: 152px;
+    height: 152px;
+  }
+  .headDiv {
+    padding: 0 50px;
+  }
+  .title {
+    font-family: "OPPOSans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 47px;
+    /* identical to box height */
+
+    letter-spacing: -0.03em;
+
+    color: #361041;
+    .rem(margin-top,112);
+    margin-left: 277px;
+    .rem(margin-bottom, 112);
+    @media @mobile {
+      font-size: 24px;
+      line-height: 30px;
+      margin-left: 105px;
+    }
+  }
+
+  .weddingContent {
+    display: flex;
+    .rem(padding-left,154);
+    .rem(padding-right,154);
+    .rem(padding-bottom,170);
+    @media @mobile {
+      width: 100%;
+      display: block;
+      padding: 0 18px;
+    }
+  }
+}
+
+.listContent {
+  .rem(padding-left,207);
+  .rem(padding-right,207);
+  :global(.ant-table) {
+    background: transparent;
+    margin-bottom: 200px;
+  }
+  :global(.ant-table-thead > tr > th) {
+    background: transparent;
+    border-bottom: 0;
+    text-align: center;
+  }
+  :global(.ant-table-tbody > tr > td) {
+    border-bottom: 0;
+  }
+  .listHead {
+    display: flex;
+    .listHeadItem {
+      flex: 1;
+    }
+  }
+  .demoLoadmoreList {
+    min-height: 350px;
+  }
+  .radus {
+    box-sizing: border-box;
+
+    width: 62px;
+    height: 62px;
+    border: 4px solid #fff0f3;
+    border-radius: 80px;
+  }
+  .weddings {
+    width: 162.84px;
+    height: 90px;
+    background: rgba(255, 254, 254, 0.6);
+    border-radius: 18.3848px;
+    padding: 8px 16px;
+  }
+  .joiners {
+    position: relative;
+    .radius {
+      position: absolute;
+      width: 62px;
+      height: 62px;
+      border: 4px solid #fff0f3;
+      border-radius: 80px;
+    }
+    .moreRadius {
+      width: 62px;
+      height: 62px;
+      left: 0px;
+      top: 0px;
+
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+      border: 4px solid #fff0f3;
+      border-radius: 80px;
+      font-size: 12px;
+      line-height: 20px;
+      /* identical to box height, or 167% */
+      position: absolute;
+      left: 100px;
+      text-align: center;
+
+      color: #ffffff;
+    }
+  }
+}
+.dateContent {
+  .rem(padding-left,207);
+  .rem(padding-right,207);
+  .rem(padding-bottom,207);
+  .events {
+    // display: flex;
+    max-width: 100px;
+    overflow-x: hidden;
+  }
+  .raduis {
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    border: 3px solid #ffffff;
+    background-color: #361041;
+    border-radius: 50%;
+    position: absolute;
+    & + & {
+      transform: translateX(-15px);
+    }
+  }
+}
