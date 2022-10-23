@@ -1,6 +1,6 @@
 @import "../../../styles/rem.less";
 .weddingForm {
-  .rem(margin-right,288);
+  .rem(margin-right,165);
   @media @mobile {
     margin-right: 0px;
     .rem(margin-bottom,60);
@@ -68,13 +68,27 @@
           width: 250px;
         }
       }
-      .lockIcon {
-        margin-right: 8px;
-      }
     }
     .center {
       width: 100%;
       text-align: center;
+    }
+    .copyText {
+      color: #999ca0;
+    }
+    .copyContent {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px 16px;
+      gap: 16px;
+      width: 310px;
+      height: 45px;
+      background: #fcfbfc;
+      border: 1px solid #dbcbdf;
+      border-radius: 6px;
+      margin-left: 103px;
+      justify-content: space-between;
     }
   }
   .joinform {
@@ -90,6 +104,7 @@
     margin-bottom: 10px;
     .item {
       margin-bottom: 24px;
+      display: block;
       .label {
         font-family: "OPPOSans";
         font-style: normal;
@@ -124,9 +139,29 @@
       text-align: center;
     }
   }
-  .disabled {
+  .joinText {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    width: 400px;
+    margin-left: 120px;
+    margin-bottom: 95px;
+    color: #361041;
+  }
+  :global(.ant-btn-dangerous.ant-btn-primary[disabled]) {
     background: rgba(244, 24, 112, 0.2);
-    border: none;
+    border-radius: 8px;
+    color: #fff;
+    img {
+      margin-right: 8px;
+      width: 15px;
+      height: 16px;
+    }
+  }
+  :global(.lockIcon) {
+    margin-right: 8px;
+    width: 15px;
+    height: 16px;
   }
 }
 

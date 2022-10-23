@@ -40,6 +40,10 @@ type WeddingType = {
   inviteLink?: string;
   Acover?: string;
   Bcover?: string;
+  Aaddress?: string | null;
+  Baddress?: string | null;
+  Aname?: string | null;
+  Bname?: string | null;
 };
 type CurrentType = {
   message?: string;
@@ -98,9 +102,10 @@ export class WeddingStore implements IStore {
   joinInfo: Offers = {}; //join wedding info
   weddingList: WeddingType[] = []; // wedding list
   total: number = 0; //list total
+  shareClicked: boolean=false
   async getOffer() {
     //History
-    const account = "0xF95555A29E58188147D3A3AcD6e2Ffeb04EA7dd5"; //(await walletStore.getWalletInfo()).account;
+    const account = (await walletStore.getWalletInfo()).account;
 
     try {
       const result = await fetch("/api/offer-byaddress?address=" + account, {
@@ -131,16 +136,10 @@ export class WeddingStore implements IStore {
         },
       });
       const json = await result.json();
-      if (!json.message) {
-        this.weddingDetail = json;
-      }
+      this.weddingDetail = json;
+      
     } catch (e) {}
 
-    if (this.wedding?.status == 0) {
-      setTimeout(() => {
-        this.getOffer();
-      }, 5000);
-    }
   }
   async getList(page = 1) {
     try {
@@ -184,8 +183,17 @@ export class WeddingStore implements IStore {
       }
     } catch (e) {}
   }
-  async createWedding(data) {
-    const body: COffers = { ...this.wedding, ...this.createInfo };
+  async createWedding() {
+    const body = { 
+      ...this.wedding, 
+      ...this.createInfo,
+      addressA:this.wedding.Aaddress,
+      addressB:this.wedding.Baddress,
+      nameA:this.wedding.Aname,
+      nameB:this.wedding.Bname,
+      coverA:this.wedding.Acover,
+      coverB:this.wedding.Bcover,
+    };
     const offer = await fetch(`/api/wedding/add`, {
       method: "POST",
       headers: {
@@ -197,13 +205,14 @@ export class WeddingStore implements IStore {
     if (res.id) {
       this.createInfo = {};
       this.wedding.inviteLink = "/wedding/" + res.id;
+      this.weddingDetail=res
       this.getOffer();
     } else {
       message.error(res.message);
     }
     console.log(res);
   }
-  async joinWedding(data) {
+  async joinWedding() {
     const body: COffers = {};
     if (!body.wedding_at) {
       message.error("commet empty");

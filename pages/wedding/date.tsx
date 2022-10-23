@@ -59,16 +59,20 @@ export default function createWedding(props) {
   useEffect(() => {
     (async () => {
       const loading = message.loading("loading...", 0);
-      await weddingStore.getListByDate();
+      const now = new Date();
+      await weddingStore.getListByDate(now.getFullYear(), now.getMonth() + 1);
       console.log(
         "weddingList by date---------------------",
-        weddingStore.weddingList
+        weddingStore.weddingList,
+        now.getFullYear(),
+        now.getMonth() + 1
       );
       loading();
     })();
   }, []);
-  const onPanelChange = (value: Moment, mode: CalendarMode) => {
+  const onPanelChange = async (value: Moment, mode: CalendarMode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
+    await weddingStore.getListByDate(value.year(), value.month());
   };
 
   const monthCellRender = (value: Moment) => {
@@ -86,7 +90,7 @@ export default function createWedding(props) {
     return (
       <ul className={styles.events}>
         {listData.map((item, i) => (
-          <div className={styles.raduis} style={{ left: 20 * i }}></div>
+          <div className={styles.raduis} style={{ left: 20 * i }} key={i}></div>
         ))}
       </ul>
     );

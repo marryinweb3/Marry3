@@ -1,18 +1,21 @@
 import { useRouter } from "next/router";
-import type { DatePickerProps } from "antd";
+import { DatePickerProps, message } from "antd";
 import { Input, DatePicker, Select, Button } from "antd";
 import styles from "./wedding.module.less";
 
 import { WeddingStore } from "../../../stores/main/wedding.store";
 import useStore from "../../../stores/useStore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RangePickerProps } from "antd/lib/date-picker";
 import moment from "moment";
+import ClipboardJS from "clipboard";
 export default function WeddingForm(props: any) {
   const weddingStore = useStore(WeddingStore);
-  console.log("WeddingForm--------------", weddingStore);
   const [disabled, setDisabled] = useState(true);
   const [submiting, setSubmiting] = useState(false);
+  const [created, setCreated] = useState(false);
+  const [joined, setJoined] = useState(true);
+  const copyRef = useRef(null);
   const { TextArea } = Input;
   const router = useRouter();
   const state = props.state;
@@ -47,6 +50,7 @@ export default function WeddingForm(props: any) {
     console.log("创建婚礼submit", weddingStore);
     await weddingStore.createWedding({});
     setSubmiting(false);
+    setCreated(true);
   };
   const submitJoin = async () => {
     setSubmiting(true);
@@ -54,17 +58,43 @@ export default function WeddingForm(props: any) {
     console.log("参加婚礼submit", weddingStore);
     await weddingStore.joinWedding({});
     setSubmiting(false);
+    setJoined(true);
   };
   const isAble = () => {
-    const a =
-      weddingStore.createInfo.comment &&
-      weddingStore.createInfo.wedding_at &&
-      weddingStore.createInfo.type;
+    let a: any = false;
+    if (state == "create") {
+      a =
+        weddingStore.createInfo.comment &&
+        weddingStore.createInfo.wedding_at &&
+        weddingStore.createInfo.type;
+    } else {
+      a =
+        weddingStore.joinInfo.name &&
+        weddingStore.joinInfo.address &&
+        weddingStore.joinInfo.cover;
+    }
     setDisabled(!Boolean(a));
   };
   useEffect(() => {
     isAble();
   }, [weddingStore]);
+  let clip: any;
+  useEffect(() => {
+    if (copyRef.current && created) {
+      if (!clip) {
+        clip = new ClipboardJS(copyRef.current!, {
+          text: () => weddingStore.wedding?.inviteLink,
+        });
+        clip.on("success", function () {
+          message.success("copy success");
+          weddingStore.shareClicked = true;
+        });
+        clip.on("error", () => {
+          message.error("copy fail");
+        });
+      }
+    }
+  }, [copyRef.current]);
   const selectAfter = (
     <Select defaultValue="man" className="select-after">
       <Option value="man">男士</Option>
@@ -82,7 +112,13 @@ export default function WeddingForm(props: any) {
         <div className={styles.headPerson}>
           <div className={styles.head}>
             <div className={styles.headImg}>
-              <img src={weddingStore.wedding.Acover} />
+              <img
+                src={
+                  state == "create"
+                    ? weddingStore.wedding.Acover
+                    : weddingStore.weddingDetail?.wedding?.coverA
+                }
+              />
             </div>
           </div>
           <div className={styles.name}>xxxxxxx.eth</div>
@@ -90,7 +126,13 @@ export default function WeddingForm(props: any) {
         <div className={styles.headPerson}>
           <div className={styles.head}>
             <div className={styles.headImg}>
-              <img src={weddingStore.wedding.Bcover} />
+              <img
+                src={
+                  state == "create"
+                    ? weddingStore.wedding.Bcover
+                    : weddingStore.weddingDetail?.wedding?.coverB
+                }
+              />
             </div>
           </div>
           <div className={styles.name}>xxxxxxx.eth</div>
@@ -135,59 +177,80 @@ export default function WeddingForm(props: any) {
             </div>
           </div>
           <div className={styles.center}>
-            <Button
-              type="primary"
-              danger
-              onClick={submitCreate}
-              disabled={disabled}
-              loading={submiting}
-            >
-              <img src="/wedding/lock.svg" className={styles.lockIcon} />
-              签名生成请帖连接
-            </Button>
+            {!created ? (
+              <Button
+                type="primary"
+                danger
+                onClick={submitCreate}
+                disabled={disabled}
+                loading={submiting}
+              >
+                <img src="/wedding/lock.svg" className={styles.lockIcon} />
+                签名生成请帖连接
+              </Button>
+            ) : (
+              <div className={styles.copyContent}>
+                <div className={styles.copyText}>
+                  {weddingStore.wedding.inviteLink}
+                </div>
+                <Button type="primary" danger ref={copyRef}>
+                  复制
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       ) : (
         <div className={styles.formContent}>
-          <div className={styles.joinform}>
-            <div className={styles.item}>
-              <div className={styles.label}>NFT PFP</div>
-              <Select
-                defaultValue="lucy"
-                style={{ width: 120 }}
-                onChange={nftChange}
-              >
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="disabled" disabled>
-                  Disabled
-                </Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
+          {!joined ? (
+            <div className={styles.joinform}>
+              <div className={styles.item}>
+                <div className={styles.label}>NFT PFP</div>
+                <Select
+                  defaultValue=""
+                  style={{ width: "100%" }}
+                  onChange={nftChange}
+                >
+                  <Option value="jack">Jack</Option>
+                  <Option value="lucy">Lucy</Option>
+                  <Option value="disabled" disabled>
+                    Disabled
+                  </Option>
+                  <Option value="Yiminghe">yiminghe</Option>
+                </Select>
+              </div>
+              <div className={styles.item}>
+                <div className={styles.label}>称呼</div>
+                <Input
+                  addonAfter={selectAfter}
+                  defaultValue=""
+                  placeholder="ENS或者昵称"
+                  onChange={async (e) => {
+                    weddingStore.joinInfo.name = e.target.value;
+                  }}
+                />
+              </div>
+              <div className={styles.line}></div>
+              <div className={styles.btn}>apply</div>
             </div>
-            <div className={styles.item}>
-              <div className={styles.label}>称呼</div>
-              <Input
-                addonAfter={selectAfter}
-                defaultValue="guset"
-                onChange={async (e) => {
-                  weddingStore.joinInfo.name = e.target.value;
-                }}
-              />
+          ) : (
+            <div className={styles.joinText}>
+              <div>Xxxx.eth 与 Ooooo.eth</div>
+              <div style={{ marginBottom: "32px" }}>
+                谨定于2022年11月11日11时在元宇宙世界举行结婚典礼。
+              </div>
+              <div>敬备喜筵，恭请光临！</div>
             </div>
-            <div className={styles.line}></div>
-            <div className={styles.btn}>apply</div>
-          </div>
+          )}
           <div className={styles.center}>
             <Button
               type="primary"
               danger
-              className={styles.disabled}
               onClick={submitJoin}
-              disabled
+              disabled={disabled || joined}
             >
               <img src="/wedding/lock.svg" className={styles.lockIcon} />
-              签名确认参加婚礼
+              {joined ? "你已确认参加婚礼" : "签名确认参加婚礼"}
             </Button>
           </div>
         </div>

@@ -25,17 +25,22 @@ export default function createWedding(props) {
   useEffect(() => {
     if (id == "create") {
       setState("create");
+      (async () => {
+        const loading = message.loading("loading...", 0);
+        //根据地址获取结婚记录
+        await weddingStore.getOffer();
+        console.log("结婚记录", weddingStore.wedding);
+        loading();
+      })();
     } else if (id) {
       setState("edit");
-      weddingStore.getWeddingInfo(id);
+      (async () => {
+        const loading = message.loading("loading...", 0);
+        await weddingStore.getWeddingInfo(id);
+        console.log("结婚邀请", weddingStore.weddingDetail);
+        loading();
+      })();
     }
-    (async () => {
-      const loading = message.loading("loading...", 0);
-      //根据地址获取结婚记录
-      await weddingStore.getOffer();
-      console.log("结婚记录", weddingStore.wedding);
-      loading();
-    })();
   }, [router.query.id]);
 
   return useObserver(() => {

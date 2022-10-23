@@ -3,12 +3,20 @@ import styles from "./wedding.module.less";
 import { CountDown } from "../../../utils/count";
 import { WeddingStore } from "../../../stores/main/wedding.store";
 import useStore from "../../../stores/useStore";
+import { useEffect, useState } from "react";
 
 export default function WorkInfo(props: any) {
   const router = useRouter();
   const back = () => {};
   const weddingStore = useStore(WeddingStore);
+  const [day, setDay] = useState(NaN);
   const date = weddingStore.weddingDetail?.wedding?.wedding_at || new Date();
+  console.log("workinfo", weddingStore, date);
+  useEffect(() => {
+    const days = CountDown(date);
+    console.log("workinfo---------------2", weddingStore, date, days);
+    setDay(days + 1);
+  }, [weddingStore]);
   return (
     <div className={styles.workInfo}>
       <div className={styles.info}>
@@ -67,14 +75,7 @@ export default function WorkInfo(props: any) {
           <div className={styles.flex}>
             <img src="/wedding/framedate.svg" className={styles.framedate} />
             <div>
-              <div className={styles.firstText}>
-                {CountDown(
-                  date.getFullYear(),
-                  date.getMonth() + 1,
-                  date.getDate(),
-                  ""
-                )}
-              </div>
+              <div className={styles.firstText}>{day}</div>
               <div className={styles.secondText}>倒数日</div>
             </div>
           </div>
